@@ -990,6 +990,9 @@ function check_user() {
 													localStorage.unschedule_market_cmb_id=unscheduleMarketComb;
 													localStorage.market_cmb_list_cp=profileMarketComb;							
 
+													//alert (localStorage.unschedule_market_cmb_id)
+													$('#market_combo_id_lv').empty();
+													$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 													
 													
 												//==================================	
