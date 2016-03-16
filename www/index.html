@@ -223,7 +223,7 @@
          <header> 
          <table width="100%" border="0">
           <tr>
-            <td width="10%" align="left" onClick="page_market_ret()">&nbsp&nbsp <img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td width="10%" align="left" onClick="page_market_ret()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
             <td align="center"><font style="font-size:18px; font-weight:bold">Chemist visit</td>
             <td width="10%" >&nbsp;</td> 
           </tr>
@@ -381,8 +381,10 @@
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_visit()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold">Order</font></td>
-            <td width="10%" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" ></td> 
+            <td align="center"> 
+            <input  type="text" id="item_combo_id" name="item_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchProduct()"  />
+            </td>
+            <td width="10%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" ></td> 
           </tr>
         </table>
 </header> 
@@ -398,7 +400,7 @@
                 <div><span class="market" ></span></div>   
 
 				<br/>  
-             <input type="text" id="item_combo_id" style="width:100%" placeholder="Search" onKeyUp="searchProduct()"  />
+            
                       
                  <ul class="list" id="item_combo_id_lv" >				             
                  </ul>
@@ -671,7 +673,20 @@
        <div class="view" id="page_doctor_campaignView">
         <div class="pages">
          <header> 
-         <h1>Product</h1>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td >
+					
+                    <input  type="text" id="campaign_combo_id" name="campaign_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchCampaign()"  />
+                    
+					
+					
+					
+					</td>
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocCampaignData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
 </header> 
             <div class="panel" id="page_doctor_campaign">
             </br></br></br></br>
@@ -690,18 +705,7 @@
 					</li>					
 				</ul>
 				<br>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td >
-					<form class="ui-filterable">
-					<input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id" data-type="search"  onKeyUp="searchCampaign()"   >
-					</form>
-					
-					</td>
-                    <td width="10px"></td>
-                    <td align="right" height="50px" width="50px" onClick="getDocCampaignData();"><img style="height:40px; width:40px; background-color:#EAF4FF; color:#FFF; font-size:20px"   src="done.png">&nbsp;&nbsp;</td>
-                  </tr>
-                </table>
+                 
                 <br>
 				
 				 <ul class="list" id="campaign_combo_id_lv" >				             
@@ -746,16 +750,18 @@
        <div class="view" id="page_doctor_sampleView">
         <div class="pages">
          <header> 
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width>
+                    <td >
+
+                    <input  type="text" id="sample_combo_id" name="sample_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchSample()"  />
+                    
+					
 					
 					
 					</td>
-                    <td ><h1>Sample</h1></td>
-                    <td ></td>
-                   
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocSampleData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
                   </tr>
                 </table>
 </header> 
@@ -776,18 +782,8 @@
 				</ul>
 				
 				<br>
-                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td >
-					<input type="text" data-iconpos="right" name="sample_combo_id" id="sample_combo_id" data-type="search" onKeyUp="searchSample()" >
-					</td>
-                    <td width="10px"></td>
-                     <td align="right" height="50px" width="50px" onClick="getDocSampleData();"><img style="height:40px; width:40px; background-color:#EAF4FF; color:#FFF; font-size:20px"   src="done.png">&nbsp;&nbsp;</td>
-                  </tr>
-                </table>
-                <br>
-				
+
+        
 				 <ul class="list" id="sample_combo_id_lv" >				             
                  </ul>
                 <br>
@@ -836,13 +832,13 @@
          <header> 
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
                     <td >
-					
-					
+
+                    <input  type="text" id="gift_combo_id" name="gift_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchGift()"  />
+                    					
 					</td>
-                    <td ><h1>Gift</h1></td>
-                    <td align="right"></td>
+                    <td width="10px"></td>
+                     <td align="right" height="50px" width="50px" onClick="getDocGiftData();"><img style="height:40px; width:40px;"   src="done.png">&nbsp;&nbsp;</td>
                   </tr>
                 </table>
 </header> 
@@ -861,21 +857,7 @@
                         <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
-				<br>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td >
-					<form class="ui-filterable">
-					<input type="text" data-iconpos="right" name="gift_combo_id" id="gift_combo_id" data-type="search" onKeyUp="searchGift()"  >
-					</form>
-					
-					</td>
-                    <td width="10px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
-                    <td align="right" height="50px" width="50px" onClick="getDocGiftData();"><img style="height:40px; width:40px; background-color:#EAF4FF; color:#FFF; font-size:20px"   src="done.png">&nbsp;&nbsp;</td>
-                    
-                  </tr>
-                </table>
+				
                 <br>
 				
 				
@@ -925,15 +907,19 @@
  <header> 
    <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    
                     <td >
-					
-					
+
+                    <input  type="text" id="ppm_combo_id" name="ppm_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchPpm()"  />
+                    		
+                      			
 					</td>
-                    <td ><h1>PPM</h1></td>
-                    <td align="right"></td>
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocppmData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
+                    
+                    
                   </tr>
                 </table>
+                
 </header> 
     <div class="panel" id="page_doctor_ppm">
     </br></br></br></br></br></br>
@@ -950,21 +936,6 @@
                         <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
                     </li>					
                 </ul>
-        <br>
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td >
-					<form class="ui-filterable">
-					<input type="text" data-iconpos="right" name="ppm_combo_id" id="ppm_combo_id" data-type="search"  onKeyUp="searchPpm()"  >
-					</form>
-					
-					</td>
-                    <td width="10px"></td>
-                    <td align="right" height="50px" width="50px" onClick="getDocppmData();"><img style="height:40px; width:40px; background-color:#EAF4FF; color:#FFF; font-size:20px"   src="done.png">&nbsp;&nbsp;</td>
-                    
-                  </tr>
-                </table>
         <br>
         
         

@@ -80,7 +80,7 @@ $.afui.useOSThemes=false;
 		
 		
 		getLocationInfo_ready();
-		first_page();
+		
 		$("#se_mpo").val(localStorage.user_id);
 
 		//alert (localStorage.unschedule_market_cmb_id)
@@ -131,13 +131,16 @@ $.afui.useOSThemes=false;
 	
 			$(".market").html(localStorage.visit_market_show);
 			$(".visit_client").html(localStorage.visit_client_show);
-		
+			
+			
+			
 			//var url = "#page_visit_doc";
 	//		$.mobile.navigate(url);	
 		}
 		
 		//================== Redirect to visit page
-		if ((localStorage.doctor_flag==0) &&(localStorage.visit_page=="YES")){
+		
+		else if ((localStorage.doctor_flag==0) &&(localStorage.visit_page=="YES")){
 			$("#sch_date").val(localStorage.scheduled_date);
 			
 			$(".market").html(localStorage.visit_market_show);
@@ -152,6 +155,10 @@ $.afui.useOSThemes=false;
 			getOrder_load();	
 		}
 		
+		
+			//first_page();
+			
+	
 		if (localStorage.visit_location_flag!='YES'){
 				//alert (localStorage.visit_location);
 				$("#visit_location").hide();
@@ -192,7 +199,10 @@ $.afui.useOSThemes=false;
 	$("#product_total_cart").html(localStorage.show_total);
 	$("#product_total_last").html(localStorage.show_total);	
 		
-		
+		//localStorage.synced=''
+		if ((localStorage.synced=='YES')){
+			$.afui.loadContent("#pageHome",true,true,'right');
+		}
 		
     });
 
@@ -492,8 +502,12 @@ function set_confirm_page(){
 }
 // -------------- If Not synced, Show login
 function first_page(){
+	//localStorage.synced=''
+	//alert (localStorage.synced)
 	if ((localStorage.synced!='YES')){
+		
 		$.afui.loadContent("#login",true,true,'right');	
+		//$.afui.loadContent("#pageHome",true,true,'right');
 	}
 	else{	
 		$.afui.loadContent("#pageHome",true,true,'right');
@@ -696,7 +710,7 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -834,9 +848,18 @@ function check_user() {
 		//alert(apipath_base_photo_dm);
 		$("#loginButton").hide();
 		$("#wait_image_login").show();
-		
-		$.post(apipath_base_photo_dm,{ },
-    	function(data, status){
+		$.ajax(apipath_base_photo_dm,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+			type: 'POST',
+			timeout: 30000,
+			error: function(xhr) {
+			$("#wait_image_login").hide();
+			$("#loginButton").show();
+			$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+													},
+			success:function(data, status,xhr){
+		//$.post(apipath_base_photo_dm,{ },
+//    	function(data, status){
 			if (status=='success'){
 				localStorage.base_url='';
 				
@@ -864,17 +887,28 @@ function check_user() {
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
 							localStorage.synced='NO'
-	//$("#error_login").html(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);					
-	$.post(localStorage.base_url+'check_user_pharma?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode},
+	
+							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_login").hide();
+								$("#loginButton").show();
+								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+													},
+								success:function(data, status,xhr){	//$("#error_login").html(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);					
+	//$.post(localStorage.base_url+'check_user_pharma?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode},
     						 
 								
-								 function(data, status){
-									 if (status!='success'){
-										$("#wait_image_login").hide();
-										$("#loginButton").show();
-										$("#error_login").html('Sorry Network not available');
-									 }
-									 else{	
+								 //function(data, status){
+//									 if (status!='success'){
+//										$("#wait_image_login").hide();
+//										$("#loginButton").show();
+//										$("#error_login").html('Sorry Network not available');
+//									 }
+//									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 										if (resultArray[0]=='FAILED'){
@@ -917,6 +951,10 @@ function check_user() {
 													localStorage.payment_mode_flag=resultArray[22];
 													localStorage.collection_date_flag=resultArray[23];
 													
+													
+													//
+													//localStorage.delivery_date_flag='NO';
+													//localStorage.collection_date_flag='NO';
 													//	==============Set menu start================\
 												
 												var menuList=localStorage.menu.split('<rd>');
@@ -1163,15 +1201,10 @@ function check_user() {
 															
 											
 														}
-														
-														//ppm_tbl_doc=ppm_tbl_doc+'</ul>';//+'</table>'
 													
 														localStorage.ppm_tbl_doc=ppm_tbl_doc;
 														$('#ppm_combo_id_lv').empty();
 														$('#ppm_combo_id_lv').append(localStorage.ppm_tbl_doc);
-														//$("#doctor_ppm_list_tbl").html(localStorage.ppm_tbl_doc);
-														
-
 													
 													} 
 
@@ -1185,19 +1218,18 @@ function check_user() {
 													localStorage.synced='YES';
 													
 													
-													$.afui.loadContent("#pageHome",true,true,'right');
+													
 													$("#error_login").html('Synced Successfully');
+													
 													$("#wait_image_login").hide();
 													$("#loginButton").show();
-//													//url = "#pageHome";
-//													//$.mobile.navigate(url);								
-//													$.afui.loadContent("#pageHome",true,true,'right');
-//													
+													$.afui.loadContent("#pageHome",true,true,'right');
+													
 													set_doc_all();
--->
+
 										  }//else failed
 	
-									  }//else success
+								}// success
 							});	//Second Hit
 		
 		
@@ -1207,11 +1239,8 @@ function check_user() {
 						
 					
 				}
-			else{
-				$("#wait_image_login").hide();
-				$("#loginButton").show();
-				$("#error_login").html('Base URL not available');
-			}
+
+		}
      
     });			
 }
@@ -1487,10 +1516,24 @@ function marketNext_sup() {
 				//http://127.0.0.1:8000/lscmreporting/syncmobile/getClientInfo?cid=LSCRM&rep_id=1001&rep_pass=123&synccode=2568&client_id=R100008
 				
 	//			//// ajax-------
-	$.post(localStorage.base_url+'getMarketClientList?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,market_id:market_Id,catType:catType},
+	
+	$.ajax(localStorage.base_url+'getMarketClientList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&catType='+catType,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#err_retailer_next").html('Sorry Network not available');
+								$("#btn_schedule_ret").show();
+								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+													},
+								success:function(data, status,xhr){	
+								
+								
+	//$.post(localStorage.base_url+'getMarketClientList?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,market_id:market_Id,catType:catType},
     						 
 								
-								 function(data, status){
+							//	 function(data, status){
 									 if (status!='success'){
 										$("#err_retailer_next").html('Sorry Network not available');
 										$("#btn_schedule_ret").show();
@@ -1573,7 +1616,7 @@ function marketNext_sup() {
 								
 							} //else
 							
-	
+						}
 						  
 				 });//end ajax
 			
@@ -2140,23 +2183,23 @@ function lscVisitSubmit(){
 	var day_1 = currentDate_1.getDate()
 	var month_1 = currentDate_1.getMonth() + 1
 	var year_1 = currentDate_1.getFullYear()
-	var today_1=  year_1 + "/" + month_1 + "/" + day_1
+	var today_1=  year_1 + "-" + month_1 + "-" + day_1
 	
 	//alert (today_1)
 	if (localStorage.delivery_date_flag!='YES'){
 		delivery_date=today_1;
 	}
-	else{
-		$("#errorChkVSubmit").html('Please enter delivery date');
-		$("#visit_save_div").show();
-	}
+	//else{
+//		$("#errorChkVSubmit").html('Please enter delivery date');
+//		$("#visit_save_div").show();
+//	}
 	if (localStorage.collection_date_flag!='YES'){
 		collection_date=today_1
 	}
-	else{
-		$("#errorChkVSubmit").html('Please enter collection date');
-		$("#visit_save_div").show();
-	}
+	//else{
+//		$("#errorChkVSubmit").html('Please enter collection date');
+//		$("#visit_save_div").show();
+//	}
 	
 	
 	if  ((delivery_date.length < 9) || (collection_date.length < 9)){
@@ -2208,27 +2251,24 @@ function lscVisitSubmit(){
 												//$("#errorChkVSubmit").text(localStorage.base_url+'visitSubmit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&market_info='+marketInfoStr+'&order_info='+productOrderStr+'&merchandizing='+marchandizingInfoStr+'&campaign='+campaign_str+'&lat='+lat+'&long='+longitude+'&visit_photo='+imageName+'&payment_mode='+localStorage.payment_mode+'&chemist_feedback='+chemist_feedback+'&delivery_date='+delivery_date+'&collection_date='+collection_date+'&location_detail='+localStorage.location_detail+'&version=p1')
 												// ajax-------
 												//alert (localStorage.payment_mode);
-											
-								if ( localStorage.location_error!=2){	
-									$.post(localStorage.base_url+'check_user?',{
-										cid: localStorage.cid,rep_id:localStorage.user_id,
-										rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
-										client_id:visitClientId,visit_type:visit_type,
-										schedule_date:scheduled_date,market_info:marketInfoStr,
-										order_info:productOrderStr,merchandizing:marchandizingInfoStr,
-										campaign:campaign_str,lat:lat,long:longitude,visit_photo:imageName,
-										payment_mode:localStorage.payment_mode,chemist_feedback:chemist_feedback,
-										delivery_date:delivery_date,collection_date:collection_date,
-										location_detail:localStorage.location_detail,version:'p1'
-									},
-    						 
+								$.ajax(localStorage.base_url+'visitSubmit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&market_info='+marketInfoStr+'&order_info='+productOrderStr+'&merchandizing='+marchandizingInfoStr+'&campaign='+campaign_str+'&lat='+lat+'&long='+longitude+'&visit_photo='+imageName+'&payment_mode='+localStorage.payment_mode+'&chemist_feedback='+chemist_feedback+'&delivery_date='+delivery_date+'&collection_date='+collection_date+'&location_detail='+localStorage.location_detail+'&version=p1',{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#err_retailer_next").html('Sorry Network not available');
+								$("#btn_schedule_ret").show();
+								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+													},
+								success:function(data, status,xhr){	
 								
-								 function(data, status){
+											
 									 
 									 if (status!='success'){
-										$("#wait_image_login").hide();
-										$("#loginButton").show();
-										$("#error_login").html('Sorry Network not available');
+										$("#wait_image_visit_submit").hide();
+										$("#visit_submit").show();
+										$("#errorChkVSubmit").html('Sorry Network not available');
 									 }
 									 else{		
 									
@@ -2337,14 +2377,14 @@ function lscVisitSubmit(){
 										}
 
 										  }
-									 });//end post	
+										  
+							}//success
+					});//end post	
 									 
-									}// error location check
-								}
-						//	}Photo
-			
-						//  }//locaction check
+								 
 					}
+
+			}
 		}//end collection and delivery date future
 	
 	}//end collection and delivery date check
@@ -3774,10 +3814,22 @@ function visitSubmit_doc(){
 										//alert (localStorage.payment_mode);
 									
 									if ( localStorage.location_error!=2){	
-										$.post(localStorage.base_url+'check_user?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,client_id:visitClientId,visit_type:visit_type,schedule_date:scheduled_date,msg:msg,lat:lat,long:longitude,v_with:v_with,route:market_Id,location_detail:localStorage.location_detail},
-    						 
-								
-								 function(data, status){
+									
+										$.ajax(localStorage.base_url+'doctor_visit_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_visit_submit").hide();
+										$("#visit_submit").show();	
+								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+													},
+								success:function(data, status,xhr){	
+										//$.post(localStorage.base_url+'check_user?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,client_id:visitClientId,visit_type:visit_type,schedule_date:scheduled_date,msg:msg,lat:lat,long:longitude,v_with:v_with,route:market_Id,location_detail:localStorage.location_detail},
+//    						 
+//								
+//								 function(data, status){
 									 if (status!='success'){
 										$("#errorChkVSubmit").html('Sorry Network not available');
 										$("#wait_image_visit_submit").hide();
@@ -3924,6 +3976,7 @@ function visitSubmit_doc(){
 								$("#visit_submit_doc").show();								
 								}
 							}
+						}
 					 });//end post	
 					}//error Location
 				}
