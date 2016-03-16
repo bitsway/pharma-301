@@ -898,17 +898,7 @@ function check_user() {
 								$("#loginButton").show();
 								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
 													},
-								success:function(data, status,xhr){	//$("#error_login").html(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);					
-	//$.post(localStorage.base_url+'check_user_pharma?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode},
-    						 
-								
-								 //function(data, status){
-//									 if (status!='success'){
-//										$("#wait_image_login").hide();
-//										$("#loginButton").show();
-//										$("#error_login").html('Sorry Network not available');
-//									 }
-//									 else{	
+								success:function(data, status,xhr){	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 										if (resultArray[0]=='FAILED'){
@@ -953,8 +943,24 @@ function check_user() {
 													
 													
 													//
-													//localStorage.delivery_date_flag='NO';
-													//localStorage.collection_date_flag='NO';
+													if (localStorage.visit_location_flag!='YES'){
+														//alert (localStorage.visit_location);
+														$("#visit_location").hide();
+														$("#visit_submit").show();
+														
+													}
+													if (localStorage.delivery_date_flag!='YES'){
+														$("#delivery_date_div").hide();
+													}
+													if (localStorage.collection_date_flag!='YES'){
+														$("#collection_date_div").hide();
+													}
+													if (localStorage.payment_date_flag!='YES'){
+														$("#payment_date_div").hide();
+													}
+													if (localStorage.payment_mode_flag!='YES'){
+														$("#payment_mode_div").hide();
+													}
 													//	==============Set menu start================\
 												
 												var menuList=localStorage.menu.split('<rd>');
@@ -1661,10 +1667,10 @@ function marketRetailerNext() {
 			
 			//alert(localStorage.visit_client); 
 			
-			//if (localStorage.visit_client !=visitClientID ){
-//				cancel_cart();
-//
-//			}
+			if (localStorage.visit_client !=visitClientID ){
+				cancel_cart();
+
+			}
 			//alert (visitClientID);
 			$(".visit_client").html(visit_client);
 				
@@ -1716,6 +1722,7 @@ function marketRetailerNext() {
 			$("#order_load").hide();
 			$.afui.loadContent("#page_visit",true,true,'right');
 
+			
 								
 			
 		}
