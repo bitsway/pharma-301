@@ -108,9 +108,9 @@
             <div class="panel" id="pageHome">
             
            
-            </br></br></br>
+            </br></br></br></br>
             
-             </br></br></br>
+  
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      <div id="error_image" style="color:#C00"></div> 
@@ -140,7 +140,7 @@
         <div class="pages">
          <header> <h1>Market</h1></header> 
             <div class="panel" id="page_market">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                    
@@ -181,15 +181,15 @@
         </table>
 </header> 
             <div class="panel" id="page_market_ret">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      
 				
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
-				<!--<div><span class="market"></span></div>  -->
-                <div><span class="market" ></span></div>   
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                <div><span class="market" style="font-size:16px; color:#009191"  ></span></div>   
 
 				<br/>  <input type="text" id="unscheduled_m_client_combo_id" style="width:100%" placeholder="Search" onKeyUp="searchClient()"  />
                       
@@ -230,15 +230,15 @@
         </table>
 </header> 
             <div class="panel" id="page_visit">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      
 				
 			<div id="myerror" style="color:#C00"></div>
 
-				<div><b></b><span class="market"></span></div>
-				<div><b></b><span class="visit_client" ></span></div>
+				<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  ></span></div>
 				
 				
 				
@@ -248,7 +248,8 @@
 				
 				<table width="100%" border="0">
   <tr>
-    <td align="center" onClick="getOrder();"><a width="100%"  class="ui-btn" style="text-align:center; "  ><img src="order.png"></a></td>
+    <td align="center" onClick="getOrder();" style="background-color:#E9F0FE; "></br><a width="100%"  class="ui-btn" style="text-align:center; "  >
+    			<img src="order.png"></br></br></td>
     </tr>
     <tr>
     <td align="center" ><img id="order_load" src="loading1.gif"  alt="Back" ></td>
@@ -380,7 +381,7 @@
          <header> 
          <table width="100%" border="0">
           <tr>
-            
+            <!--<td width="10%" align="left" onClick="page_visit()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	-->
             <td align="center"> 
             <input  type="text" id="item_combo_id" name="item_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchProduct()"  />
             </td>
@@ -389,16 +390,16 @@
         </table>
 </header> 
             <div class="panel" id="page_order">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                 
 				 
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
-				<!--<div><span class="market"></span></div>  -->
-                <div><span class="market" ></span></div>   
-
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                <div><span class="market" style="font-size:16px;color:#009191" ></span></div>   
+				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  style="font-size:16px; color:#005CB9" ></span></div>
 				<br/>  
             
                       
@@ -406,16 +407,34 @@
                  </ul>
                         
 
-                        <br>
-                        <br>
+                         <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
                     </div>
                     
                <!-- </div>-->
             </div>
        
         <footer>
-		<a onClick="homePage()" class="icon home" >Home</a>
-        <a onClick="homePage()"  ></a>
+		<a onClick="page_visit()" class="icon left" >Back</a>
+        <a onClick="page_visit()"  ></a>
          
 
     </div>  
@@ -435,23 +454,23 @@
         </table>
 </header> 
             <div class="panel" id="page_cart">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      
 				<br><br>
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
-				<!--<div><span class="market"></span></div>  -->
-                <div><span class="market" ></span></div>   
-
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                
+				
 				
                         
 					 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td style=" color:#009191"> 
-                    <div><b></b><span class="market"></span></div>
-				   <div><b></b><span class="visit_client" ></span></div>
+                    <div><b></b><span class="market" style="font-size:16px;color:#009191"></span></div>
+				   <div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0" ></span></div>
                     </td>
                     <td width="30px"><a  onClick="getOrder_load();"  href="#page_order" ><img src="edit.png"></a></td>
                     <td>&nbsp;</td>
@@ -519,7 +538,7 @@
         </table>
 </header> 
             <div class="panel" id="page_confirm_visit_success">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                 
@@ -570,44 +589,46 @@
         </table>
 </header> 
             <div class="panel" id="page_visit_doc">
-            </br></br></br></br></br></br>
+            </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      
 				
 			
-            	<div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666">Visit > Market > Chemist</font></div><br>
+            	
 				
 			
 				<div id="myerror" style="color:#C00">   </div>
 				<ul data-inset="true"  data-role="listview">
 					<li >
-						<div><b></b><span class="market"></span></div>
-						<div><b></b><span class="visit_client" ></span></div>
+						<div><b></b><span class="market" style="font-size:16px; color:#009191" ></span></div>
+						<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0" ></span></div>
 					</li>
 				</ul>
-                
-					<input type="submit" id="btn_visit_submit_doc" onClick="getCampaign();"  style="width:100%;  background-color:#09C; color:#FFF; font-size:20px" value="     Product      "   />
+                </br></br>
+					<input type="submit" id="btn_visit_submit_doc" onClick="getCampaign();"  style="width:100%; height:50px;  background-color:#E9F0FE; color:#009191; font-size:20px" value="     Product      "   />
                     
                     
                     <div id="doc_campaign"></div>
 					<!--</br>-->
-                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorGift();"  style="width:100%;  background-color:#09C; color:#FFF; font-size:20px" value="     Gift      "   />
+                    <div style="height:2px"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorGift();"  style="width:100%; height:50px;  background-color:#E9F0FE; color:#009191; font-size:20px" value="     Gift      "   />
 					<!--</br>-->
 					<div id="doc_gift"></div>
 					<!--</br></br>-->
-                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorppm();"  style="width:100%;  background-color:#09C; color:#FFF; font-size:20px" value="     PPM      "   />
+                    <div style="height:2px"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorppm();"  style="width:100%;   height:50px; background-color:#E9F0FE; color:#009191; font-size:20px" value="     PPM      "   />
                     
 					
                     <div id="doc_ppm"></div>
-					<input type="submit" id="btn_visit_submit_doc" onClick="getDoctorSample();"  style="width:100%;  background-color:#09C; color:#FFF; font-size:20px" value="     Sample      "   />
+					<div style="height:2px"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorSample();"  style="width:100%;  height:50px; background-color:#E9F0FE; color:#009191; font-size:20px" value="     Sample      "   />
                    
                    
-                    <div id="doc_sample">adsfsdf</div>
+                    <div id="doc_sample"></div>
                     
 					</br>
                
-				
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 						<td>Visited With</td>
@@ -698,16 +719,14 @@
             
 				<ul data-inset="true"  data-role="listview">
 					<li>
-						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
-						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
-				<br>
-                 
-                <br>
 				
+     
 				 <ul class="list" id="campaign_combo_id_lv" >				             
                  </ul>
                 <br>
@@ -774,14 +793,14 @@
 			<div id="myerror_doctor_sample" style="color:#C00"></div>
 				<ul data-inset="true"  data-role="listview">
 					<li>
-						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
-						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                       
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
 				
-				<br>
+			
 
         
 				 <ul class="list" id="sample_combo_id_lv" >				             
@@ -851,14 +870,14 @@
 			<div id="myerror_doctor_gift" style="color:#C00"></div>
 				<ul data-inset="true"  data-role="listview">
 					<li>
-						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
-						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                        
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
 				
-                <br>
+          
 				
 				
 				
@@ -922,7 +941,7 @@
                 
 </header> 
     <div class="panel" id="page_doctor_ppm">
-    </br></br></br></br></br></br>
+    </br></br></br></br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
              
@@ -930,13 +949,13 @@
     <div id="myerror_doctor_gift" style="color:#C00"></div>
         <ul data-inset="true"  data-role="listview">
                     <li>
-                        <div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
-                        <div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+                       			
+                        <div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                        
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
                     </li>					
                 </ul>
-        <br>
+       
         
         
         
@@ -987,7 +1006,7 @@
 
 
     <div class="panel" id="page_saved_visit">
-    </br></br></br></br></br></br>
+    </br></br></br></br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
              
@@ -1071,7 +1090,7 @@
 
 
     <div class="panel" id="page_reports_dcr">
-    </br></br></br></br></br></br>
+    </br></br></br></br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
              
