@@ -4481,3 +4481,7 @@ function tr_gift(product_id){
 	$(order_qty_text).focus();
 
 	}	
+	
+function exit() {	
+	navigator.app.exitApp();
+}
