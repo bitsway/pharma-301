@@ -221,7 +221,7 @@ $.afui.useOSThemes=false;
 var mobile_off_flag=0;
 
 function homePage() {
-	
+	$("#error_login").html('');
 	$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
