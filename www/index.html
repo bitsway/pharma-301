@@ -248,7 +248,7 @@
 				
 				<table width="100%" border="0">
   <tr>
-    <td align="center" onClick="getOrder();" style="background-color:#E9F0FE; "></br><a width="100%"  class="ui-btn" style="text-align:center; "  >
+    <td align="center" onClick="getOrder();comboSearchOrder();" style="background-color:#E9F0FE; "></br><a width="100%"  class="ui-btn" style="text-align:center; "  >
     			<img src="order.png"></br></br></td>
     </tr>
     <tr>
@@ -336,11 +336,7 @@
             
             
             
-            <br/>
-            <br/>
-            
-           
-            <br/>
+            <br/><br/><br/>
             <br/>
             
             <div id="visit_save_div">
@@ -348,16 +344,8 @@
              
             </div>
 			
-            
-           
 				
-				
-				
-				
-                <br/><br/><br/><br/><br/><br/>
-
-				
-                <br/>
+            <br/><br/><br/><br/><br/><br/><br/>
                 
                     
                <!-- </div>-->
@@ -367,7 +355,7 @@
         <footer>
 		<a onClick="homePage()" class="icon home" >Home</a>
         <a onClick="homePage()"  ></a>
-         
+        
 
     </div> 
 
@@ -433,9 +421,44 @@
             </div>
        
         <footer>
-		<a onClick="page_visit()" class="icon left" >Back</a>
-        <a onClick="page_visit()"  ></a>
-         
+        
+        
+                <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit()" class="icon left" >Back</a></td>
+    <td align="right">
+		
+      			 <select id="item_combo" style=" width:40px"data-native-menu="false" onChange="comboSearch()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+         </td>
+  </tr>
+</table>
 
     </div>  
   
@@ -487,6 +510,12 @@
 				
                 <br>
                 <br>
+                <br>
+                <br><br>
+                <br>
+                <br>
+                <br><br>
+                <br>
                 
                 <div id="product_total_cart" style=" color:#009191; font-weight:bold"></div>
 				
@@ -512,6 +541,8 @@
             </div>
        
         <footer>
+
+
 		<a onClick="homePage()" class="icon home" >Home</a>
         <a onClick="homePage()"  ></a>
          

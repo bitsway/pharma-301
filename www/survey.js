@@ -4380,8 +4380,12 @@ function searchProduct() {
 			lis[i].style.display = 'list-item';
 		else
 			lis[i].style.display = 'none';
+		$("#item_combo_id_lv").find(lis[0]).first().focus()
 	}
+	//$("#item_combo_id_lv").focus();
+	
 }
+
 
 
 function tr_item(product_id){	
@@ -4481,7 +4485,18 @@ function tr_gift(product_id){
 	$(order_qty_text).focus();
 
 	}	
+function comboSearch(){	
+	var filter_value=$("#item_combo").val()
+	//alert (filter_value)
+	$("#item_combo_id").val(filter_value)
+	searchProduct()
 	
+	}	
+function comboSearchOrder(){	
+	$("#item_combo_id").val('A')
+	searchProduct()
+	
+	}
 function exit() {	
 	navigator.app.exitApp();
 }
