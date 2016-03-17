@@ -273,8 +273,8 @@ function onSuccess(position) {
 	$("#lat").val(position.coords.latitude);
 	$("#longitude").val(position.coords.longitude);
 	
-	$("#lat_p").val(position.coords.latitude);
-	$("#long_p").val(position.coords.longitude);
+	//$("#lat_p").val(position.coords.latitude);
+	//$("#long_p").val(position.coords.longitude);
 	
 	
 	localStorage.latitude=position.coords.latitude
@@ -321,8 +321,8 @@ function onError(error) {
 	$("#lat").val(0);
 	$("#longitude").val(0);
 	
-	$("#lat_p").val(0);
-	$("#long_p").val(0);
+	//$("#lat_p").val(0);
+	//$("#long_p").val(0);
 
 	if (localStorage.location_error==2){
 		$("#checkLocation").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
@@ -373,8 +373,8 @@ function onSuccess_ready(position) {
 	$("#lat").val(position.coords.latitude);
 	$("#longitude").val(position.coords.longitude);
 	
-	$("#lat_p").val(position.coords.latitude);
-	$("#long_p").val(position.coords.longitude);
+	//$("#lat_p").val(position.coords.latitude);
+	//$("#long_p").val(position.coords.longitude);
 	
 	
 	localStorage.latitude=position.coords.latitude
@@ -383,7 +383,7 @@ function onSuccess_ready(position) {
 	
 	
 	$("#errorChkVSubmit").html('');
-	$("#errorConfiProfileUpdate").html('');
+	//$("#errorConfiProfileUpdate").html('');
 	$("#errorChkVSubmit_doc").html('');
 	
 	
@@ -392,16 +392,16 @@ function onSuccess_ready(position) {
 		
 	
 	$("#wait_image_visit_submit").hide();
-	//$("#visit_submit").show();
-	//$("#visit_location").hide();
+	$("#visit_submit").show();
+	$("#visit_location").hide();
 	
 	//$("#checkLocation_doc").html('Location Confirmed'); 
 
-	//$("#wait_image_visit_submit_doc").hide();
-	//$("#visit_submit_doc").show();
-	//$("#visit_location_doc").hide();
+	$("#wait_image_visit_submit_doc").hide();
+	$("#visit_submit_doc").show();
+	$("#visit_location_doc").hide();
 	
-	//codeLatLng(position.coords.latitude, position.coords.longitude)
+	codeLatLng(position.coords.latitude, position.coords.longitude)
 	
 	
 } 
@@ -412,8 +412,8 @@ function onError_ready(error) {
 	$("#lat").val(0);
 	$("#longitude").val(0);
 	
-	$("#lat_p").val(0);
-	$("#long_p").val(0);
+	//$("#lat_p").val(0);
+	//$("#long_p").val(0);
 	//localStorage.location_detail='';
 	
 	//$("#checkLocation").html('Location not found. Last Location will submit.');
