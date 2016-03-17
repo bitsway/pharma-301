@@ -89,6 +89,13 @@ $.afui.useOSThemes=false;
 		$('#item_combo_id_lv').empty()
 		$('#item_combo_id_lv').append(localStorage.product_tbl_str);
 		
+		
+		$("#item_combo_id").val('A')
+		searchProduct()
+	
+	
+		
+		
 		$('#campaign_combo_id_lv').empty();
 		$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
 		$('#sample_combo_id_lv').empty();
@@ -1130,6 +1137,7 @@ function check_user() {
 										$('#item_combo_id_lv').empty()
 										$('#item_combo_id_lv').append(localStorage.product_tbl_str);
 										
+										
 										$('#campaign_combo_id_lv').empty();
 										$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
 										$('#sample_combo_id_lv').empty();
@@ -1749,8 +1757,8 @@ function getOrder_load(){
 function getOrder(){	
 	$("#order_load").show();
 	//alert (localStorage.product_tbl_str)
-	$('#item_combo_id_lv').empty()
-	$('#item_combo_id_lv').append(localStorage.product_tbl_str);
+	//$('#item_combo_id_lv').empty()
+	//$('#item_combo_id_lv').append(localStorage.product_tbl_str);
 	getOrderData()
 	
 	//$.afui.loadContent("#page_order",true,true,'right');
