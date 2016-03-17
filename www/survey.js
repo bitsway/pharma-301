@@ -4380,7 +4380,7 @@ function searchProduct() {
 			lis[i].style.display = 'list-item';
 		else
 			lis[i].style.display = 'none';
-		$("#item_combo_id_lv").find(lis[0]).first().focus()
+		//$("#item_combo_id_lv").find(lis[0]).first().focus()
 	}
 	//$("#item_combo_id_lv").focus();
 	
@@ -4421,6 +4421,7 @@ function searchCampaign() {
 			lis[i].style.display = 'list-item';
 		else
 			lis[i].style.display = 'none';
+		//$("#campaign_combo_id_lv").find(lis[0]).first().focus()
 	}
 }
 
@@ -4436,6 +4437,7 @@ function searchSample() {
 			lis[i].style.display = 'list-item';
 		else
 			lis[i].style.display = 'none';
+		$("#sample_combo_id_lv").find(lis[0]).first().focus()
 	}
 }
 function tr_sample(product_id){	
@@ -4486,10 +4488,23 @@ function tr_gift(product_id){
 
 	}	
 function comboSearch(){	
-	var filter_value=$("#item_combo").val()
+	var filter_value=$("#item_combo").val().toUpperCase();
 	//alert (filter_value)
 	$("#item_combo_id").val(filter_value)
-	searchProduct()
+	var filter  = filter_value
+	//alert (filter);
+	 var lis =document.getElementById("item_combo_id_lv").getElementsByTagName("li");
+
+	for (var i = 0; i < lis.length; i++) {
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+		//alert (name)
+		if (name.toUpperCase().indexOf(filter) == 0) 
+			lis[i].style.display = 'list-item';
+		else
+			lis[i].style.display = 'none';
+		$("#item_combo_id_lv").find(lis[0]).first().focus()
+	}
+	
 	
 	}	
 function comboSearchOrder(){	
