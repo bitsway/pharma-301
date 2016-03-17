@@ -2268,7 +2268,7 @@ function lscVisitSubmit(){
 								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 								$("#wait_image_visit_submit").hide();
 								$("#visit_submit").show();
-								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#errorChkVSubmit").html('Network timeout. Please ensure data connectivity and re-submit.');
 													},
 								success:function(data, status,xhr){	
 								
@@ -3831,7 +3831,7 @@ function visitSubmit_doc(){
 								error: function(xhr) {
 								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 								$("#wait_image_visit_submit").hide();
-										$("#visit_submit").show();	
+								$("#visit_submit").show();	
 								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
 													},
 								success:function(data, status,xhr){	
@@ -3840,17 +3840,17 @@ function visitSubmit_doc(){
 //								
 //								 function(data, status){
 									 if (status!='success'){
-										$("#errorChkVSubmit").html('Network timeout. Please ensure data connectivity and re-submit..');
-										$("#wait_image_visit_submit").hide();
-										$("#visit_submit").show();	
+										$("#errorChkVSubmit_doc").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#wait_image_visit_submit_doc").hide();
+										$("#visit_submit_doc").show();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 										if (resultArray[0]=='FAILED'){
-											$("#errorChkVSubmit").html(resultArray[1]);
-											$("#wait_image_visit_submit").hide();
-											$("#visit_submit").show();
+											$("#errorChkVSubmit_doc").html(resultArray[1]);
+											$("#wait_image_visit_submit_doc").hide();
+											$("#visit_submit_doc").show();	
 										}
 									  else if (resultArray[0]=='SUCCESS'){
 															
