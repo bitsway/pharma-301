@@ -260,7 +260,7 @@ function getLocationInfo() { //location
 	
 	
 	$("#errorChkVSubmit").html('');
-	$("#errorConfiProfileUpdate").html('');
+	//$("#errorConfiProfileUpdate").html('');
 	$("#errorChkVSubmit_doc").html('');
 	
 	var options = { enableHighAccuracy: true, timeout:15000};
