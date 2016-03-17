@@ -285,8 +285,8 @@ function onSuccess(position) {
 	
 	
 	
-	$("#checkLocation1").html('Location Confirmed'); 
-	$("#checkLocationProfileUpdate").html('Location Confirmed');
+	$("#checkLocation").html('Location Confirmed'); 
+	//$("#checkLocationProfileUpdate").html('Location Confirmed');
 		
 	
 	$("#wait_image_visit_submit").hide();
@@ -325,13 +325,13 @@ function onError(error) {
 	$("#long_p").val(0);
 
 	if (localStorage.location_error==2){
-		$("#checkLocation1").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
+		$("#checkLocation").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
 		//$("#checkLocationProfileUpdate").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
 		$("#checkLocation_doc").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
 
 	}else{
-		$("#checkLocation1").html('Location can not be found. Last Location will be submitted.');
-		$("#checkLocationProfileUpdate").html('Location can not be found. Last Location will be submitted.');
+		$("#checkLocation").html('Location can not be found. Last Location will be submitted.');
+		//$("#checkLocationProfileUpdate").html('Location can not be found. Last Location will be submitted.');
 		$("#checkLocation_doc").html('Location can not be found. Last Location will be submitted.');
 	}
 	
@@ -353,8 +353,8 @@ function getLocationInfo_ready() { //location
 	$("#visit_submit").show();
 	$("#visit_location").hide();
 	
-	$("#checkLocation1").html(''); 
-	$("#checkLocationProfileUpdate").html('');
+	$("#checkLocation").html(''); 
+	//$("#checkLocationProfileUpdate").html('');
 	
 	
 	$("#wait_image_visit_submit_doc").show()
@@ -490,7 +490,7 @@ function set_confirm_page(){
 	
 	$("#lat_p").val(0);
 	$("#long_p").val(0);
-	$("#checkLocation1").html('');
+	$("#checkLocation").html('');
 	
 	
 	$("#wait_image_visit_submit_doc").hide();
@@ -1267,7 +1267,7 @@ function chemist_visit() {
 	
 	$("#visit_location").show();
 	$("#visit_submit").hide();
-	$("#checkLocation1").html('');
+	$("#checkLocation").html('');
 	
 	
 	localStorage.doctor_flag=0;
@@ -2331,8 +2331,8 @@ function lscVisitSubmit(){
 										$("#lat_p").val('');
 										$("#long_p").val('');								
 										
-										$("#checkLocation1").html('');
-										$("#checkLocationProfileUpdate").html('');
+										$("#checkLocation").html('');
+										//$("#checkLocationProfileUpdate").html('');
 										
 										$("#wait_image_visit_submit").hide();
 										$("#visit_submit").show();
@@ -2363,7 +2363,7 @@ function lscVisitSubmit(){
 										
 										$("#visit_location").show();	
 										$("#visit_submit").hide();
-										$("#checkLocation1").hide('');	
+										$("#checkLocation").hide('');	
 										
 										$("#delivery_date").val('');
 										$("#collection_date").val('');
@@ -4160,8 +4160,8 @@ function after_save_data(){
 	$("#lat_p").val('');
 	$("#long_p").val('');								
 	
-	$("#checkLocation1").html('');
-	$("#checkLocationProfileUpdate").html('');
+	$("#checkLocation").html('');
+	//$("#checkLocationProfileUpdate").html('');
 	
 	$("#wait_image_visit_submit").hide();
 	$("#visit_submit").show();
@@ -4179,7 +4179,7 @@ function after_save_data(){
 	
 	$("#visit_location").show();	
 	$("#visit_submit").hide();
-	$("#checkLocation1").hide('');
+	$("#checkLocation").hide('');
 	
 }
 
