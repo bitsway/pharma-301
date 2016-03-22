@@ -20,6 +20,7 @@ $.afui.useOSThemes=false;
     $(document).ready(function(){
         $.afui.launch();
 		
+		localStorage.location_error=''
 		$("#wait_image_login").hide();
 		$('#menu_lv').empty()
 		$('#menu_lv').append(localStorage.menu_list);
@@ -308,9 +309,9 @@ function onSuccess(position) {
 	$("#wait_image_visit_submit_doc").hide();
 	$("#visit_submit_doc").show();
 	$("#visit_location_doc").hide();
-	
-	codeLatLng(position.coords.latitude, position.coords.longitude)
 	localStorage.location_error=''
+	codeLatLng(position.coords.latitude, position.coords.longitude)
+	
 	
 	
 	
@@ -717,7 +718,7 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
