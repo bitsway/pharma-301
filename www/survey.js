@@ -718,7 +718,7 @@ function check_user() {
 	//Main
 
 	
-//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -983,8 +983,8 @@ function check_user() {
 													var s_value=single_menu_list[1]
 													if (s_value=='YES'){
 //															 //alert (s_key);	
-															 menu_str=menu_str+'<li width="100%" align="center" onClick="'+s_key+'()"><img style="padding-top:0px; padding-bottom:0px;" src="'+s_key+'.png"></li>'
-															
+															 menu_str=menu_str+'<li  align="center" onClick="'+s_key+'()"  style="width:100%; background-color:#09C; " ><img style="padding-top:0px; padding-bottom:0px;" src="'+s_key+'.png"></li>'
+															menu_str=menu_str+'<div style="height:2px"></div>'							
 
 														if (s_key=="chemist_visit"){
 															 order_report="Yes"
