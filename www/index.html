@@ -76,6 +76,7 @@
                     <!--<h1>Sync</h1>-->
                     <br><br><br><br>
                     <div id="error_login" style="color:#C00"></div> 
+                   <!-- <input name="error_logintext" id="error_logintext"  type="text" placeholder="CID" value="">	-->
                     <div class="input-group">
                     	<form>		
 						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
@@ -1307,7 +1308,232 @@
 </div>  
 
 
-        
+<!--====================Report====================-->
+
+
+ <div class="view" id="page_report_doctorView">
+        <div class="pages">
+         <header><h3> <div id="report_header_doc" align="center"> DCR Summary</div></h3></header> 
+            <div class="panel" id="page_report_doctor">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+<!--                   <input id="myerror_s_report_doctortxt" name="myerror_s_report_doctortxt" type="text"  >-->
+                     <div id="myerror_s_report_doctor" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td><div id="report_mpo_doctor">  </div></td>
+                          </tr>
+                           <tr>
+                            <td><div id="report_market_doctor" >  </div></td>
+                           </tr>
+                          <tr>
+                            <td><div id="date_f_doctor"> </div></td>
+							</tr>
+							  <tr>	
+								<td> <div id="date_t_doctor">  </div></td>
+								
+								
+							  </tr>
+							</table>
+						
+												
+					</li>
+                  <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>
+					<li>
+					  			
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								
+								<td><div id="visit_count_doctor">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withAtt_doctor">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withoutAtt_doctor">  </div></td>
+							  </tr>
+							</table>
+		
+					</li>
+						
+											
+				</ul>
+				
+				
+				<div id="rep_detail_doctor" style="color:#000066; font-size:10px; width:100%"></div>
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" >Home</a>
+        <a onClick="page_reports_dcr()"  ></a>
+         
+
+    </div>               
+                   
+
+
+ <div class="view" id="page_report_prescriptionView">
+        <div class="pages">
+         <header><h3> <div id="report_header_prescription" align="center"> Prescription Summary</div></h3></header> 
+            <div class="panel" id="page_report_prescription">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+<!--                   <input id="myerror_s_report_doctortxt" name="myerror_s_report_doctortxt" type="text"  >-->
+                     <div id="myerror_s_report_prescription" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td><div id="report_mpo_prescription">  </div></td>
+                          </tr>
+                           <tr>
+                            <td><div id="report_market_prescription" >  </div></td>
+                           </tr>
+                          <tr>
+                            <td><div id="date_f_prescription"> </div></td>
+							</tr>
+							  <tr>	
+								<td> <div id="date_t_prescription">  </div></td>
+								
+								
+							  </tr>
+							</table>
+						
+												
+					</li>
+                  <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>
+					<li>
+					  			
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								
+								<td><div id="visit_count_prescription">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withAtt_prescription">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withoutAtt_prescription">  </div></td>
+							  </tr>
+							</table>
+		
+					</li>
+						
+											
+				</ul>
+				
+				
+				<div id="rep_detail_prescription" style="color:#000066; font-size:10px; width:100%"></div>
+				
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" >Home</a>
+        <a onClick="page_reports_dcr()"  ></a>
+         
+
+    </div>  
+
+
+
+
+
+ <div class="view" id="page_sc_order_summary_reportView">
+        <div class="pages">
+         <header> <h3><div id="report_header" align="center"> Sales Call and Order Count</div></h3></header> 
+            <div class="panel" id="page_sc_order_summary_report">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+<!--                   <input id="myerror_s_report_doctortxt" name="myerror_s_report_doctortxt" type="text"  >-->
+                    <div id="myerror_s_report" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="report_mpo">  </div></td>
+							
+							  </tr>
+                              
+                              <tr>
+								<td><div id="report_market" >  </div></td>
+							 </tr>
+							  <tr>
+								<td><div id="report_item" >  </div></td>
+							 </tr>
+							  
+							  <tr>
+								
+								<td><div id="date_f"> </div></td>
+							 </tr>
+							  <tr>	
+								<td> <div id="date_t">  </div></td>
+							 </tr>
+							</table>
+						
+										
+					</li>
+                   
+                    <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>	
+					<li>
+                     
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="sales_call">  </div></td>
+							   </tr>
+							   <tr>
+								<td><div id="order_count">  </div></td>
+							   </tr>
+							   <tr>
+								<td><div id="order_value">  </div></td>
+							  </tr>
+							</table>
+					</li>
+                    
+					
+					<li>
+                    
+					
+					</li>						
+				</ul>
+				
+				
+				<div id="rep_detail" style="color:#000066"></div>
+				
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" >Home</a>
+        <a onClick="page_reports_dcr()"  ></a>
+         
+
+    </div>  
+
+
+
+
+   
  <script type="text/javascript" src="phonegap.js"></script>
 
           
