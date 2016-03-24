@@ -1723,6 +1723,8 @@ function marketRetailerNext() {
 				$("#visit_submit").show();
 				
 			}
+			alert (localStorage.delivery_date_flag)
+			alert (localStorage.collection_date_flag)
 			if (localStorage.delivery_date_flag!='YES'){
 				$("#delivery_date_div").hide();
 			}
