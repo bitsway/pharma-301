@@ -1741,6 +1741,9 @@ function marketRetailerNext() {
 			if (localStorage.payment_date_flag!='YES'){
 				$("#payment_date_div").hide();
 			}
+			else{
+				$("#payment_date_div").show();
+			}
 			if (localStorage.payment_mode_flag!='YES'){
 				$("#payment_mode_div").hide();
 			}
@@ -4356,14 +4359,26 @@ function set_save_data(i){
 	if (localStorage.delivery_date_flag!='YES'){
 		$("#delivery_date_div").hide();
 	}
+	else{
+		$("#delivery_date_div").show();
+	}
 	if (localStorage.collection_date_flag!='YES'){
 		$("#collection_date_div").hide();
+	}
+	else{
+		$("#collection_date_div").show();
 	}
 	if (localStorage.payment_date_flag!='YES'){
 		$("#payment_date_div").hide();
 	}
+	else{
+		$("#payment_date_div").show();
+	}
 	if (localStorage.payment_mode_flag!='YES'){
 		$("#payment_mode_div").hide();
+	}
+	else{
+		$("#payment_mode_div").show();
 	}
 	
 	
