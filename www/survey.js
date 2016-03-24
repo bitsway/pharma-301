@@ -1723,13 +1723,17 @@ function marketRetailerNext() {
 				$("#visit_submit").show();
 				
 			}
-			alert (localStorage.delivery_date_flag)
-			alert (localStorage.collection_date_flag)
+			
+			
 			if (localStorage.delivery_date_flag!='YES'){
+				alert (localStorage.delivery_date_flag)
 				$("#delivery_date_div").hide();
+				alert (localStorage.delivery_date_flag)
 			}
 			if (localStorage.collection_date_flag!='YES'){
+				alert (localStorage.collection_date_flag)
 				$("#collection_date_div").hide();
+				alert (localStorage.collection_date_flag)
 			}
 			if (localStorage.payment_date_flag!='YES'){
 				$("#payment_date_div").hide();
