@@ -2157,7 +2157,13 @@ function payment_mode(){
 	localStorage.payment_mode=payment_mode
 	//alert (localStorage.payment_mode)
 }
-
+function cart_ok(){
+	
+	$("#wait_image_visit_submit").hide();
+	$.afui.loadContent("#page_visit",true,true,'right');
+	//localStorage.payment_mode=payment_mode
+	//alert (localStorage.payment_mode)
+}
 function cancel_cart() {
 	$(".orderProduct").val('');
 	
