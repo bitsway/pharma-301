@@ -171,16 +171,29 @@ $.afui.useOSThemes=false;
 				$("#visit_location").hide();
 				$("#visit_submit").show();
 		}
-		if (localStorage.delivery_date_flag!='YES'){
+		if (localStorage.delivery_date_flag=='YES'){
+			$("#delivery_date_div").show();
+		}
+		else{
 			$("#delivery_date_div").hide();
 		}
-		if (localStorage.collection_date_flag!='YES'){
+		if (localStorage.collection_date_flag=='YES'){
+			$("#collection_date_div").show();
+		}
+		else{
 			$("#collection_date_div").hide();
 		}
-		if (localStorage.payment_date_flag!='YES'){
+		if (localStorage.payment_date_flag=='YES'){
+			$("#payment_date_div").show();
+		}
+		else{
 			$("#payment_date_div").hide();
 		}
-		if (localStorage.payment_mode_flag!='YES'){
+		if (localStorage.payment_mode_flag=='YES'){
+			localStorage.payment_mode='Cash'
+			$("#payment_mode_div").show();
+		}
+		else{
 			$("#payment_mode_div").hide();
 		}
 		
@@ -722,7 +735,7 @@ function check_user() {
 	//Main
 
 	
-//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -954,7 +967,7 @@ function check_user() {
 													localStorage.payment_mode_flag=resultArray[22];
 													localStorage.collection_date_flag=resultArray[23];
 													
-													//alert (localStorage.delivery_date_flag)
+													//alert (localStorage.payment_mode_flag)
 													//alert (localStorage.collection_date_flag)
 													//
 													if (localStorage.visit_location_flag!='YES'){
@@ -963,16 +976,29 @@ function check_user() {
 														$("#visit_submit").show();
 														
 													}
-													if (localStorage.delivery_date_flag!='YES'){
+													if (localStorage.delivery_date_flag=='YES'){
+														$("#delivery_date_div").show();
+													}
+													else{
 														$("#delivery_date_div").hide();
 													}
-													if (localStorage.collection_date_flag!='YES'){
+													if (localStorage.collection_date_flag=='YES'){
+														$("#collection_date_div").show();
+													}
+													else{
 														$("#collection_date_div").hide();
 													}
-													if (localStorage.payment_date_flag!='YES'){
+													if (localStorage.payment_date_flag=='YES'){
+														$("#payment_date_div").show();
+													}
+													else{
 														$("#payment_date_div").hide();
 													}
-													if (localStorage.payment_mode_flag!='YES'){
+													if (localStorage.payment_mode_flag=='YES'){
+														localStorage.payment_mode='Cash'
+														$("#payment_mode_div").show();
+													}
+													else{
 														$("#payment_mode_div").hide();
 													}
 													//	==============Set menu start================\
@@ -1726,29 +1752,31 @@ function marketRetailerNext() {
 			}
 			
 			
-			if (localStorage.delivery_date_flag!='YES'){
-				$("#delivery_date_div").hide();
-			}
-			else{
+			if (localStorage.delivery_date_flag=='YES'){
 				$("#delivery_date_div").show();
 			}
-			if (localStorage.collection_date_flag!='YES'){
-				$("#collection_date_div").hide();
-			}
 			else{
+				$("#delivery_date_div").hide();
+			}
+			if (localStorage.collection_date_flag=='YES'){
 				$("#collection_date_div").show();
 			}
-			if (localStorage.payment_date_flag!='YES'){
-				$("#payment_date_div").hide();
-			}
 			else{
+				$("#collection_date_div").hide();
+			}
+			if (localStorage.payment_date_flag=='YES'){
 				$("#payment_date_div").show();
 			}
-			if (localStorage.payment_mode_flag!='YES'){
-				$("#payment_mode_div").hide();
+			else{
+				$("#payment_date_div").hide();
+			}
+			//alert (localStorage.payment_mode_flag)
+			if (localStorage.payment_mode_flag=='YES'){
+				localStorage.payment_mode='Cash'
+				$("#payment_mode_div").show();
 			}
 			else{
-				$("#payment_mode_div").show();
+				$("#payment_mode_div").hide();
 			}
 			
 			
@@ -2122,10 +2150,12 @@ function getCartData_keyup(product_id){
 
 
 function payment_mode(){
-	var payment_mode=($("input:radio[name='payment_mode']:checked").val())
+	var payment_mode='CASH'
+	payment_mode=($("input:radio[name='payment_mode']:checked").val())
 	$("#wait_image_visit_submit").hide();
-	$.afui.loadContent("#page_visit",true,true,'right');
+	//$.afui.loadContent("#page_visit",true,true,'right');
 	localStorage.payment_mode=payment_mode
+	//alert (localStorage.payment_mode)
 }
 
 function cancel_cart() {
@@ -2216,7 +2246,7 @@ function lscVisitSubmit(){
 	var collection_date=$("#collection_date").val();
 	
 
-	localStorage.payment_mode=$("#payment_mode").val();
+	//localStorage.payment_mode=$("#payment_mode").val();
 	
 	if (lat=='' || lat==0 || longitude=='' || longitude==0 ){
 		lat=localStorage.latitude
@@ -4114,7 +4144,7 @@ function visitSave(){
 	//alert (chemist_feedback);
 	chemist_feedback=replace_special_char(chemist_feedback);
 
-	localStorage.payment_mode=$("#payment_mode").val();
+	//localStorage.payment_mode=$("#payment_mode").val();
 	if (photoRequired=='Yes' && lscPhoto==''){
 		$("#errorChkVSubmit").html('Picture required, Because of Bad marchandizing');
 	}else{
@@ -4307,7 +4337,7 @@ function set_save_data(i){
 	var chemist_feedback = saved_data_show_array[13];
 	var delivery_date_show = saved_data_show_array[14];
 	var collection_date_show = saved_data_show_array[15];
-	
+	//alert (payment_mode)
 	//alert (delivery_date_show)
 	//localStorage.visit_market_show+'<fdfd>'+localStorage.visit_client_show+'<fdfd>'+visitClientId+'<fdfd>'+visit_type+'<fdfd>'+scheduled_date+'<fdfd>'+marketInfoStr+'<fdfd>'+productOrderStr+'<fdfd>'+marchandizingInfoStr+'<fdfd>'+campaign_str+'<fdfd>'+lat+'<fdfd>'+longitude+'<fdfd>'+imageName+'<fdfd>'+localStorage.payment_mode+'<fdfd>'+chemist_feedback+'<rdrd>'
 	
@@ -4356,29 +4386,37 @@ function set_save_data(i){
 		$("#visit_submit").show();
 		
 	}
-	if (localStorage.delivery_date_flag!='YES'){
-		$("#delivery_date_div").hide();
-	}
-	else{
+	if (localStorage.delivery_date_flag=='YES'){
 		$("#delivery_date_div").show();
 	}
-	if (localStorage.collection_date_flag!='YES'){
-		$("#collection_date_div").hide();
-	}
 	else{
+		$("#delivery_date_div").hide();
+	}
+	if (localStorage.collection_date_flag=='YES'){
 		$("#collection_date_div").show();
 	}
-	if (localStorage.payment_date_flag!='YES'){
-		$("#payment_date_div").hide();
-	}
 	else{
+		$("#collection_date_div").hide();
+	}
+	if (localStorage.payment_date_flag=='YES'){
 		$("#payment_date_div").show();
 	}
-	if (localStorage.payment_mode_flag!='YES'){
-		$("#payment_mode_div").hide();
+	else{
+		$("#payment_date_div").hide();
+	}
+	if (localStorage.payment_mode_flag=='YES'){
+		localStorage.payment_mode='Cash'
+		//alert (payment_mode)
+		if (payment_mode=='Credit'){
+			document.getElementById("Credit").checked;
+		}
+		else{
+			document.getElementById("Cash").checked;
+		}
+		$("#payment_mode_div").show();
 	}
 	else{
-		$("#payment_mode_div").show();
+		$("#payment_mode_div").hide();
 	}
 	
 	
