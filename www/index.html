@@ -130,56 +130,58 @@
         <footer>
 		 
 
-          <a href="#" class="icon key" onclick="$.afui.drawer.show('#left','left','push')">Sync</a>
-          <a href="#" class="icon info" onclick="$.afui.drawer.show('#right','right','push')">Information</a>
+          <a href="#" class="icon key" onclick="$.afui.drawer.show('#left','left','push')"></a>
+          <a href="#" class="icon info" onclick="$.afui.drawer.show('#right','right','push')"></a>
          
         </footer>
-		 <nav id="left"  style="z-index:5; background-color:#FFF" >
+		 <nav id="left"  style="z-index:5; background-color:#FFF;" >
 			
 				<header align="left"></header>
-                    <div class="pages">     		
-                                 <div  align="left"><img src="cloud_menu_1.png"></div>
+                    <div class="pages" style="height:100%">     		
+                                 <div  align="center"><img src="cloud_menu_1.png"></div>
                                  </br></br></br> 
                                 
                                
-                                <div style="background:#008A8A; height:1px"></div>
-                               <div onClick="page_login()" align="left"> <img style="height:100px; width:100px" src="key.png"></div>
-                                <div style="background:#008A8A; height:1px"></div>
-                                 </br> </br> </br> 
-                                <div style="background:#008A8A; height:1px"></div>
-                                <div onClick="exit()" align="left"> <img style="height:100px; width:100px" src="exit.png"></div>
-                                <div style="background:#008A8A; height:1px"></div>
+                               
+                               <div onClick="page_login()" align="center" > <img style="height:100px; width:100px" src="key.png"></div>
+                               
+                                 </br> </br> </br> </br>  
+                                 </br> </br></br> </br> </br>
+                                 </br> </br> </br> </br>   
+                                 
+                                
+                                <div onClick="exit()" align="center"> <img style="height:70px; width:70px" src="exit.png"></div>
+                                
                                 <!--<li><a onClick="clear_autho()" href="#login">Clear Authorization</a></li>
                                 <div style="background:#008A8A; height:1px"></div>-->
                         </ul>
                         <br>
     
-                    <div align="left"> <img src="logo_gp_p_1.png" alt="Grameen Phone" /></div>
+                   <!-- <div align="center"> <img src="logo_gp_p_1.png" alt="Grameen Phone" /></div>-->
                 </div>
-                
+
         </nav>
         
         <nav id="right" style="z-index:5; background-color:#FFF">
             <div class="view active" id="navView2">
                 <header>
-                    <h1>Information</h1>
+                    <h1></h1>
                 </header>
                 <br>
-                 <div onClick="page_inbox()" align="left"> <img style="height:100px; width:100px" src="inbox.png"></div>
+                 <div onClick="page_inbox()" align="center"> <img style="height:70px; width:70px" src="inbox.png"></div>
                 <div style="background:#008A8A; height:1px"></div>
-               <div onClick="page_promo()" align="left"> <img style="height:100px; width:100px" src="promo.png"></div>
+               <div onClick="page_promo()" align="center"> <img style="height:70px; width:70px" src="promo.png"></div>
                <div style="background:#008A8A; height:1px"></div>
-                <div onClick="page_kpi()" align="left"> <img style="height:100px; width:100px" src="kpi.png"></div>
+                <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
                <div style="background:#008A8A; height:1px"></div>
-                <div onClick="page_help()" align="left"> <img style="height:100px; width:100px" src="help.png"></div>
-                <div style="background:#008A8A; height:1px"></div>
+                <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
+                <div style="background:#008A8A; height:center"></div>
             </div>
         </nav>
         
         
     </div>      
-             
-
+           
   <!--//==============================Market Page=================-->
        <div class="view" id="page_marketView">
         <div class="pages">
@@ -389,7 +391,7 @@
              <input type="submit" id="btn_visit_save" onClick="visitSave();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Save     "   />
              
            </br> </br>
-            <input type="submit" id="btn_visit_save" onClick="visitSave();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Senf by SMS     "   />
+            <input type="submit" id="btn_visit_save" onClick="app.sendSms()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Sent by SMS     "   />
             
           
             
