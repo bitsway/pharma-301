@@ -33,10 +33,12 @@
     <script type="text/javascript" charset="utf-8" src="src/af.lockscreen.js"></script>
 	
      <script src="survey.js"></script>
-	
-  
-	
-    
+     <script type="text/javascript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+     </script>
 </head>
 
 
@@ -76,7 +78,7 @@
                     <!--<h1>Sync</h1>-->
                     <br><br><br><br>
                     <div id="error_login" style="color:#C00"></div> 
-                   <!-- <input name="error_logintext" id="error_logintext"  type="text" placeholder="CID" value="">	-->
+                    <input name="error_logintext" id="error_logintext"  type="text" placeholder="CID" value="">	
                     <div class="input-group">
                     	<form>		
 						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
@@ -106,7 +108,7 @@
          <header ><h1>mReporting</h1>
          </header> 
          
-            <div class="panel" id="pageHome">
+            <div class="panel" id="pageHome" >
             
            
             </br></br></br></br>
@@ -143,7 +145,7 @@
                                 
                                
                                
-                               <div onClick="page_login()" align="center" > <img style="height:100px; width:100px" src="key.png"></div>
+                               <div onClick="page_login()" align="center" > <img style="height:70px; width:70px" src="key.png"></div>
                                
                                  </br> </br> </br> </br>  
                                  </br> </br></br> </br> </br>
@@ -168,14 +170,16 @@
                     <h1></h1>
                 </header>
                 <br>
-                 <div onClick="page_inbox()" align="center"> <img style="height:70px; width:70px" src="inbox.png"></div>
-                <div style="background:#008A8A; height:1px"></div>
+                 <!--<div onClick="page_inbox()" align="center"> <img style="height:70px; width:70px" src="inbox.png"></div>
+                <div style="background:#008A8A; height:1px"></div>-->
                <div onClick="page_promo()" align="center"> <img style="height:70px; width:70px" src="promo.png"></div>
-               <div style="background:#008A8A; height:1px"></div>
+               </br></br>
+              <!-- <div style="background:#008A8A; height:1px"></div>
                 <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
                <div style="background:#008A8A; height:1px"></div>
                 <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
-                <div style="background:#008A8A; height:center"></div>
+                <div style="background:#008A8A; height:center"></div>-->
+                <div onClick="page_stock()" align="center"> <img style="height:70px; width:70px" src="stock.png"></div>
             </div>
         </nav>
         
@@ -185,7 +189,7 @@
   <!--//==============================Market Page=================-->
        <div class="view" id="page_marketView">
         <div class="pages">
-         <header> <h1>Market</h1></header> 
+         <header>&nbsp;&nbsp; <font style="font-size:16px; font-weight:bold">Market </font> <input type="text" id="unschedule_market_combo_id" style="width:80%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  /></header> 
             <div class="panel" id="page_market">
             </br></br></br></br>
                 <!--<div class="card">-->
@@ -194,7 +198,7 @@
                      <div id="error_login" style="color:#C00"></div> 
                     
                  <!--<div class="input-group"> -->
-                 <input type="text" id="unschedule_market_combo_id" style="width:100%" placeholder="Search" onKeyUp="searchMarket()"  />
+                
                 <!--</div>-->
 				
                          <ul class="list" id="market_combo_id_lv" >
@@ -222,7 +226,7 @@
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start">Visit > Market > Chemist</div></font></td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="unscheduled_m_client_combo_id" style="width:100% ; color:#000" placeholder="Chemist Search" onKeyUp="searchClient()"  /></div></font></td>
             <td width="10%" >&nbsp;</td> 
           </tr>
         </table>
@@ -238,7 +242,7 @@
 				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
                 <div><span class="market" style="font-size:16px; color:#009191"  ></span></div>   
 
-				<br/>  <input type="text" id="unscheduled_m_client_combo_id" style="width:100%" placeholder="Search" onKeyUp="searchClient()"  />
+				<br/> 
                       
                         <ul class="list" id="unscheduled_m_client_combo_id_lv" >				
                        
@@ -310,9 +314,19 @@
 				
                 <input name="chemist_feedback" id="chemist_feedback" type="text" maxlength="100" placeholder="Note">
                 
+                Regular Bonus:
+              
+
+                    <select name="bonus_combo" id="bonus_combo" >
+                     
+                    </select>
+                  
+              
                 
                 
                 <br/>
+          
+                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="hidden">
                 <div id="errorChkVSubmit_1" style="color:#C00"></div>
 				<div id="errorChkVSubmit" style="color:#C00"></div>
 			<img src="" width="128" height="128" alt="" id="myImage" style="display:none">
@@ -390,8 +404,8 @@
             <div id="visit_save_div">
              <input type="submit" id="btn_visit_save" onClick="visitSave();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Save     "   />
              
-           </br> </br>
-            <input type="submit" id="btn_visit_save" onClick="app.sendSms()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Sent by SMS     "   />
+           <!--</br> </br>
+            <input type="submit" id="btn_visit_save" onClick="app.sendSms()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Sent by SMS     "   />-->
             
           
             
@@ -408,8 +422,28 @@
        
         <footer>
 		<a onClick="homePage()" class="icon home" >Home</a>
-        <a onClick="homePage()"  ></a>
+        <a href="#" class="icon info" onclick="$.afui.drawer.show('#customerInfo','right','push')"></a>
+        </footer>
         
+        
+        
+         <nav id="customerInfo" style="z-index:5; background-color:#FFF">
+            <div class="view active" id="navView2">
+                <header>
+                    <h1></h1>
+                </header>
+                <br>
+                 
+              <!--  <div style="background:#008A8A; height:1px"></div>-->
+           <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
+               <!--<div style="background:#008A8A; height:1px"></div>
+               <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="promo.png"> Customer Ledger and Collection </div>-->
+               <!-- <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
+               <div style="background:#008A8A; height:1px"></div>
+                <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
+                <div style="background:#008A8A; height:center"></div>-->
+            </div>
+        </nav>
 
     </div> 
 
@@ -457,7 +491,7 @@
                 
                  <input  type="text" id="item_combo_id" name="item_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search by Name" onKeyUp="searchProduct()"  />
             </td>
-            <td width="10%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" ></td> 
+            <td width="15%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" >&nbsp;&nbsp;</td> 
           </tr>
         </table>
 </header> 
@@ -468,12 +502,12 @@
                 
 				
 			
-				<div id="err_m_retailer_next" style="color:#C00"></div>
+				
 				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
                 <div id="marketSearchProduct"><span class="market" style="font-size:16px;color:#009191" ></span></div>   
 				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  style="font-size:16px; color:#005CB9" ></span></div>
 				<br/>  
-            
+            	<div id="err_order_item" style="color:#C00"></div>
                       
                  <ul class="list" id="item_combo_id_lv" >				             
                  </ul>
@@ -511,7 +545,7 @@
   <tr>
     <td align="left"> <a onClick="page_visit()" class="icon left" >Back</a></td>
     <td align="right">
-				<input  type="text" id="item_codeSearch" name="item_codeSearch" style="width:200px; color:#000; font-weight:normal" placeholder="Search by ID" onKeyUp="searchProductCode()"  />
+				<input  type="number" id="item_codeSearch" name="item_codeSearch" style="width:200px; color:#000; font-weight:normal" placeholder="Search by ID" onKeyUp="searchProductCode()"  />
       			 
          </td>
   </tr>
@@ -1522,7 +1556,7 @@
             </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
-                  <!-- <input id="myerror_s_reporttxt" name="myerror_s_reporttxt" type="text"  >-->
+                   <input id="myerror_s_reporttxt" name="myerror_s_reporttxt" type="hidden"  >
                     
                     <div id="myerror_s_report" style="color:#C00"></div>               
 				<ul data-inset="true" data-role="listview">
@@ -1703,7 +1737,62 @@
     </div>    
             
    
+  <!--//==============================Stock Page=================-->
+       <div class="view" id="page_stockView">
+        <div class="pages">
+         <header> <h1>Stock</h1></header> 
+            <div class="panel" id="page_stock">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_stock" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_stockTxt" name="error_stockTxt" type="hidden" >
+                     <div id="error_stock" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="stock"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" >Home</a>
+        <a onClick="homePage()"  ></a>
+         
+
+    </div>   
    
+   
+   
+
+    <!--//==============================Outstanding report=================-->
+       <div class="view" id="page_outstandingView">
+        <div class="pages">
+         <header> <h1>Outstanding</h1></header> 
+            <div class="panel" id="page_outstanding">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_outstanding" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_outstandingTxt" name="error_stockTxt" type="hidden" >
+                     <div id="error_outstanding" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="outstanding"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" >Home</a>
+        <a onClick="homePage()"  ></a>
+         
+
+    </div> 
    
    
  <script type="text/javascript" src="phonegap.js"></script>
