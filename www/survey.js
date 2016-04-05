@@ -1091,7 +1091,7 @@ function check_user() {
 							localStorage.photo_url=photo_url;
 							localStorage.photo_submit_url=photo_submit_url;
 							localStorage.report_url=report_url;
-							alert (localStorage.report_url)
+							//alert (localStorage.report_url)
 							
 							localStorage.cid=cid;
 							localStorage.user_id=user_id;
