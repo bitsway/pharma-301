@@ -236,11 +236,12 @@ $.afui.useOSThemes=false;
 		if ((localStorage.synced=='YES')){
 			$("#user_id").val(localStorage.cm_id);
 			$("#user_pass").val(localStorage.cm_pass);
+			$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
-		if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
-			$.afui.loadContent("#pageHome",true,true,'right');
-		}
+		//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+//			$.afui.loadContent("#pageHome",true,true,'right');
+//		}
 		
 		
     });
@@ -915,9 +916,9 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	
-	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+ // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -1090,6 +1091,7 @@ function check_user() {
 							localStorage.photo_url=photo_url;
 							localStorage.photo_submit_url=photo_submit_url;
 							localStorage.report_url=report_url;
+							alert (localStorage.report_url)
 							
 							localStorage.cid=cid;
 							localStorage.user_id=user_id;
@@ -2512,11 +2514,11 @@ function lscVisitSubmit(){
 //		$("#visit_save_div").show();
 //	}
 	
-	if  (localStorage.sync_date!=today_1){
-		$("#errorChkVSubmit").html('Please sync first');
-		$("#visit_save_div").show()
-		}
-		else{
+	//if  (localStorage.sync_date!=today_1){
+//		$("#errorChkVSubmit").html('Please sync first');
+//		$("#visit_save_div").show()
+//		}
+//		else{
 				//alert (delivery_date)
 				if  ((delivery_date.length < 8) || (collection_date.length < 8)){
 					$("#errorChkVSubmit").html('Please enter collection and delivery date');
@@ -2713,7 +2715,7 @@ function lscVisitSubmit(){
 					}//end collection and delivery date future
 				
 				}//end collection and delivery date check
-		}//sync date check
+	//	}//sync date check
 }
 
 //==============================End Visit Submit========
@@ -4111,11 +4113,11 @@ function visitSubmit_doc(){
 	
 	}
 	
-	if  (localStorage.sync_date!=today_1){
-	$("#errorChkVSubmit_doc").html('Please sync first');
-	
-	}
-	else{
+	//if  (localStorage.sync_date!=today_1){
+//	$("#errorChkVSubmit_doc").html('Please sync first');
+//	
+//	}
+//	else{
 			if (v_with=='' || v_with==undefined || v_with=='undefined'){
 				$("#errorChkVSubmit_doc").html('Visited with not selected');		
 			}else{
@@ -4326,7 +4328,7 @@ function visitSubmit_doc(){
 					}
 				//  }//locaction check error
 			}//Visited with check
-	}//Sync date check
+	//}//Sync date check
   }
 
 
