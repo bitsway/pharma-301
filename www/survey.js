@@ -915,10 +915,10 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	 var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+//  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -1172,7 +1172,7 @@ function check_user() {
 													
 													localStorage.client_depot=resultArray[25];
 													localStorage.client_depot_name=resultArray[26];
-													localStorage.client_depot_name=resultArray[27];
+													//localStorage.client_depot_name=resultArray[27];
 													
 													
 													//
@@ -5652,7 +5652,7 @@ function page_outstanding() {
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
-								
+								 $("#wait_image_outstanding").hide();
 								$("#error_stock").html('Network timeout. Please ensure data connectivity and re-submit.');
 													},
 								success:function(data, status,xhr){	
@@ -5674,6 +5674,7 @@ function page_outstanding() {
 								$("#outstanding").html(result_string);
 								
 							}else{	
+								 $("#wait_image_outstanding").hide();
 								$("#error_outstanding").html('Network Timeout. Please try again.');
 								}
 						}
