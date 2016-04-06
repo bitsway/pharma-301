@@ -97,7 +97,7 @@ $.afui.useOSThemes=false;
 		$("#item_combo_id").val('A')
 		searchProduct()
 	
-	
+		 page_stock()
 		
 		
 		$('#campaign_combo_id_lv').empty();
@@ -300,12 +300,12 @@ function page_inbox() {
 								timeout: 30000,
 								error: function(xhr) {
 								
-								$("#error_inbox").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_inbox").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 
 									 if (status!='success'){
-										$("#error_inbox").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_inbox").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -320,7 +320,7 @@ function page_inbox() {
 								$("#inbox").html(result_string);
 								
 							}else{	
-								$("#error_inbox").html('Network Timeout. Please try again.');
+								$("#error_inbox").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -329,24 +329,34 @@ function page_inbox() {
 	
 	$.afui.loadContent("#page_inbox",true,true,'right');
 }
+function page_promo_refresh() {
+	localStorage.promo_str=''
+	page_promo()
+}
+
+
+function page_promo_main(){
+	page_promo()
+	$.afui.loadContent("#page_promo",true,true,'right');
+}
 function page_promo() {
 	// ajax-------	
 	$("#error_promo").html('');
 	$("#error_promoTxt").val(localStorage.report_url+'infoPromo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
-	
+	if (localStorage.promo_str==''){
 			$.ajax(localStorage.report_url+'infoPromo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
 								
-								$("#error_promo").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_promo").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 
 									 if (status!='success'){
-										$("#error_promo").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_promo").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -358,16 +368,30 @@ function page_promo() {
 										}
 								else if (resultArray[0]=='SUCCESS'){	
 								var result_string=resultArray[1];
+								var dt = new Date();
+								var time = dt.getHours()-12 + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+								var day = dt.getDate();if(day.length==1)	{day="0" +day_1};
+								var month = dt.getMonth() + 1;if(month.length==1)	{month="0" +month};
+								var year = dt.getFullYear()
+								var today=  year + "-" + month + "-" + day +' '+time
+								if (dt.getHours() > 12 ) {today=today+ ' PM'} else {today=today+ ' AM'};
+								localStorage.promoDate=today
+								result_string='<font style="color:#8A0045; font-size:18px">'+'Laste Updated:'+localStorage.promoDate+'</font><br>'+result_string
 								$("#promo").html(result_string);
 								
+								localStorage.promo_str=result_string
 							}else{	
-								$("#error_promo").html('Network Timeout. Please try again.');
+								$("#error_promo").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
 			 });//end ajax
+	}
+	else{
+		$("#promo").html(localStorage.promo_str);
+	}
 	
-	$.afui.loadContent("#page_promo",true,true,'right');
+	//$.afui.loadContent("#page_promo",true,true,'right');
 }
 function page_kpi() {
 	
@@ -377,12 +401,12 @@ function page_kpi() {
 								timeout: 30000,
 								error: function(xhr) {
 								
-								$("#error_kpi").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_kpi").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 
 									 if (status!='success'){
-										$("#error_kpi").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_kpi").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -397,7 +421,7 @@ function page_kpi() {
 								$("#kpi").html(result_string);
 								
 							}else{	
-								$("#error_kpi").html('Network Timeout. Please try again.');
+								$("#error_kpi").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -411,12 +435,12 @@ function page_help() {
 								timeout: 30000,
 								error: function(xhr) {
 								
-								$("#error_help").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_help").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 
 									 if (status!='success'){
-										$("#error_help").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_help").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -431,7 +455,7 @@ function page_help() {
 								$("#help").html(result_string);
 								
 							}else{	
-								$("#error_help").html('Network Timeout. Please try again.');
+								$("#error_help").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -916,7 +940,7 @@ function check_user() {
 
 	
 	// var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
@@ -1038,6 +1062,14 @@ function check_user() {
 		localStorage.doctor_report_button='';
 		localStorage.prescription_report_button='';
 		localStorage.location_detail=''
+		
+		
+		localStorage.stock_str='';
+		localStorage.result_itemStock=''
+		localStorage.stockDate=''
+		
+		localStorage.promo_str=''
+		localStorage.promokDate=''
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1061,7 +1093,7 @@ function check_user() {
 			error: function(xhr) {
 			$("#wait_image_login").hide();
 			$("#loginButton").show();
-			$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+			$("#error_login").html('Network Timeout. Please check your Internet connection..');
 													},
 			success:function(data, status,xhr){
 		//$.post(apipath_base_photo_dm,{ },
@@ -1122,7 +1154,7 @@ function check_user() {
 								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 								$("#wait_image_login").hide();
 								$("#loginButton").show();
-								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_login").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
@@ -1352,7 +1384,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														
 														var product_qty='';																		
 														
-														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td  style="text-align:left;">'+'&nbsp;&nbsp;<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp; | &nbsp; '+'&nbsp;&nbsp;<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp;<font style="color:#66C; font-size:12px">'+product_str+'</font></td></tr>'+'</table>'+'</li>';
+														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td  style="text-align:left;">'+'&nbsp;&nbsp;<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp; | &nbsp; '+'&nbsp;&nbsp;<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp; <span style="background-color:#FCFED8; color:#B82207" id="promoShow'+product_id2.toUpperCase()+'" style="color:#66C; font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....');
 														
@@ -1384,6 +1416,8 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 										$("#item_combo_id").val('A')
 										searchProduct()
 										
+										
+										bonusCombo()
 										
 										$('#campaign_combo_id_lv').empty();
 										$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
@@ -1514,7 +1548,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 function bonusCombo(){
 	var promo_str=localStorage.promo_str;
 	var bonusComboList=promo_str.split('<rd>');
-	$("#bonus_combo").append('<option value="0">Bonus Offer</option>')
+	$("#bonus_combo").append('<option value="0">N/A</option>')
 	for (j=0; j < bonusComboList.length; j++){
 		var single_promo=bonusComboList[j].split('<fd>');
 		$("#bonus_combo").append('<option value="'+single_promo[0]+'|'+single_promo[1]+'|'+single_promo[2]+'">'+single_promo[0]+'|'+single_promo[1]+'|'+single_promo[2]+'</option>');
@@ -1587,12 +1621,12 @@ function doctor_profile() {
 	//addMarketListCp();
 	
 }
-function stock() {
-	getStock();
-	//var url = "#page_stock";	
-//	$.mobile.navigate(url);
-	
-}
+//function stock() {
+//	getStock();
+//	//var url = "#page_stock";	
+////	$.mobile.navigate(url);
+//	
+//}
 function feedback() {
 	localStorage.saved_data_submit=0;
 	getComplain();
@@ -1799,7 +1833,7 @@ function marketNext_sup() {
 								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 								$("#btn_schedule_ret").show();
 								$("#wait_image_schedule_ret").hide();
-								$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_login").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 								
@@ -1809,7 +1843,7 @@ function marketNext_sup() {
 								
 							//	 function(data, status){
 									 if (status!='success'){
-										$("#err_retailer_next").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#err_retailer_next").html('Network Timeout. Please check your Internet connection...');
 										$("#btn_schedule_ret").show();
 										$("#wait_image_schedule_ret").hide();
 									 }
@@ -2585,7 +2619,7 @@ function lscVisitSubmit(){
 														//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 														$("#wait_image_visit_submit").hide();
 														$("#visit_submit").show();
-														$("#errorChkVSubmit").html('Network timeout. Please ensure data connectivity and re-submit.');
+														$("#errorChkVSubmit").html('Network Timeout. Please check your Internet connection..');
 																			},
 														success:function(data, status,xhr){	
 														
@@ -2594,7 +2628,7 @@ function lscVisitSubmit(){
 															 if (status!='success'){
 																$("#wait_image_visit_submit").hide();
 																$("#visit_submit").show();
-																$("#errorChkVSubmit").html('Network timeout. Please ensure data connectivity and re-submit..');
+																$("#errorChkVSubmit").html('Network Timeout. Please check your Internet connection...');
 															 }
 															 else{		
 															
@@ -2696,7 +2730,7 @@ function lscVisitSubmit(){
 																										
 															}
 															else{						
-																$("#errorChkVSubmit").html('Network Timeout. Please try again.');
+																$("#errorChkVSubmit").html('Network Timeout. Please check your Internet connection.');
 																$("#visit_save_div").show();
 																$("#wait_image_visit_submit").hide();
 																$("#visit_submit").show();								
@@ -4168,7 +4202,7 @@ function visitSubmit_doc(){
 										//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 										$("#wait_image_visit_submit").hide();
 										$("#visit_submit").show();	
-										$("#error_login").html('Network timeout. Please ensure data connectivity and re-submit.');
+										$("#error_login").html('Network Timeout. Please check your Internet connection..');
 															},
 										success:function(data, status,xhr){	
 												//$.post(localStorage.base_url+'check_user?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,client_id:visitClientId,visit_type:visit_type,schedule_date:scheduled_date,msg:msg,lat:lat,long:longitude,v_with:v_with,route:market_Id,location_detail:localStorage.location_detail},
@@ -4176,7 +4210,7 @@ function visitSubmit_doc(){
 		//								
 		//								 function(data, status){
 											 if (status!='success'){
-												$("#errorChkVSubmit_doc").html('Network timeout. Please ensure data connectivity and re-submit..');
+												$("#errorChkVSubmit_doc").html('Network Timeout. Please check your Internet connection...');
 												$("#wait_image_visit_submit_doc").hide();
 												$("#visit_submit_doc").show();
 											 }
@@ -4316,7 +4350,7 @@ function visitSubmit_doc(){
 												//location.reload();
 																											
 									}else{						
-										$("#errorChkVSubmit_doc").html('Network Timeout. Please try again.');
+										$("#errorChkVSubmit_doc").html('Network Timeout. Please check your Internet connection.');
 										$("#wait_image_visit_submit_doc").hide();
 										$("#visit_submit_doc").show();								
 										}
@@ -4581,7 +4615,7 @@ function set_save_data(i){
 		$("#bonus_combo").append('<option value="'+bonus_combo+'">'+bonus_combo+'</option>');
 	}
 	
-	$("#bonus_combo").append('<option value="">Bonus Offer</option>')
+	$("#bonus_combo").append('<option value="0">N/A</option>')
 	var promo_str=localStorage.promo_str;
 	var bonusComboList=promo_str.split('<rd>');
 	
@@ -5040,12 +5074,12 @@ function summary_report_doctor() {
 								timeout: 30000,
 								error: function(xhr) {
 								$("#wait_image_doctor").hide();	
-								$("#myerror_s_report_doctor").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									$("#wait_image_doctor").hide();
 									 if (status!='success'){
-										$("#myerror_s_report_doctor").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5077,7 +5111,7 @@ function summary_report_doctor() {
 								
 							}else{		
 								$("#wait_image_doctor").hide();				
-								$("#myerror_s_report_doctor").html('Network Timeout. Please try again.');
+								$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5118,12 +5152,12 @@ function detail_report_doctor() {
 								timeout: 30000,
 								error: function(xhr) {	
 								$("#wait_image_doctor").hide();
-								$("#myerror_s_report_doctor").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									$("#wait_image_doctor").hide();
 									 if (status!='success'){
-										$("#myerror_s_report_doctor").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5168,7 +5202,7 @@ function detail_report_doctor() {
 								
 							}else{	
 								$("#wait_image_doctor").hide();					
-								$("#myerror_s_report_doctor").html('Network Timeout. Please try again.');
+								$("#myerror_s_report_doctor").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5203,12 +5237,12 @@ function summary_report_prescription() {
 								timeout: 30000,
 								error: function(xhr) {
 								$("#wait_image_prescription").hide();
-								$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									  $("#wait_image_prescription").hide();
 									 if (status!='success'){
-										$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5244,7 +5278,7 @@ function summary_report_prescription() {
 								
 							}else{	
 								$("#wait_image_prescription").hide();					
-								$("#myerror_s_report").html('Network Timeout. Please try again.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5285,12 +5319,12 @@ function detail_report_prescription() {
 								timeout: 30000,
 								error: function(xhr) {	
 								$("#wait_image_prescription").hide();
-								$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									$("#wait_image_prescription").hide();
 									 if (status!='success'){
-										$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5332,7 +5366,7 @@ function detail_report_prescription() {
 								
 							}else{	
 								$("#wait_image_prescription").hide();					
-								$("#myerror_s_report").html('Network Timeout. Please try again.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5414,12 +5448,12 @@ function s_order_summary_report() {
 								timeout: 30000,
 								error: function(xhr) {
 									$("#wait_image_order").hide();
-									$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit.');
+									$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 								$("#wait_image_order").hide();
 									 if (status!='success'){
-										$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5456,7 +5490,7 @@ function s_order_summary_report() {
 								
 							}else{		
 								$("#wait_image_order").hide();					
-								$("#myerror_s_report").html('Network Timeout. Please try again.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5495,12 +5529,12 @@ function s_order_detail_report() {
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
-								$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 if (status!='success'){
 										$("#wait_image_order").hide();
-										$("#myerror_s_report").html('Network timeout. Please ensure data connectivity and re-submit..');					
+										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');					
 										
 									 }
 									 else{	
@@ -5537,7 +5571,7 @@ function s_order_detail_report() {
 								
 							}else{					
 								$("#wait_image_order").hide();	
-								$("#err_retailer_date_next").html('Network Timeout. Please try again.');
+								$("#err_retailer_date_next").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
@@ -5581,7 +5615,16 @@ function s_order_detail_report() {
 //};
 
 //========================Report
+function page_stock_refresh() {
+	localStorage.stock_str=''
+	page_stock()
+}
 
+
+function page_stock_main(){
+	page_stock()
+	$.afui.loadContent("#page_stock",true,true,'right');
+}
 function page_stock() {
 	
 	$("#wait_image_stock").show();
@@ -5592,19 +5635,19 @@ function page_stock() {
 	//alert (client);
 	$("#error_stockTxt").val(localStorage.report_url+'depot_wise_stock_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_depot='+client_depot+'&client_depot_name='+client_depot_name);
 	// ajax-------
-	
+	if (localStorage.stock_str==''){
 			$.ajax(localStorage.report_url+'depot_wise_stock_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_depot='+client_depot+'&client_depot_name='+client_depot_name,{
 
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
 								
-								$("#error_stock").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_stock").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 $("#wait_image_stock").hide();
 									 if (status!='success'){
-										$("#error_stock").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_stock").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
@@ -5617,30 +5660,66 @@ function page_stock() {
 								else if (resultArray[0]=='SUCCESS'){	
 								var result_string=resultArray[1];
 								var result_itemStock=resultArray[2];
+								
+								var dt = new Date();
+								var time = dt.getHours()-12 + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+								var day = dt.getDate();if(day.length==1)	{day="0" +day_1};
+								var month = dt.getMonth() + 1;if(month.length==1)	{month="0" +month};
+								var year = dt.getFullYear()
+								var today=  year + "-" + month + "-" + day +' '+time
+								if (dt.getHours() > 12 ) {today=today+ ' PM'} else {today=today+ ' AM'};
+								localStorage.stockDate=today
+								result_string='<font style="color:#8A0045; font-size:18px">'+'Laste Updated:'+localStorage.stockDate+'</font><br>'+result_string
+								$("#stock").html(result_string);
+								localStorage.stock_str=result_string
+								localStorage.result_itemStock=result_itemStock
+								localStorage.stockDate=today
+								
+								
 								var result_itemStockList=result_itemStock.split('<rd>')
 								
 								for (var j=0; j < result_itemStockList.length; j++){
 									var item_id=result_itemStockList[j].split('<fd>')[0]
 									var item_qty=result_itemStockList[j].split('<fd>')[1]
 									$("#stockShow"+item_id).html('&nbsp;&nbsp;Stock:'+item_qty);
+									
+									
 									//$("#stockShow"+item_id).html("testing <b>1 2 3</b>");
 								//alert ("#stockShow"+item_id)
 								}
-								$("#stock").html(result_string);
 								
+								
+								//alert (localStorage.result_itemStock)
 							}else{	
-								$("#error_stock").html('Network Timeout. Please try again.');
+								$("#error_stock").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
 			 });//end ajax
 	
+	}
+	else{
+		$("#wait_image_stock").hide();
+		$("#stock").html(localStorage.stock_str);
+		//alert (localStorage.result_itemStock)
+		var result_itemStock=localStorage.result_itemStock;
+		var result_itemStockList=result_itemStock.split('<rd>')
+		
+		for (var j=0; j < result_itemStockList.length; j++){
+			var item_id=result_itemStockList[j].split('<fd>')[0]
+			var item_qty=result_itemStockList[j].split('<fd>')[1]
+			$("#stockShow"+item_id).html('&nbsp;&nbsp;Stock:'+item_qty);
+			
+			
+			//$("#stockShow"+item_id).html("testing <b>1 2 3</b>");
+		//alert ("#stockShow"+item_id)
+		}
+	}
 	
-	$.afui.loadContent("#page_stock",true,true,'right');
 }
 
 function page_outstanding() {
-	
+	$("#outstanding").html('');
 	$("#wait_image_outstanding").show();
 	//alert (localStorage.visit_client);
 	//alert (client);
@@ -5653,29 +5732,29 @@ function page_outstanding() {
 								timeout: 30000,
 								error: function(xhr) {
 								 $("#wait_image_outstanding").hide();
-								$("#error_stock").html('Network timeout. Please ensure data connectivity and re-submit.');
+								$("#error_stock").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									 $("#wait_image_outstanding").hide();
 									 if (status!='success'){
-										$("#error_outstanding").html('Network timeout. Please ensure data connectivity and re-submit..');
+										$("#error_outstanding").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 								if (resultArray[0]=='FAILED'){
-											$("#error_outstanding").text(resultArray[0]);	
+											$("#error_outstanding").text(resultArray[1]);	
 											
 										}
 								else if (resultArray[0]=='SUCCESS'){	
-								var result_string=resultArray[1];
+									var result_string=resultArray[1];
 
 								$("#outstanding").html(result_string);
 								
 							}else{	
 								 $("#wait_image_outstanding").hide();
-								$("#error_outstanding").html('Network Timeout. Please try again.');
+								$("#error_outstanding").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
