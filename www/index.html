@@ -187,7 +187,17 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   <!--//==============================Market Page=================-->
        <div class="view" id="page_marketView">
         <div class="pages">
-         <header align="center"><input type="text" id="unschedule_market_combo_id" style="width:80%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  /></header> 
+         <header align="center">
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  /></div></font></td>
+            <td width="10%" >&nbsp;</td> 
+          </tr>
+        </table>
+         
+         
+         </header> 
             <div class="panel" id="page_market">
             </br></br></br></br>
                 <!--<div class="card">-->
@@ -434,8 +444,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                  
               <!--  <div style="background:#008A8A; height:1px"></div>-->
            <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
-               <!--<div style="background:#008A8A; height:1px"></div>
-               <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="promo.png"> Customer Ledger and Collection </div>-->
+              <br>
+               <!--<div style="background:#008A8A; height:1px"></div>-->
+               <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
+                <br>
+                 <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
                <!-- <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
                <div style="background:#008A8A; height:1px"></div>
                 <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
@@ -1636,6 +1649,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
+                     <img id="wait_image_promo" style="width:50px" src="loading.gif" alt="">
                     <input id="error_promoTxt" name="error_promoTxt" type="hidden" >
                      <div id="error_promo" style="color:#C00"></div> 
                     
@@ -1649,7 +1663,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-        <a onClick="page_promo_refresh()" class="icon refresh" ></a>
+        <a onClick="page_promo_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
          
 	
     </div>               
@@ -1757,7 +1771,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-       <a onClick="page_stock_refresh()" class="icon refresh" ></a>
+       <a onClick="page_stock_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
          
 
     </div>   
@@ -1791,8 +1805,58 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </footer>
 
     </div> 
-   
-   
+   <!--//==============================Invoice report=================-->
+       <div class="view" id="page_invoiceView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Invoice</h1></header> 
+            <div class="panel" id="page_invoice">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_invoice" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_invoiceTxt"  type="hidden" >
+                     <div id="error_invoice" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="invoice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div> 
+   <!--//==============================Invoice report=================-->
+       <div class="view" id="page_clientOrderView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Invoice</h1></header> 
+            <div class="panel" id="page_clientOrder">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_clientOrder" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_clientOrderTxt"  type="hidden" >
+                     <div id="error_clientOrder" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="clientOrder"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
  <script type="text/javascript" src="phonegap.js"></script>
 
           
