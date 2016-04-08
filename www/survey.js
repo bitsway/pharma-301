@@ -5929,6 +5929,8 @@ function page_outstanding() {
 function page_invoice() {
 	$("#invoice").html('');
 	$("#wait_image_invoice").show();
+	$("#error_invoice").html('');
+	
 	//alert (localStorage.visit_client);
 	//alert (client);
 	$("#error_invoiceTxt").val(localStorage.report_url+'client_invoice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client='+localStorage.visit_client);
