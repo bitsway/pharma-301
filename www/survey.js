@@ -344,13 +344,21 @@ function page_promo_refresh() {
 	var promoDate=localStorage.promoDate.replace(' AM','').replace(' PM','')
 	
 	//month="'"+month+"'"
-	
+	var flag=''
 	var d2 = new Date();
+	if (promoDate.length < 8){
+		var d1=d2
+		flag='New'
+		
+	}
+	else{
+		var d1 = new Date(promoDate);
+	}
     var d1 = new Date(promoDate);
 	var sec_time=(((d2-d1)/1000))/60;
 	$("#error_promo").html('');
 	//alert (parseInt(sec_time))
-	if ( parseInt(sec_time) > 5){
+	if ( (parseInt(sec_time) >5) || (flag=='New') ){
 		localStorage.promo_str_report=''
 		page_promo()
 	}
@@ -376,6 +384,7 @@ function page_promo() {
 	$("#error_promo").html('');
 	$("#error_promoTxt").val(localStorage.report_url+'infoPromo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
+	
 	var dt = new Date();
 	var hour=dt.getHours();if(hour>12){hour=hour-12};
 	var time = hour + ":" + dt.getMinutes() + ":" + dt.getSeconds();
@@ -390,15 +399,24 @@ function page_promo() {
 	var promoDate=localStorage.promoDate.replace(' AM','').replace(' PM','')
 	
 	//month="'"+month+"'"
-	
+	//alert ('Nadira')
 	var d2 = new Date();
+    var flag=''
+	var d2 = new Date();
+	if (promoDate.length < 8){
+		var d1=d2
+		flag='New'
+		
+	}
+	else{
+		var d1 = new Date(promoDate);
+	}
     var d1 = new Date(promoDate);
 	var sec_time=(((d2-d1)/1000))/60;
 	
 	
-	//alert (sec_time)
 	
-	if (sec_time>5){
+	if ( (parseInt(sec_time) >5) || (flag=='New') ){
 			if (localStorage.promo_str_report==''){
 					$.ajax(localStorage.report_url+'infoPromo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 		
@@ -1002,7 +1020,7 @@ function check_user() {
 
 	
 	// var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-//	var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
@@ -1132,7 +1150,7 @@ function check_user() {
 		
 		localStorage.promo_str=''
 		localStorage.promo_str_report=''
-		localStorage.promokDate=''
+		localStorage.promoDate=''
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -5707,7 +5725,7 @@ function page_stock_refresh() {
 	var d2 = new Date();
 	if (dateStock.length < 8){
 		var d1=d2
-		var flag='New'
+		flag='New'
 		
 	}
 	else{
@@ -5757,11 +5775,11 @@ function page_stock() {
 	var dateStock=localStorage.stockDate.replace(' AM','').replace(' PM','')
 	
 	//month="'"+month+"'"
-	
+	var flag=''
 	var d2 = new Date();
     if (dateStock.length < 8){
 		var d1=d2
-		var flag='New'
+		flag='New'
 		
 	}
 	else{
