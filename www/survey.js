@@ -349,7 +349,8 @@ function page_promo_refresh() {
     var d1 = new Date(promoDate);
 	var sec_time=(((d2-d1)/1000))/60;
 	$("#error_promo").html('');
-	if (sec_time>5){
+	//alert (parseInt(sec_time))
+	if ( parseInt(sec_time) > 5){
 		localStorage.promo_str_report=''
 		page_promo()
 	}
@@ -392,10 +393,10 @@ function page_promo() {
 	
 	var d2 = new Date();
     var d1 = new Date(promoDate);
-	var sec_time=(((d1-d2)/1000))/60;
+	var sec_time=(((d2-d1)/1000))/60;
 	
 	
-	
+	//alert (sec_time)
 	
 	if (sec_time>5){
 			if (localStorage.promo_str_report==''){
@@ -5701,15 +5702,23 @@ function page_stock_refresh() {
 	//alert (localStorage.stockDate)
 	var dateStock=localStorage.stockDate.replace(' AM','').replace(' PM','')
 	
-	//month="'"+month+"'"
 	
+	var flag=''
 	var d2 = new Date();
-    var d1 = new Date(dateStock);
+	if (dateStock.length < 8){
+		var d1=d2
+		var flag='New'
+		
+	}
+	else{
+		var d1 = new Date(dateStock);
+	}
+    
 	var sec_time=(((d2-d1)/1000))/60;
 	
-	
+	//alert (sec_time)
 	$("#error_stock").html('');
-	if (sec_time>5){
+	if ( (parseInt(sec_time) >5) || (flag=='New') ){
 		localStorage.stock_str=''
 		page_stock()
 	}
@@ -5725,6 +5734,7 @@ function page_stock_main(){
 }
 function page_stock() {
 	$("#error_stock").html('');
+	
 	$("#wait_image_stock").show();
 	$("#error_stock").html('');
 	//var client=localStorage.visit_client_show.split('|')[1]
@@ -5749,10 +5759,17 @@ function page_stock() {
 	//month="'"+month+"'"
 	
 	var d2 = new Date();
-    var d1 = new Date(dateStock);
+    if (dateStock.length < 8){
+		var d1=d2
+		var flag='New'
+		
+	}
+	else{
+		var d1 = new Date(dateStock);
+	}
 	var sec_time=(((d2-d1)/1000))/60;
 	$("#error_stock").html('');
-	if (sec_time>5){
+	if ( (parseInt(sec_time) >5) || (flag=='New') ){
 	// ajax-------
 			if (localStorage.stock_str==''){
 					$.ajax(localStorage.report_url+'depot_wise_stock_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_depot='+client_depot+'&client_depot_name='+client_depot_name,{
@@ -5837,7 +5854,7 @@ function page_stock() {
 			}
 	}
 	else{
-		$("#error_stock").html('Please try later');
+		$("#error_stock").html('');
 		$("#wait_image_stock").hide();
 		$("#stock").html(localStorage.stock_str);
 				
