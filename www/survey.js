@@ -1635,10 +1635,10 @@ function bonusCombo(){
 	var promo_str=localStorage.promo_str;
 	var bonusComboList=promo_str.split('<rd>');
 	$('#bonus_combo').empty();
-	$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="0">N/A</option>')
+	$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="0"><font style="font-size:12px; color:#306161; background-color:#ECECFF">N/A</font></option>')
 	for (j=0; j < bonusComboList.length; j++){
 		var single_promo=bonusComboList[j].split('<fd>');
-		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+single_promo[2]+' ('+single_promo[0]+')'+'">'+single_promo[2]+'('+single_promo[0]+')'+'</option>');
+		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+single_promo[2]+' ('+single_promo[0]+')'+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+single_promo[2]+'('+single_promo[0]+')'+'</font></option>');
 	}
 	
 }
@@ -1708,12 +1708,7 @@ function doctor_profile() {
 	//addMarketListCp();
 	
 }
-//function stock() {
-//	getStock();
-//	//var url = "#page_stock";	
-////	$.mobile.navigate(url);
-//	
-//}
+
 function feedback() {
 	localStorage.saved_data_submit=0;
 	getComplain();
@@ -4795,15 +4790,15 @@ function set_save_data(i){
 	if (bonus_combo!='0'){
 		//alert ('nnnn')
 		
-		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+bonus_combo+'">'+bonus_combo+'</option>');
+		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+bonus_combo+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+bonus_combo+'</font></option>');
 	}
-	$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="0">N/A</option>')
+	$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="0"><font style="font-size:12px; color:#306161; background-color:#ECECFF">N/A</font></option>')
 	var promo_str=localStorage.promo_str;
 	var bonusComboList=promo_str.split('<rd>');
 	
 	for (j=0; j < bonusComboList.length; j++){
 		var single_promo=bonusComboList[j].split('<fd>');
-		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+single_promo[2]+' ('+single_promo[0]+')'+'">'+single_promo[2]+'('+single_promo[0]+')'+'</option>');
+		$("#bonus_combo").append('<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+single_promo[2]+' ('+single_promo[0]+')'+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+single_promo[2]+'('+single_promo[0]+')'+'</font></option>');
 	
 	}
 	
