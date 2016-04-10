@@ -1470,7 +1470,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														
 														var product_qty='';																		
 														
-														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td  style="text-align:left; color:#306161" >'+'&nbsp;&nbsp;<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp;|&nbsp;'+'<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp; <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
+														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp;|&nbsp;'+'<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp; <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....');
 														
@@ -4708,20 +4708,7 @@ function set_save_data(i){
 	
 	//alert (bonus_combo)
 	//$('#bonus_combo').empty()
-	if (bonus_combo!='0'){
-		//alert ('nnnn')
-		//alert (bonus_combo)
-		$("#bonus_combo").append('<option value="'+bonus_combo+'">'+bonus_combo+'</option>');
-	}
-	$("#bonus_combo").append('<option value="0">N/A</option>')
-	var promo_str=localStorage.promo_str;
-	var bonusComboList=promo_str.split('<rd>');
 	
-	for (j=0; j < bonusComboList.length; j++){
-		var single_promo=bonusComboList[j].split('<fd>');
-		$("#bonus_combo").append('<option value="'+single_promo[2]+' ('+single_promo[0]+')'+'">'+single_promo[2]+'('+single_promo[0]+')'+'</option>');
-	
-	}
 	
 	//alert (payment_mode)
 	//alert (delivery_date_show)
@@ -4804,8 +4791,21 @@ function set_save_data(i){
 	else{
 		$("#payment_mode_div").hide();
 	}
+	//alert (bonus_combo);
+	if (bonus_combo!='0'){
+		//alert ('nnnn')
+		
+		$("#bonus_combo").append('<option value="'+bonus_combo+'">'+bonus_combo+'</option>');
+	}
+	$("#bonus_combo").append('<option value="0">N/A</option>')
+	var promo_str=localStorage.promo_str;
+	var bonusComboList=promo_str.split('<rd>');
 	
+	for (j=0; j < bonusComboList.length; j++){
+		var single_promo=bonusComboList[j].split('<fd>');
+		$("#bonus_combo").append('<option value="'+single_promo[2]+' ('+single_promo[0]+')'+'">'+single_promo[2]+'('+single_promo[0]+')'+'</option>');
 	
+	}
 	
 	localStorage.saved_data_submit=1;
 	localStorage.doctor_flag=0;
