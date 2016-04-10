@@ -105,7 +105,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       
        <div class="view" id="pageHomeView">
         <div class="pages">
-         <header align="center"><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8"><font style="font-size:12px">m</font>Reporting</header> 
+         <header align="center"><h1 style="font-size:16px; font-weight:normal; color:#F8F8F8"><font style="font-size:12px">m</font>R<font style="font-size:14px">eporting</font></header> 
          
             <div class="panel" id="pageHome" >
             
@@ -132,7 +132,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		 
 
           <a href="#" class="icon key" onclick="$.afui.drawer.show('#left','left','push')"></a>
-          <a href="#" class="icon info" onclick="$.afui.drawer.show('#right','right','push')"></a>
+          <a href="#"  onclick="$.afui.drawer.show('#right','right','push')"><img style="height:30px; width:30px" src="menu.png"></a>
          
         </footer>
 		 <nav id="left"  style="z-index:5; background-color:#FFF;" >
@@ -140,25 +140,30 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				<header align="left"></header>
                     <div class="pages" style="height:100%">     		
                                  <!--<div  align="center"><img src="cloud_menu_1.png"></div>-->
-                                 </br>
+                                 </br></br></br>
                                 
+
+
                                
+                               <div onClick="page_login()" align="center" > <img style="height:50px; width:50px" src="key.png"></div>
                                
-                               <div onClick="page_login()" align="center" > <img style="height:70px; width:70px" src="key.png"></div>
-                               
-                                 </br> </br> </br> </br>  </br> </br> 
+                                 </br> </br> </br> </br>  </br> </br> </br> </br> </br> </br>  </br> </br></br> </br> </br> </br>  </br> </br>
                                  
                                  
+                               
+                                 <div onClick="exit()" align="center"> <img style="height:30px; width:30px" src="exit.png"></div>
+                                 
+                               
                                 
-                                <div onClick="exit()" align="center"> <img style="height:70px; width:70px" src="exit.png"></div>
                                 
                                 <!--<li><a onClick="clear_autho()" href="#login">Clear Authorization</a></li>
                                 <div style="background:#008A8A; height:1px"></div>-->
-                        </ul>
+                       
                         <br>
     
                    <!-- <div align="center"> <img src="logo_gp_p_1.png" alt="Grameen Phone" /></div>-->
                 </div>
+                 
 
         </nav>
         
@@ -196,7 +201,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
           </tr>
         </table>
          
-         
+
          </header> 
             <div class="panel" id="page_market">
             </br></br></br></br>
@@ -209,7 +214,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
                 <!--</div>-->
 				
-                         <ul class="list" id="market_combo_id_lv" >
+                         <ul class="list" id="market_combo_id_lv"  >
                         
                         </ul>
                     </div>
@@ -220,7 +225,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>               
                       
@@ -234,7 +239,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="unscheduled_m_client_combo_id" style="width:100% ; color:#000" placeholder="Chemist Search" onKeyUp="searchClient()"  /></div></font></td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="unscheduled_m_client_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchClient()"  /></div></font></td>
             <td width="10%" >&nbsp;</td> 
           </tr>
         </table>
@@ -270,7 +275,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>               
                       
@@ -430,30 +435,26 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-        <a href="#" class="icon info" onclick="$.afui.drawer.show('#customerInfo','right','push')"></a>
+        <a href="#"  onclick="$.afui.drawer.show('#customerInfo','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
         </footer>
         
         
         
          <nav id="customerInfo" style="z-index:5; background-color:#FFF">
-            <div class="view active" >
+            
                 <header>
                    
                 </header>
                 <br>
                  
-              <!--  <div style="background:#008A8A; height:1px"></div>-->
-           <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
-              <br>
-               <!--<div style="background:#008A8A; height:1px"></div>-->
-               <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
-                <br>
-                 <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
-               <!-- <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
-               <div style="background:#008A8A; height:1px"></div>
-                <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
-                <div style="background:#008A8A; height:center"></div>-->
-            </div>
+
+          	 <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
+             <br>
+             <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
+             <br>
+             <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
+
+           
         </nav>
 
     </div> 
@@ -561,6 +562,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </td>
   </tr>
 </table>
+	</footer>
 
     </div>  
   
@@ -569,20 +571,17 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
        <div class="view" id="page_cartView">
         <div class="pages">
-         <header> 
-         <table width="100%" border="0">
-          <tr>
-            <td width="10%" align="left" >	</td>
-            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Order</td>
-            <td width="10%" ></td> 
-          </tr>
-        </table>
-</header> 
+             <header> 
+             <table width="100%" border="0">
+              <tr>
+                <td width="10%" align="left" >	</td>
+                <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Order</td>
+                <td width="10%" ></td> 
+              </tr>
+            </table>
+            </header> 
             <div class="panel" id="page_cart">
-            </br></br></br></br>
-                <!--<div class="card">-->
-                    <!--<h1>Sync</h1>-->
-                     
+            </br></br></br></br>                     
 				<br><br>
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
@@ -610,16 +609,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                        
                         </ul>
 				
-                <br>
+                </br>
                 
                 
                 <div id="product_total_cart" style=" color:#009191; font-weight:bold"></div>
 				
-				<div  style=" color:#009191; font-weight:bold">
-						<!--<input type="hidden" name="payment_mode" id="payment_mode" value="CASH" >-->
-			  </div>
+				<!--<div  style=" color:#009191; font-weight:bold">
+						<input type="hidden" name="payment_mode" id="payment_mode" value="CASH" >
+			  </div>-->
 				
-                <br>
+                </br>
 
 
              <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -630,15 +629,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
               </tr>
             </table>
             
-            <br>
-                <br>
-                <br><br>
-                <br>
-                <br>
-                <br><br>
-                <br>
-                        <br>
-                        <br>
+            </br></br></br></br></br></br></br></br>
+                
                     </div>
                    
                <!-- </div>-->
@@ -649,7 +641,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>  
     
@@ -671,22 +663,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <td width="10%"  ></td> 
           </tr>
         </table>
-</header> 
-            <div class="panel" id="page_confirm_visit_success">
+		</header> 
+            <div class="panel" id="page_confirm_visit_success" align="center">
             </br></br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                 
 				
-			<div align="center">
+			<!--<div align="center">-->
 				<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; height:200px; color:#FFF; font-size:20px;"   align="center"></br></br></br>Submitted Successfully</div>
-            
+             <!--</div>-->
+
             <br/><br/>
             <input type="submit" id="btn_visit_save" onClick="homePage();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     New      "   />
             
             
-            </div>
-
+           
             
 			
 			
@@ -702,8 +694,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
-
+         </footer>	
+		
     </div>  
  
  
@@ -817,7 +809,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>  
     
@@ -931,6 +923,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </td>
   </tr>
 </table>
+</footer>
     </div>  
     
     <!-- //========================Sample Start=====================-->
@@ -1041,7 +1034,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </td>
   </tr>
 </table>
-
+</footer>
     </div>  
     
     
@@ -1154,6 +1147,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </td>
   </tr>
 </table>
+</footer>
 		
     </div>  
       
@@ -1265,7 +1259,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </td>
   </tr>
 </table>
- 
+ </footer>
 
 </div>     
      
@@ -1277,7 +1271,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="view" id="page_saved_visitView">
 <div class="pages">
 
-<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Saved Visit</h1></header> 
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Saved Order</h1></header> 
 
 
     <div class="panel" id="page_saved_visit">
@@ -1287,14 +1281,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
              
         
     <div id="myerror_doctor_gift" style="color:#C00"></div>
-        <div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666"></font></div><br>
+       <!-- <div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666"></font></div>-->
 				
 			
 				<div id="err_save_visit" style="color:#C00"></div>
                 
 
-				<br/>
-                
+				
 				
                 			
                
@@ -1314,7 +1307,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 <a onClick="homePage()" class="icon home" ></a>
 <a onClick="homePage()"  ></a>
- 
+ </footer>
 
 </div>      
      
@@ -1348,7 +1341,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 <a onClick="homePage()" class="icon home" ></a>
 <a onClick="homePage()"  ></a>
- 
+ </footer>
 
 </div> 
 
@@ -1406,7 +1399,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 <a onClick="homePage()" class="icon home" ></a>
 <a onClick="homePage()"  ></a>
- 
+ </footer>
 
 </div>  
 
@@ -1481,7 +1474,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		<a onClick="page_reports_dcr()" class="icon left" ></a>
         <a onClick="page_reports_dcr()"  ></a>
          
-
+		</footer>
     </div>               
                    
 
@@ -1552,7 +1545,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="page_reports_dcr()" class="icon left" ></a>
         <a onClick="page_reports_dcr()"  ></a>
-         
+         </footer>
 
     </div>  
 
@@ -1634,7 +1627,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="page_reports_dcr()" class="icon left" ></a>
         <a onClick="page_reports_dcr()"  ></a>
-         
+         </footer>
 
     </div>  
 
@@ -1664,7 +1657,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="page_promo_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
-         
+         </footer>
 	
     </div>               
                         
@@ -1689,7 +1682,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>    
    
@@ -1718,7 +1711,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>    
 
@@ -1744,7 +1737,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
         <a onClick="homePage()"  ></a>
-         
+         </footer>
 
     </div>    
             
@@ -1772,7 +1765,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
        <a onClick="page_stock_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
-         
+         </footer>
 
     </div>   
    
@@ -1808,7 +1801,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
    <!--//==============================Invoice report=================-->
        <div class="view" id="page_invoiceView">
         <div class="pages">
-         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Invoice</h1></header> 
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Invoice</h1></header> 
             <div class="panel" id="page_invoice">
             </br></br></br></br>
                 <!--<div class="card">-->
@@ -1834,7 +1827,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
    <!--//==============================Invoice report=================-->
        <div class="view" id="page_clientOrderView">
         <div class="pages">
-         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Order</h1></header> 
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Order</h1></header> 
             <div class="panel" id="page_clientOrder">
             </br></br></br></br>
                 <!--<div class="card">-->

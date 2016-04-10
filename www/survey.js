@@ -96,7 +96,7 @@ $.afui.useOSThemes=false;
 		
 		$("#item_combo_id").val('A')
 		searchProduct()
-	
+		bonusCombo()
 		 page_stock()
 		
 		
@@ -259,7 +259,12 @@ $.afui.useOSThemes=false;
 
 
 var mobile_off_flag=0;
-
+//function homePage_refresh() {
+//	$("#error_login").html('');
+//	//location.reload();
+//	$.afui.loadContent("#pageHome",true,true,'right');
+//	
+//}
 function homePage() {
 	$("#error_login").html('');
 	$.afui.loadContent("#pageHome",true,true,'right');
@@ -450,7 +455,7 @@ function page_promo() {
 										var today=  year + "-" + month + "-" + day +' '+time
 										if (dt.getHours() > 12 ) {today=today+ ' PM'} else {today=today+ ' AM'};
 										localStorage.promoDate=today
-										result_string='<font style="color:#8A0045; font-size:18px">'+'Laste Updated:'+localStorage.promoDate+'</font><br>'+result_string
+										result_string='<font style="color:#8A0045; font-size:18px">'+'Updated on:'+localStorage.promoDate+'</font><br>'+result_string
 										$("#promo").html(result_string);
 										
 										localStorage.promo_str_report=result_string
@@ -1019,10 +1024,10 @@ function check_user() {
 	//Main
 
 	
-	// var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	 var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+ // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -1334,7 +1339,7 @@ function check_user() {
 													var s_value=single_menu_list[1]
 													if (s_value=='YES'){
 //															 //alert (s_key);	
-															 menu_str=menu_str+'<li  align="center" onClick="'+s_key+'()"  style="width:100%; background-color:#09C; " ><img style="padding-top:0px; padding-bottom:0px;" src="'+s_key+'.png"></li>'
+															 menu_str=menu_str+'<li  align="center" onClick="'+s_key+'()"  style="width:100%; background-color:#09C; " ><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="'+s_key+'.png"></li>'
 															menu_str=menu_str+'<div style="height:2px"></div>'							
 
 														if (s_key=="chemist_visit"){
@@ -1380,10 +1385,10 @@ function check_user() {
 														var marketNameID=planMarketName+'|'+planMarketID;
 														//alert (marketNameID);
 														if(planMarketID!=''){
-															unscheduleMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameID+'\')"><font class="name">'+marketNameID+'</a></font></li>';
-															visitPlanMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="visitPlanMarketNextLV(\''+marketNameID+'\')"><font class="name">'+marketNameID+'</font></a></li>';
+															unscheduleMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</a></font></li>';
+															visitPlanMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="visitPlanMarketNextLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</font></a></li>';
 															
-															profileMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextCProfileLV(\''+marketNameID+'\')"><font class="name">'+marketNameID+'</font></a></li>';
+															profileMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextCProfileLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold; color:#306161">'+marketNameID+'</font></a></li>';
 															
 
 															}
@@ -1465,7 +1470,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														
 														var product_qty='';																		
 														
-														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td  style="text-align:left;">'+'&nbsp;&nbsp;<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp; | &nbsp; '+'&nbsp;&nbsp;<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp; <span style="background-color:#FCFED8; color:#B82207" id="promoShow'+product_id2.toUpperCase()+'" style="color:#66C; font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
+														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td  style="text-align:left; color:#306161" >'+'&nbsp;&nbsp;<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font>&nbsp;|&nbsp;'+'<font class="itemCode">'+ product_id2.toUpperCase()+'&nbsp;|&nbsp;'+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br>&nbsp; <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....');
 														
@@ -1658,7 +1663,7 @@ function chemist_visit() {
 	localStorage.saved_data_submit=0;
 	localStorage.save_submit=0;
 	//alert ('sadsafdsff')
-	
+	bonusCombo();
 }
 function saved_visit() {
 	
@@ -1719,11 +1724,11 @@ function reports() {
 	var str_report_rep='<table width="100%" border="0">'+
 					 '<tr><td>Rep: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" readonly="true" placeholder="Rep">'+
 					  '<input id="se_item_doc" name="se_item_doc" type="hidden" placeholder="Item"></td></tr>'+
-					   '<tr><td>Market: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market"  ></td></tr></table>'
+					   '<tr><td>Teritory: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market"  ></td></tr></table>'
 	var str_report_sup='<table width="100%" border="0">'+
 					   '<tr><td>Rep: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" placeholder="Rep">'+
 					   '<input id="se_item_doc" name="se_item_doc" type="hidden" placeholder="Item"></td></tr>	'+
-					   '<tr><td>Market: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market/level"  ></td></tr></table>'	
+					   '<tr><td>Teritory: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market/level"  ></td></tr></table>'	
 	
 	if (localStorage.user_type=='rep'){
 		localStorage.str_report=str_report_rep;
@@ -1834,7 +1839,7 @@ function marketNext() {
 						
 							if(mClientID!=''){
 
-									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font  class="name">'+mClientName+'|'+mClientID+'</font></a></li>';
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></li>';
 							}
 						 }
 					
@@ -2138,7 +2143,7 @@ function marketRetailerNext() {
 //--------------------------------- Order: Show order from home
 
 function getOrder_load(){
-	bonusCombo();	
+	//bonusCombo();	
 	var orderProductList=localStorage.productOrderStr.split('<rd>');
 	var orderProductLength=orderProductList.length;
 	for (var j=0; j < orderProductLength; j++){
@@ -2807,8 +2812,8 @@ function lscVisitSubmit(){
 																$("#wait_image_visit_submit_doc").hide('');
 																
 																$("#visit_save_div").show();
-						
-																$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
+																
+			 												 $.afui.loadContent("#page_confirm_visit_success",true,true,'right');			
 																										
 															}
 															else{						
@@ -4644,7 +4649,7 @@ function getvisitSave_data(){
 		
 		localStorage.visit_market_show+'<fdfd>'+localStorage.visit_client_show
 			
-	   saved_data_list=saved_data_list+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0"><tr><td width="80%" onClick="set_save_data('+i+')"  >'+'<font style="font-size:14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+visit_client_show+'</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( '+visit_market_show+' )'+'</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#804040"> '+visit_time_show+'</font></td><td>' +'<input type="submit" style="width:100%; height:30px; background-color:#09C; color:#FFF; font-size:15px" onClick="cancelSave('+i+')" value="X"  >' +'</font>' +'</td> </tr></table></li>'
+	   saved_data_list=saved_data_list+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0"><tr><td width="2%"></td><td width="80%" onClick="set_save_data('+i+')"  >'+'<font style="font-size:16px ;color:#306161"><b>'+visit_client_show+'</b></font>( '+visit_market_show+' )'+'</br><font style="color:#804040"> '+visit_time_show+'</font></td><td>' +'<input type="submit" style="width:100%; height:30px; width:40px; background-color:#09C; color:#FFF; font-size:15px" onClick="cancelSave('+i+')" value="X"  >' +'</font>' +'</td> </tr></table></li>'
 	  // alert (client_id);
 														
 	}
@@ -4701,20 +4706,23 @@ function set_save_data(i){
 	var collection_date_show = saved_data_show_array[15];
 	var bonus_combo = saved_data_show_array[16];
 	
-	
+	//alert (bonus_combo)
+	//$('#bonus_combo').empty()
 	if (bonus_combo!='0'){
+		//alert ('nnnn')
+		//alert (bonus_combo)
 		$("#bonus_combo").append('<option value="'+bonus_combo+'">'+bonus_combo+'</option>');
 	}
-	
 	$("#bonus_combo").append('<option value="0">N/A</option>')
 	var promo_str=localStorage.promo_str;
 	var bonusComboList=promo_str.split('<rd>');
 	
 	for (j=0; j < bonusComboList.length; j++){
 		var single_promo=bonusComboList[j].split('<fd>');
-		$("#bonus_combo").append('<option value="'+single_promo[0]+'|'+single_promo[1]+'|'+single_promo[2]+'">'+single_promo[0]+'|'+single_promo[1]+'|'+single_promo[2]+'</option>');
+		$("#bonus_combo").append('<option value="'+single_promo[2]+' ('+single_promo[0]+')'+'">'+single_promo[2]+'('+single_promo[0]+')'+'</option>');
 	
 	}
+	
 	//alert (payment_mode)
 	//alert (delivery_date_show)
 	//localStorage.visit_market_show+'<fdfd>'+localStorage.visit_client_show+'<fdfd>'+visitClientId+'<fdfd>'+visit_type+'<fdfd>'+scheduled_date+'<fdfd>'+marketInfoStr+'<fdfd>'+productOrderStr+'<fdfd>'+marchandizingInfoStr+'<fdfd>'+campaign_str+'<fdfd>'+lat+'<fdfd>'+longitude+'<fdfd>'+imageName+'<fdfd>'+localStorage.payment_mode+'<fdfd>'+chemist_feedback+'<rdrd>'
@@ -5123,19 +5131,19 @@ function set_report_parameter_doctor() {
 	localStorage.se_market_report_doc=se_market_report_doc;
 	
 	
-	$("#report_market_doctor").html("Market :"+localStorage.se_market_report_doc);
+	$("#report_market_doctor").html("Teritory :"+localStorage.se_market_report_doc);
 	$("#report_mpo_doctor").html("MPO :"+localStorage.rep_id_report_doc);
 	$("#date_f_doctor").html("DateFrom :"+date_from_show_doc);
 	$("#date_t_doctor").html("DateTo :"+date_to_show_doc);
 	
-	$("#report_market_prescription").html("Market :"+localStorage.se_market_report_doc);
+	$("#report_market_prescription").html("Teritory :"+localStorage.se_market_report_doc);
 	$("#report_mpo_prescription").html("MPO :"+localStorage.rep_id_report_doc);
 	$("#date_f_prescription").html("DateFrom :"+date_from_show_doc);
 	$("#date_t_prescription").html("DateTo :"+date_to_show_doc);
 	
 	
 	
-	$("#report_market").html("Market :"+localStorage.se_market_report_doc);
+	$("#report_market").html("Teritory :"+localStorage.se_market_report_doc);
 	$("#report_mpo").html("MPO :"+localStorage.rep_id_report_doc);
 	$("#date_f").html("DateFrom :"+date_from_show_doc);
 	$("#date_t").html("DateTo :"+date_to_show_doc);
@@ -5511,7 +5519,7 @@ function set_report_parameter() {
 	localStorage.se_market_report=se_market_report;
 	
 	
-	$("#report_market").html("Market :"+localStorage.se_market_report);
+	$("#report_market").html("Teritory :"+localStorage.se_market_report);
 	$("#report_item").html("Item :"+localStorage.se_item_report);
 	$("#report_mpo").html("MPO :"+localStorage.rep_id_report);
 	$("#date_f").html("DateFrom :"+date_from_show);
@@ -5824,7 +5832,7 @@ function page_stock() {
 										var today=  year + "-" + month + "-" + day +' '+time
 										if (dt.getHours() > 12 ) {today=today+ ' PM'} else {today=today+ ' AM'};
 										localStorage.stockDate=today
-										result_string='<font style="color:#8A0045; font-size:18px">'+'Laste Updated:'+localStorage.stockDate+'</font><br>'+result_string
+										result_string='<font style="color:#8A0045; font-size:18px">'+'Updated on:'+localStorage.stockDate+'</font><br>'+result_string
 										$("#stock").html(result_string);
 										localStorage.stock_str=result_string
 										localStorage.result_itemStock=result_itemStock
