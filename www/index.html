@@ -58,7 +58,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
             </div>
     
-    
+  
   
             
             
@@ -183,6 +183,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
                 <div style="background:#008A8A; height:center"></div>-->
                 <div onClick="page_stock_main()" align="center"> <img style="height:70px; width:70px" src="stock.png"></div>
+                </br></br>
+                 <div onClick="page_notice()" align="center"> <img style="height:70px; width:70px" src="notice.png"></div>
             </div>
         </nav>
         
@@ -327,13 +329,29 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
                 <input name="chemist_feedback" id="chemist_feedback" type="text" maxlength="100" placeholder="Note">
                 
-                Priority Offer:
+
               
 
-                    <select name="bonus_combo" id="bonus_combo" style="font-size:12px; color:#306161; background-color:#ECECFF">
+                    <!--<select name="bonus_combo" id="bonus_combo" style="font-size:12px; color:#306161; background-color:#ECECFF">
                      
-                    </select>
+                    </select>-->
                   
+              
+              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						<td>Priority Offer</td>
+						<td width="30%"> 
+                        <input type="radio" name="bonus_combo" value='YES' id="YES" checked >  <label for="YES">YES</label>
+                        </td>
+						<td width="30%"> 
+                        <input type="radio" name="bonus_combo" value='NO' id="NO"  >  <label for="NO">NO</label>
+                        </td>
+					  </tr>
+			  </table>
+				              
+              
+              
               
                 
                 
@@ -364,7 +382,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             
             
 			<div id="payment_mode_div">
-            
+          
 			
 
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -453,6 +471,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
              <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
              <br>
              <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
+             <br>
+             <div onClick="page_clientApproved()" align="center"> <img style="height:70px; width:70px" src="approved.png"></div>
 
            
         </nav>
@@ -1824,7 +1844,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </footer>
 
     </div> 
-   <!--//==============================Invoice report=================-->
+   <!--//==============================Order report=================-->
        <div class="view" id="page_clientOrderView">
         <div class="pages">
          <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Order</h1></header> 
@@ -1850,6 +1870,61 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          </footer>
 
     </div>  
+    
+    
+   <!--//==============================Order report=================-->
+       <div class="view" id="page_clientApprovedView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Order</h1></header> 
+             <div class="panel" id="page_clientApproved">
+             </br></br></br></br>
+              <img id="wait_image_clientApproved" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_clientApprovedTxt"  type="hidden" >
+                    <div id="error_clientApproved" style="color:#C00"></div> 
+                        <div id="clientApproved"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+            </div>
+      
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+    
+  <!--//==============================Notice report=================-->
+       <div class="view" id="page_noticeView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Order</h1></header> 
+            <div class="panel" id="page_notice">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_notice" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_noticeTxt"  type="hidden" >
+                     <div id="error_notice" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="notice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>   
+    
+ 
+ 
+
+    
+    
+    
  <script type="text/javascript" src="phonegap.js"></script>
 
           
