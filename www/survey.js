@@ -2319,7 +2319,7 @@ function cart_data() {
 				
 				
 				//alert (promo_str_cart.length)
-				if (promo_str_cart.length > 5){
+				if (promo_str_cart.length < 5){
 					total_without_promo=total_without_promo+total
 				}
 				total_value=total_value+total;
