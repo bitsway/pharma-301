@@ -85,7 +85,7 @@ $.afui.useOSThemes=false;
 		
 		getLocationInfo_ready();
 		
-		$("#se_mpo").val(localStorage.user_id);
+		//$("#se_mpo").val(localStorage.user_id);
 
 		//alert (localStorage.unschedule_market_cmb_id)
 		$('#market_combo_id_lv').empty();
@@ -233,16 +233,17 @@ $.afui.useOSThemes=false;
 		//currentDate=2016-03-11
 		//localStorage.synced=''
 		//alert (today);
+		//alert (localStorage.sync_date);
 		if ((localStorage.synced=='YES')){
 			$("#cid").val(localStorage.cid);
 			$("#user_id").val(localStorage.user_id);
-			//$("#user_pass").val(localStorage.cm_pass);
+			$("#user_pass").val(localStorage.user_pass);
 			$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
-		//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
-//			$.afui.loadContent("#pageHome",true,true,'right');
-//		}
+		if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+			$.afui.loadContent("#pageHome",true,true,'right');
+		}
 		
 		
     });
@@ -267,8 +268,18 @@ var mobile_off_flag=0;
 //	
 //}
 function homePage() {
-	$("#error_login").html('');
-	$.afui.loadContent("#pageHome",true,true,'right');
+	var currentDate = new Date()
+	var day = currentDate.getDate();if(day.length==1)	{day="0" +day_1};
+	var month = currentDate.getMonth() + 1;if(month.length==1)	{month="0" +month};
+	var year = currentDate.getFullYear()
+	var today=  year + "-" + month + "-" + day
+							
+
+	if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+		$.afui.loadContent("#pageHome",true,true,'right');
+	}
+	//$("#error_login").html('');
+	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
 	
@@ -1025,7 +1036,7 @@ function check_user() {
 	//Main
 
 	
-	// var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepskf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	// var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1967,8 +1978,8 @@ function marketNext_sup() {
 										var mClientID=mClientValueArray[0];
 										var mClientName=mClientValueArray[1];
 										var mClientCat=mClientValueArray[2];
-											
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></li>'	
+										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 									}
 								
 								
@@ -2640,11 +2651,11 @@ function lscVisitSubmit(){
 //		$("#visit_save_div").show();
 //	}
 	
-	//if  (localStorage.sync_date!=today_1){
-//		$("#errorChkVSubmit").html('Please sync first');
-//		$("#visit_save_div").show()
-//		}
-//		else{
+	if  (localStorage.sync_date!=today_1){
+		$("#errorChkVSubmit").html('Please sync first');
+		$("#visit_save_div").show()
+		}
+		else{
 				//alert (delivery_date)
 				if  ((delivery_date.length < 8) || (collection_date.length < 8)){
 					$("#errorChkVSubmit").html('Please enter collection and delivery date');
@@ -2668,11 +2679,14 @@ function lscVisitSubmit(){
 			 
 					var diffDays_delivery = date2- date1; 
 					var diffDays_collection = date3 - date1; 
-					
-					if  ((diffDays_delivery < 0 ) || (diffDays_collection < 0 )){
+					var d_chacke=86400000*7
+					//alert (d_chacke)
+					if  ((diffDays_delivery < 0 ) || (diffDays_delivery > d_chacke ) || (diffDays_collection < 0 )){
+						alert (diffDays_delivery )
 						$("#errorChkVSubmit").html('Invalid collection and delivery date');
 						$("#visit_save_div").show();
 					}
+					
 					else{
 								//alert (photoRequired)	
 			//					if (photoRequired=='Yes' && lscPhoto==''){
@@ -2711,6 +2725,7 @@ function lscVisitSubmit(){
 														//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
 														$("#wait_image_visit_submit").hide();
 														$("#visit_submit").show();
+														$("#visit_save_div").show();
 														$("#errorChkVSubmit").html('Network Timeout. Please check your Internet connection..');
 																			},
 														success:function(data, status,xhr){	
@@ -2720,6 +2735,7 @@ function lscVisitSubmit(){
 															 if (status!='success'){
 																$("#wait_image_visit_submit").hide();
 																$("#visit_submit").show();
+																$("#visit_save_div").show();
 																$("#errorChkVSubmit").html('Network Timeout. Please check your Internet connection...');
 															 }
 															 else{		
@@ -2729,7 +2745,8 @@ function lscVisitSubmit(){
 															if (resultArray[0]=='FAILED'){						
 																$("#errorChkVSubmit").html(resultArray[1]);
 																$("#wait_image_visit_submit").hide();
-																$("#visit_submit").show();	
+																$("#visit_submit").show();
+																$("#visit_save_div").show();	
 															}else if (resultArray[0]=='SUCCESS'){
 																							
 														//		-----------
@@ -2841,7 +2858,7 @@ function lscVisitSubmit(){
 					}//end collection and delivery date future
 				
 				}//end collection and delivery date check
-	//	}//sync date check
+		}//sync date check
 }
 
 //==============================End Visit Submit========
