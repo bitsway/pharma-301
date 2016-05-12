@@ -2720,7 +2720,7 @@ function lscVisitSubmit(){
 					var d_chacke=86400000*7
 					//alert (d_chacke)
 					if  ((diffDays_delivery < 0 ) || (diffDays_delivery > d_chacke ) || (diffDays_collection < 0 )){
-						alert (diffDays_delivery )
+						//alert (diffDays_delivery )
 						$("#errorChkVSubmit").html('Invalid collection and delivery date');
 						$("#visit_save_div").show();
 					}
