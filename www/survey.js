@@ -2296,6 +2296,7 @@ function getOrderData_keyup(product_id){
 	}
 		
 	//	------------------------------------------------------
+	localStorage.orderTotal=0
 	var orderProductList=localStorage.productOrderStr.split('<rd>');
 	var orderProductLength=orderProductList.length;
 		var orderTotal=0
@@ -2304,13 +2305,13 @@ function getOrderData_keyup(product_id){
 			//alert (orderProductIdQtyList.length)
 			if(orderProductIdQtyList.length==2){
 				var orderProductQty=orderProductIdQtyList[1];
-				var price= $("#order_price"+orderProductId).val()		
+				var price= $("#order_price"+product_id).val()		
 				var tPrice= price * orderProductQty
 				orderTotal=orderTotal+tPrice
 			}		
 		}
 		localStorage.orderTotal=orderTotal.toFixed(2)
-		//alert (localStorage.orderTotal)
+		
 		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' BDT');
 
 		
