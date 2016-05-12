@@ -238,7 +238,7 @@ $.afui.useOSThemes=false;
 			$("#cid").val(localStorage.cid);
 			$("#user_id").val(localStorage.user_id);
 			$("#user_pass").val(localStorage.user_pass);
-			$.afui.loadContent("#pageHome",true,true,'right');
+			//$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
 		if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
@@ -1036,10 +1036,10 @@ function check_user() {
 	//Main
 
 	
-	// var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	 var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+  //var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -2051,7 +2051,7 @@ function marketRetailerNext() {
 	//localStorage.location_detail=''
 	$("#err_m_retailer_next").text("");
 	var visit_client=$("#unscheduled_m_client_combo_id").val();		
-		
+	//alert(visit_client); 	
 	if(visit_client=='' || visit_client==0){
 			$("#err_m_retailer_next").text("Retailer required");
 		}else{
@@ -2062,7 +2062,7 @@ function marketRetailerNext() {
 			
 			var visitClientID=visit_client.split('|')[1];
 			
-			//alert(localStorage.visit_client); 
+			
 			
 			if (localStorage.visit_client !=visitClientID ){
 				cancel_cart();
@@ -2153,14 +2153,22 @@ function getOrder_load(){
 	//bonusCombo();	
 	var orderProductList=localStorage.productOrderStr.split('<rd>');
 	var orderProductLength=orderProductList.length;
+	
+	var orderTotal=0
 	for (var j=0; j < orderProductLength; j++){
 		var orderProductIdQtyList=orderProductList[j].split('<fd>');
 		if(orderProductIdQtyList.length==2){
 			var orderProductId=orderProductIdQtyList[0];
 			var orderProductQty=orderProductIdQtyList[1];		
 			$("#order_qty"+orderProductId).val(orderProductQty);
+			var price= $("#order_price"+orderProductId).val()
+			var tPrice= price * orderProductQty
+			orderTotal=orderTotal+tPrice
 		}		
 	}
+	localStorage.orderTotal=orderTotal.toFixed(2)
+	
+	$("#orderTotalShow").html('Total: '+localStorage.orderTotal+' BDT');
 	
 }
 function getOrder(){	
@@ -2182,7 +2190,14 @@ function getOrderData_keyup(product_id){
 	var pqty=$("#order_qty"+product_id).val().replace('.','').substring(0,4);
 	$("#order_qty"+product_id).val(pqty);
 	
-	//alert (pqty)
+	
+	var price= $("#order_price"+orderProductId).val()
+	var Productprice=price*pqty
+	
+	
+	//var orderT=localStorage.orderTotal
+	
+	
 	
 	var productOrderStr=localStorage.productOrderStr
 	var productOrderShowStr='';
@@ -2196,10 +2211,15 @@ function getOrderData_keyup(product_id){
 			if (productOrderStr==''){
 				productOrderStr=pid+'<fd>'+pqty
 				productOrderShowStr=pname+'('+pqty+')'
+				
+				
+				
 			}else{
 				productOrderStr=productOrderStr+'<rd>'+pid+'<fd>'+pqty
 				productOrderShowStr=productOrderShowStr+', '+pname+'('+pqty+')'
+				
 			}	
+			
 		}
 		else{
 			
@@ -2216,9 +2236,11 @@ function getOrderData_keyup(product_id){
 						if (product_index==0){
 							productOrderStr=productOrderStr.replace(orderProductList[j]+'<rd>', "")
 							productOrderStr=productOrderStr.replace(orderProductList[j], "")
+							
 						}
 						if (product_index > 0){
 							productOrderStr=productOrderStr.replace('<rd>'+orderProductList[j], "")
+							
 						}
 						
 						if (productOrderStr==''){
@@ -2274,7 +2296,22 @@ function getOrderData_keyup(product_id){
 	}
 		
 	//	------------------------------------------------------
-	//alert (localStorage.productOrderStr)
+	var orderProductList=localStorage.productOrderStr.split('<rd>');
+	var orderProductLength=orderProductList.length;
+		var orderTotal=0
+		for (var j=0; j < orderProductLength; j++){
+			var orderProductIdQtyList=orderProductList[j].split('<fd>');
+			//alert (orderProductIdQtyList.length)
+			if(orderProductIdQtyList.length==2){
+				var orderProductQty=orderProductIdQtyList[1];
+				var price= $("#order_price"+orderProductId).val()		
+				var tPrice= price * orderProductQty
+				orderTotal=orderTotal+tPrice
+			}		
+		}
+		localStorage.orderTotal=orderTotal.toFixed(2)
+		//alert (localStorage.orderTotal)
+		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' BDT');
 
 		
 	}
@@ -2351,7 +2388,7 @@ function cart_data() {
 		$('#item_combo_id_lv_cart').empty();
 		$('#item_combo_id_lv_cart').append(localStorage.product_tbl_cart);
 		
-		var show_total="Total Order Amount: "+localStorage.total_value + " BDT" +"</br> <font style='font-size:11px'> Regular Discount Applicable on: "+total_without_promo + " BDT </font>" 
+		var show_total="Total Order Amount: "+localStorage.total_value + " BDT" +"</br> <font style='font-size:11px'> Regular Discount Applicable on: "+total_without_promo.toFixed(2) + " BDT </font>" 
 		localStorage.show_total=show_total;
 		
 		
