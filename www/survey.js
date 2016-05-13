@@ -2159,14 +2159,17 @@ function getOrder_load(){
 		var orderProductIdQtyList=orderProductList[j].split('<fd>');
 		if(orderProductIdQtyList.length==2){
 			var orderProductId=orderProductIdQtyList[0];
-			var orderProductQty=orderProductIdQtyList[1];		
+			var orderProductQty=orderProductIdQtyList[1];	
 			$("#order_qty"+orderProductId).val(orderProductQty);
-			var price= $("#order_price"+orderProductId).val()
-			var tPrice= price * orderProductQty
+			var product_price=$("#order_price"+orderProductId).val(); 
+			var tPrice= parseFloat(product_price)* parseFloat(orderProductQty);
 			orderTotal=orderTotal+tPrice
 		}		
 	}
 	localStorage.orderTotal=orderTotal.toFixed(2)
+	
+	
+	
 	
 	$("#orderTotalShow").html('Total: '+localStorage.orderTotal+' BDT');
 	
@@ -2301,16 +2304,17 @@ function getOrderData_keyup(product_id){
 	var orderProductLength=orderProductList.length;
 		var orderTotal=0
 		for (var j=0; j < orderProductLength; j++){
-			var orderProductIdQtyList=orderProductList[j].split('<fd>');
-			//alert (orderProductIdQtyList.length)
-			if(orderProductIdQtyList.length==2){
-				var orderProductQty=orderProductIdQtyList[1];
-				var price= $("#order_price"+product_id).val()		
-				var tPrice= price * orderProductQty
-				orderTotal=orderTotal+tPrice
-			}		
-		}
-		localStorage.orderTotal=orderTotal.toFixed(2)
+		var orderProductIdQtyList=orderProductList[j].split('<fd>');
+		if(orderProductIdQtyList.length==2){
+			var orderProductId=orderProductIdQtyList[0];
+			var orderProductQty=orderProductIdQtyList[1];	
+			
+			var product_price=$("#order_price"+orderProductId).val(); 
+			var tPrice= parseFloat(product_price)* parseFloat(orderProductQty);
+			orderTotal=orderTotal+tPrice
+		}		
+	}
+	localStorage.orderTotal=orderTotal.toFixed(2)
 		
 		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' BDT');
 
