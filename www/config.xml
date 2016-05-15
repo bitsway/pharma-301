@@ -22,7 +22,7 @@
         permission on your app, which PhoneGap requires.
     -->
 	<!--
-    <preference name="permissions"                value="none"/>
+    <preference name="permissions"           value='cli-5.1.1'/>
 	-->
 
     <!-- Customize your app and platform with the preference element. -->
