@@ -1770,6 +1770,8 @@ function addMarketList() {
 }
 function marketNextLV(lvalue) {
 	$("#unschedule_market_combo_id").val(lvalue);
+	
+	
 	getLocationInfo();
 	if (localStorage.doctor_flag==1){
 		marketNext_doc();
@@ -4959,13 +4961,14 @@ function searchProduct() {
 	
 	$("#item_codeSearch").val('');
 }
-function searchProductCode() {
-	var filter  = $("#item_codeSearch").val().toUpperCase();
+
+function searchProductChar(char) {
+	var filter  = char;
 	
-	 var lis =document.getElementById("item_combo_id_lv").getElementsByTagName("li");
-	//alert (lis.length);
+	var lis =document.getElementById("item_combo_id_lv").getElementsByTagName("li");
+	//alert (filter);
 	for (var i = 0; i < lis.length; i++) {
-		var name = lis[i].getElementsByClassName('itemCode')[0].innerHTML;
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
 		//alert (name)
 		if (name.toUpperCase().indexOf(filter) == 0) 
 			lis[i].style.display = 'list-item';
