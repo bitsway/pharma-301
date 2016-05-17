@@ -2396,7 +2396,7 @@ function cart_data() {
 		$('#item_combo_id_lv_cart').append(localStorage.product_tbl_cart);
 		
 		
-		var total_without_promo_vat=(17.39/100)*(parseFloat(total_without_promo))
+		var total_without_promo_vat=(17.99/100)*(parseFloat(total_without_promo))
 		var total_without_promo_show=parseFloat(total_without_promo)-parseFloat(total_without_promo_vat)
 		
 		var show_total="Total Order Amount: "+localStorage.total_value + " BDT" +"</br> <font style='font-size:11px'> Regular Discount Applicable on: "+total_without_promo_show.toFixed(2) + " BDT </font>" 
