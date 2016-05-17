@@ -1036,10 +1036,10 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+  //var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -2399,7 +2399,7 @@ function cart_data() {
 		var total_without_promo_vat=(17.99/100)*(parseFloat(total_without_promo))
 		var total_without_promo_show=parseFloat(total_without_promo)-parseFloat(total_without_promo_vat)
 		
-		var show_total="Total Order Amount: "+localStorage.total_value + " BDT" +"</br> <font style='font-size:11px'> Regular Discount Applicable on: "+total_without_promo_show.toFixed(2) + " BDT </font>" 
+		var show_total="Total Order Amount : "+localStorage.total_value + " TK (CPP)" +"</br> <font style='font-size:11px'> Regular Discount Applicable on : "+total_without_promo_show.toFixed(2) + " TK (TP)</font>" 
 		localStorage.show_total=show_total;
 		
 		
