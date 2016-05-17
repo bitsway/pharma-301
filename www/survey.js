@@ -1036,10 +1036,10 @@ function check_user() {
 	//Main
 
 	
-	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  //var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -2173,7 +2173,7 @@ function getOrder_load(){
 	
 	
 	
-	$("#orderTotalShow").html('Total: '+localStorage.orderTotal+' BDT');
+	$("#orderTotalShow").html('Total: '+localStorage.orderTotal+' TK');
 	
 }
 function getOrder(){	
@@ -2318,7 +2318,7 @@ function getOrderData_keyup(product_id){
 	}
 	localStorage.orderTotal=orderTotal.toFixed(2)
 		
-		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' BDT');
+		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' TK');
 
 		
 	}
@@ -2551,8 +2551,8 @@ function getCartData_keyup(product_id){
 		//alert (localStorage.productOrderStr)
 		localStorage.total_value=total_value.toFixed(2);
 		
-		$("#product_total_cart").html("Total Order Amount: "+localStorage.total_value + " BDT");
-		$("#product_total_last").html("Total Order Amount: "+localStorage.total_value + " BDT");
+		$("#product_total_cart").html("Total Order Amount: "+localStorage.total_value + " TK");
+		$("#product_total_last").html("Total Order Amount: "+localStorage.total_value + " TK");
 
 	}
 		
