@@ -490,7 +490,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <!--<td width="10%" align="left" onClick="page_visit()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	-->
-            <td align="left" width="30px" style="color:#000"> 
+           <!-- <td align="left" width="30px" style="color:#000"> 
            <select id="item_combo" style=" width:40px"data-native-menu="false" onChange="comboSearch()" >
                         <option value="A" >A</option>
                         <option value="B" >B</option>
@@ -519,11 +519,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         <option value="Y" >Y</option>
                         <option value="Z" >Z</option>
                 </select>
-                </td><td>
+                </td>-->
+                <td>
                 
                  <input  type="text" id="item_combo_id" name="item_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search by Name" onKeyUp="searchProduct()"  />
             </td>
-            <td width="15%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" >&nbsp;&nbsp;</td> 
+            <td><div id="orderTotalShow" style="color:#FFF" align="center"></div></td>
+            <td width="20%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" >&nbsp;&nbsp;</td> 
           </tr>
         </table>
 </header> 
@@ -534,20 +536,18 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
 				
 			
-				
-				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+				<div id="err_order_item" style="color:#C00"></div>
                 
             	
                       
                 
                 <table width="100%" border="0"   >
                 <tr>
-                <td>
-                 <div id="marketSearchProduct"><span class="market" style="font-size:16px;color:#009191" ></span></div>   
-				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  style="font-size:16px; color:#005CB9" ></span></div>
-				<br/> 
-                </td>
-                <td style="vertical-align:top" rowspan="3">
+                <td width="90%"  style="vertical-align:top;overflow:scroll; height:700px; display:block">
+                 <ul class="list" id="item_combo_id_lv" >	</ul>
+                 </td>
+                
+                 <td style="vertical-align:top" >
                     <table >
                     <tr  onClick="searchProductChar('A')">
                     <td height="20px" >A</td>
@@ -660,20 +660,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     </table>
                 </td>
                 </tr>
-                <tr>
-                <td>
-                 <div id="err_order_item" style="color:#C00"></div>
-                </td>
-               
-                </tr>
-                
-                <tr>
-                <td width="90%"  style="vertical-align:top;overflow:scroll; height:700px; display:block">
-                 <ul class="list" id="item_combo_id_lv" >	</ul>
-                 </td>
-                
-                
-                </tr>
                 </table>
      
 
@@ -708,9 +694,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <table width="100%" border="0">
   <tr>
     <td align="left"> <a onClick="page_visit()" class="icon left" ></a></td>
-    <td align="left"> <div id="orderTotalShow" style="color:#FFF"></div></td>
-    <td align="right" width="150px">
-				<input  type="number" id="item_codeSearch" name="item_codeSearch" style="width:150px; color:#000; font-weight:normal" placeholder="Search by ID" onKeyUp="searchProductCode()"  />
+    
+    <td align="left" width="80%" style="color:#FFF">
+    <span class="visit_client"  style="font-size:12px; color:#FFF"  style="font-size:16px; color:#005CB9" ></span> ( <span class="market" style="font-size:12px;color:#FFF" ></span> )   
+				
+				<!--<input  type="number" id="item_codeSearch" name="item_codeSearch" style="width:150px; color:#000; font-weight:normal" placeholder="Search by ID" onKeyUp="searchProductCode()"  />-->
       			 
          </td>
   </tr>
