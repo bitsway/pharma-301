@@ -2318,7 +2318,7 @@ function getOrderData_keyup(product_id){
 	}
 	localStorage.orderTotal=orderTotal.toFixed(2)
 		
-		$("#orderTotalShow").html('Total: '+localStorage.orderTotal+ ' TK');
+		$("#orderTotalShow").html(localStorage.orderTotal+ ' TK');
 
 		
 	}
