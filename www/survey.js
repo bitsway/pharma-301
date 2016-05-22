@@ -1039,7 +1039,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -2359,6 +2359,7 @@ function cart_data() {
 		var product_tbl_cart_str='';
 		var total_value=0
 		var total_without_promo=0
+		var total_tp=0
 		for (var j=0; j < orderProductLength; j++){
 			var orderProductIdQtyList=orderProductList[j].split('<fd>');
 			
@@ -2377,13 +2378,14 @@ function cart_data() {
 				var prom_flag=1
 				//alert (promo_str_cart.length)
 				
+				
 				if (promo_str_cart.length < 5){
 					total_without_promo=total_without_promo+total
 					prom_flag=0
 				}
 				//alert (parseFloat(total_without_promo))
 				total_value=total_value+total;
-				
+				total_tp=total_tp+total
 				//product_tbl_cart_str=product'_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'</li>'
 				//alert (product_name)
 				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0"> </td><td>&nbsp;</td><td  style="text-align:left;">'+ product_name.toUpperCase()+' | '+orderProductId+' | '+product_price+' '+'<span style="color:#600">'+stock_str_cart+'</span>'+'</br> <span style="background-color:#FFFF53; color:#F00;font-size:12px">'+promo_str_cart+'</span>'+'<input  type="hidden" id="cart_vat'+orderProductId+'"  value="'+prom_flag+'" >'+'</td></tr>'+'</table>'+'</li>'
@@ -2397,6 +2399,8 @@ function cart_data() {
 		
 		localStorage.product_tbl_cart=product_tbl_cart_str;//+'</table>';
 		localStorage.total_value=total_value.toFixed(2);
+		localStorage.total_tp=total_tp.toFixed(2);
+		
 		$('#item_combo_id_lv_cart').empty();
 		$('#item_combo_id_lv_cart').append(localStorage.product_tbl_cart);
 		
@@ -2404,10 +2408,11 @@ function cart_data() {
 		//var total_without_promo_vat=(17.39/100)*(parseFloat(total_without_promo))
 		var total_without_promo_vat=total_without_promo
 		var total_without_promo_show=total_without_promo
+		
 		//var total_without_promo_show=parseFloat(total_without_promo)-parseFloat(total_without_promo_vat)
 		
 		
-		var show_total="Total Order Amount : "+localStorage.total_value + " TK (CPP)" +"</br> <font style='font-size:11px'> Regular Discount Applicable on : "+total_without_promo_show.toFixed(2) + " TK (TP)</font>" 
+		var show_total="Total Order Amount CPP: "+localStorage.total_value + " TK <font style='font-size:11px'>TP:"+localStorage.total_tp+" TK" +"</font></br> <font style='font-size:11px'> Regular Discount Applicable on TP : "+total_without_promo_show.toFixed(2) + " TK </font>" 
 		localStorage.show_total=show_total;
 		
 		
@@ -2539,6 +2544,7 @@ function getCartData_keyup(product_id){
 		
 		var total_value=0
 		var tp_total=0
+		var total_tp_all=0
 		for (var j=0; j < orderProductLength; j++){
 			var orderProductIdQtyList=orderProductList[j].split('<fd>');
 			if(orderProductIdQtyList.length==2){
@@ -2550,10 +2556,11 @@ function getCartData_keyup(product_id){
 				var vat_flag=$("#cart_vat"+orderProductId).val();
 				var total= parseFloat(product_price)* parseFloat(orderProductQty);
 				total_value=total_value+total;
-				
+				var vat=$("#order_vat"+orderProductId).val(); 
+				var tp=(parseFloat(product_price)-parseFloat(vat))*orderProductQty
+				total_tp_all=total_tp_all+tp
+				//alert (total_value)
 				if (vat_flag==0){
-					var vat=$("#order_vat"+orderProductId).val(); 
-					var tp=(parseFloat(product_price)-parseFloat(vat))*orderProductQty
 					tp_total=tp_total+tp
 				}
 				
@@ -2564,7 +2571,9 @@ function getCartData_keyup(product_id){
 		
 		
 		
-		var show_total="Total Order Amount : "+localStorage.total_value + " TK (CPP)" +"</br> <font style='font-size:11px'> Regular Discount Applicable on : "+tp_total.toFixed(2) + " TK (TP)</font>" 
+		var show_total="Total Order Amount CPP: "+total_value.toFixed(2) + " TK <font style='font-size:11px'>TP: "+total_tp_all.toFixed(2) +"</font></br> <font style='font-size:11px'> Regular Discount Applicable on TP: "+tp_total.toFixed(2) + " TK </font>" 
+		
+		
 		//localStorage.total_value=show_total//total_value.toFixed(2);
 		
 		localStorage.show_total=show_total;
