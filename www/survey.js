@@ -1039,7 +1039,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -2370,6 +2370,7 @@ function cart_data() {
 				var product_name=$("#order_name"+orderProductId).val(); 
 				var product_price=$("#order_price"+orderProductId).val(); 
 				var product_vat=$("#order_vat"+orderProductId).val(); 
+				var totalPrice= parseFloat(product_price)* parseFloat(orderProductQty);
 				var total= (parseFloat(product_price)-parseFloat(product_vat))* parseFloat(orderProductQty);
 				
 				var promo_str_cart=$('#order_promo'+orderProductId).val();
@@ -2384,7 +2385,7 @@ function cart_data() {
 					prom_flag=0
 				}
 				//alert (parseFloat(total_without_promo))
-				total_value=total_value+total;
+				total_value=total_value+totalPrice;
 				total_tp=total_tp+total
 				//product_tbl_cart_str=product'_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'</li>'
 				//alert (product_name)
