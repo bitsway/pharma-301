@@ -1039,7 +1039,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -1478,11 +1478,12 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														var product_name2=productArray2[1];
 														var product_price=productArray2[2];
 														var product_str=productArray2[3];
+														var vat=productArray2[4];
 														
 														
 														var product_qty='';																		
 														
-														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
+														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_vat'+product_id2+'" value="'+vat+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....');
 														
@@ -2367,21 +2368,25 @@ function cart_data() {
 				
 				var product_name=$("#order_name"+orderProductId).val(); 
 				var product_price=$("#order_price"+orderProductId).val(); 
-				var total= parseFloat(product_price)* parseFloat(orderProductQty);
+				var product_vat=$("#order_vat"+orderProductId).val(); 
+				var total= (parseFloat(product_price)-parseFloat(product_vat))* parseFloat(orderProductQty);
 				
 				var promo_str_cart=$('#order_promo'+orderProductId).val();
 				var stock_str_cart=$('#stockShow'+orderProductId).text(); 
 				
-				
+				var prom_flag=1
 				//alert (promo_str_cart.length)
+				
 				if (promo_str_cart.length < 5){
 					total_without_promo=total_without_promo+total
+					prom_flag=0
 				}
+				//alert (parseFloat(total_without_promo))
 				total_value=total_value+total;
 				
 				//product_tbl_cart_str=product'_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'</li>'
 				//alert (product_name)
-				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0"> </td><td>&nbsp;</td><td  style="text-align:left;">'+ product_name.toUpperCase()+' | '+orderProductId+' | '+product_price+' '+'<span style="color:#600">'+stock_str_cart+'</span>'+'</br> <span style="background-color:#FFFF53; color:#F00;font-size:12px">'+promo_str_cart+'</span>'+'</td></tr>'+'</table>'+'</li>'
+				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0"> </td><td>&nbsp;</td><td  style="text-align:left;">'+ product_name.toUpperCase()+' | '+orderProductId+' | '+product_price+' '+'<span style="color:#600">'+stock_str_cart+'</span>'+'</br> <span style="background-color:#FFFF53; color:#F00;font-size:12px">'+promo_str_cart+'</span>'+'<input  type="hidden" id="cart_vat'+orderProductId+'"  value="'+prom_flag+'" >'+'</td></tr>'+'</table>'+'</li>'
 				
 				}
 		
@@ -2396,8 +2401,11 @@ function cart_data() {
 		$('#item_combo_id_lv_cart').append(localStorage.product_tbl_cart);
 		
 		
-		var total_without_promo_vat=(17.39/100)*(parseFloat(total_without_promo))
-		var total_without_promo_show=parseFloat(total_without_promo)-parseFloat(total_without_promo_vat)
+		//var total_without_promo_vat=(17.39/100)*(parseFloat(total_without_promo))
+		var total_without_promo_vat=total_without_promo
+		var total_without_promo_show=total_without_promo
+		//var total_without_promo_show=parseFloat(total_without_promo)-parseFloat(total_without_promo_vat)
+		
 		
 		var show_total="Total Order Amount : "+localStorage.total_value + " TK (CPP)" +"</br> <font style='font-size:11px'> Regular Discount Applicable on : "+total_without_promo_show.toFixed(2) + " TK (TP)</font>" 
 		localStorage.show_total=show_total;
@@ -2524,11 +2532,13 @@ function getCartData_keyup(product_id){
 		localStorage.productOrderStr=productOrderStr
 		
 		//================price===========
+		//cart_data()
 		if (localStorage.productOrderStr.length >0){
 		var orderProductList=localStorage.productOrderStr.split('<rd>');
 		var orderProductLength=orderProductList.length;
 		
 		var total_value=0
+		var tp_total=0
 		for (var j=0; j < orderProductLength; j++){
 			var orderProductIdQtyList=orderProductList[j].split('<fd>');
 			if(orderProductIdQtyList.length==2){
@@ -2537,9 +2547,15 @@ function getCartData_keyup(product_id){
 				
 				
 				var product_price=$("#order_price"+orderProductId).val(); 
+				var vat_flag=$("#cart_vat"+orderProductId).val();
 				var total= parseFloat(product_price)* parseFloat(orderProductQty);
 				total_value=total_value+total;
-
+				
+				if (vat_flag==0){
+					var vat=$("#order_vat"+orderProductId).val(); 
+					var tp=(parseFloat(product_price)-parseFloat(vat))*orderProductQty
+					tp_total=tp_total+tp
+				}
 				
 				
 				}
@@ -2548,11 +2564,18 @@ function getCartData_keyup(product_id){
 		
 		
 		
-		//alert (localStorage.productOrderStr)
-		localStorage.total_value=total_value.toFixed(2);
+		var show_total="Total Order Amount : "+localStorage.total_value + " TK (CPP)" +"</br> <font style='font-size:11px'> Regular Discount Applicable on : "+tp_total.toFixed(2) + " TK (TP)</font>" 
+		//localStorage.total_value=show_total//total_value.toFixed(2);
 		
-		$("#product_total_cart").html("Total Order Amount: "+localStorage.total_value + " TK");
-		$("#product_total_last").html("Total Order Amount: "+localStorage.total_value + " TK");
+		localStorage.show_total=show_total;
+		
+		//alert (show_total)
+		$("#product_total_cart").html(localStorage.show_total);
+		$("#product_total_last").html(localStorage.show_total);
+		$("#order_total_show").html(localStorage.show_total);
+		
+		//$("#product_total_cart").html("Total Order Amount: "+localStorage.total_value + " TK");
+		//$("#product_total_last").html("Total Order Amount: "+localStorage.total_value + " TK");
 
 	}
 		
