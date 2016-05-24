@@ -250,7 +250,7 @@ $.afui.useOSThemes=false;
 
     //if($.os.ios)
         $.afui.animateHeader(true);
-		getLocation()
+	//	getLocation()
 
 
 
@@ -2037,7 +2037,7 @@ function marketNext_sup() {
 //--------------------------------- Unsheduled visit: retailer next
 function marketRetailerNextLV(lvalue) {
 	$("#unscheduled_m_client_combo_id").val(lvalue);
-	//alert(lvalue);
+	getLocationInfo();
 	if(localStorage.doctor_flag==1){
 		marketRetailerNext_doc();	
 	}
