@@ -570,7 +570,8 @@ function reload_function() {
 	location.reload();
 }
 function getLocationInfo() { //location
-	
+	$("#lat").val(0);
+	$("#longitude").val(0);
 	
 	
 	$("#wait_image_visit_submit").show()
@@ -811,8 +812,8 @@ function set_confirm_page(){
 	$("#visit_location").show();
 	
 	
-	$("#lat").val(0);
-	$("#longitude").val(0);
+	//$("#lat").val(0);
+	//$("#longitude").val(0);
 	
 	$("#lat_p").val(0);
 	$("#long_p").val(0);
@@ -2037,7 +2038,7 @@ function marketNext_sup() {
 //--------------------------------- Unsheduled visit: retailer next
 function marketRetailerNextLV(lvalue) {
 	$("#unscheduled_m_client_combo_id").val(lvalue);
-	getLocationInfo();
+	//getLocationInfo();
 	if(localStorage.doctor_flag==1){
 		marketRetailerNext_doc();	
 	}
@@ -2049,8 +2050,8 @@ function marketRetailerNextLV(lvalue) {
 	
 function marketRetailerNext() {
 	
-	$("#lat").val(0);
-	$("#longitude").val(0);
+	//$("#lat").val(0);
+	//$("#longitude").val(0);
 	//localStorage.location_detail=''
 	$("#err_m_retailer_next").text("");
 	var visit_client=$("#unscheduled_m_client_combo_id").val();		
