@@ -2389,7 +2389,7 @@ function cart_data() {
 				total_tp=total_tp+total
 				//product_tbl_cart_str=product'_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'</li>'
 				//alert (product_name)
-				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0"> </td><td>&nbsp;</td><td  style="text-align:left;">'+ product_name.toUpperCase()+' | '+orderProductId+' | '+product_price+' '+'<span style="color:#600">'+stock_str_cart+'</span>'+'</br> <span style="background-color:#FFFF53; color:#F00;font-size:12px">'+promo_str_cart+'</span>'+'<input  type="hidden" id="cart_vat'+orderProductId+'"  value="'+prom_flag+'" >'+'</td></tr>'+'</table>'+'</li>'
+				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item_cart(\''+orderProductId+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0"> </td><td>&nbsp;</td><td  style="text-align:left;">'+ product_name.toUpperCase()+' | '+orderProductId+' | '+product_price+' '+'<span style="color:#600">'+stock_str_cart+'</span>'+'</br> <span style="background-color:#FFFF53; color:#F00;font-size:12px">'+promo_str_cart+'</span>'+'<input  type="hidden" id="cart_vat'+orderProductId+'"  value="'+prom_flag+'" >'+'</td></tr>'+'</table>'+'</li>'
 				
 				}
 		
@@ -5021,6 +5021,12 @@ function searchProductChar(char) {
 function tr_item(product_id){	
 	//alert (product_id);
 	var order_qty_text="#order_qty"+product_id
+	$(order_qty_text).focus();
+
+	}
+function tr_item_cart(product_id){	
+	//alert (product_id);
+	var order_qty_text="#cart_qty"+product_id
 	$(order_qty_text).focus();
 
 	}
