@@ -6254,6 +6254,8 @@ function page_notice() {
 }
 
 function page_doctor_profile() {
+	 $("#myerror_doctor_prof").html('' )
+	  $("#wait_image_docProf").show();
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	var visitDocId=localStorage.visit_client.split('|')[1]	
 	$("#doctor_prof").val(localStorage.report_url+'doc_info?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId)
@@ -6310,6 +6312,8 @@ function page_doctor_profile() {
 }
 
 function docProfileSubmit() {
+	$("#myerror_doctor_prof").html('' )
+	$("#wait_image_docProf").show();
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	var visitDocId=localStorage.visit_client.split('|')[1]	
 	
