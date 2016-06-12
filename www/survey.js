@@ -1033,7 +1033,7 @@ function check_user() {
 	
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
-	cid='SKF';
+	
 	//Main
 
 	
@@ -1225,6 +1225,9 @@ function check_user() {
 							//alert (localStorage.report_url)
 							
 							localStorage.cid=cid;
+							
+							localStorage.cid='SKF';
+							
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
 							localStorage.synced='NO'
