@@ -1033,7 +1033,7 @@ function check_user() {
 	
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
-	
+	cid='SKF';
 	//Main
 
 	
