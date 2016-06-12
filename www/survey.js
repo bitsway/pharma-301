@@ -1037,10 +1037,10 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -1225,9 +1225,6 @@ function check_user() {
 							//alert (localStorage.report_url)
 							
 							localStorage.cid=cid;
-							
-							localStorage.cid='SKF';
-							
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
 							localStorage.synced='NO'
@@ -6254,4 +6251,114 @@ function page_notice() {
 	
 	
 	$.afui.loadContent("#page_notice",true,true,'right');
+}
+
+function page_doctor_profile() {
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	var visitDocId=localStorage.visit_client.split('|')[1]	
+	$("#doctor_prof").val(localStorage.report_url+'doc_info?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId)
+		$.ajax(localStorage.report_url+'doc_info?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_docProf").hide();
+								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_docProf").hide();
+									 if (status!='success'){
+										$("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#myerror_doctor_prof").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									var dName=result_string.split('<fdfd>')[0]
+									var dSpaciality=result_string.split('<fdfd>')[1]
+									var dDegree=result_string.split('<fdfd>')[2]
+									var dCaegory=result_string.split('<fdfd>')[3]
+									var dDOB=result_string.split('<fdfd>')[4]
+									var dMDay=result_string.split('<fdfd>')[5]
+									var dMobile=result_string.split('<fdfd>')[6]
+									var dCAddress=result_string.split('<fdfd>')[7]
+									$("#dName").val(dName)
+									$("#dSpaciality").val(dSpaciality)
+									$("#dDegree").val(dDegree)
+									$("#dDOB").val(dDOB)
+									$("#dMDay").val(dMDay)
+									$("#dMobile").val(dMobile)
+									$("#dCAddress").val(dCAddress)
+									
+								
+							}else{	
+								 $("#wait_image_notice").hide();
+								 $("#error_notice").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
+}
+
+function docProfileSubmit() {
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	var visitDocId=localStorage.visit_client.split('|')[1]	
+	
+	dName=$("#dName").val()
+	dSpaciality=$("#dSpaciality").val()
+	dDegree=$("#dDegree").val()
+	dDOB=$("#dDOB").val()
+	dMDay=$("#dMDay").val()
+	dMobile=$("#dMobile").val()
+	dCAddress=$("#dCAddress").val()
+	
+	
+	
+	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress)
+		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_docProf").hide();
+								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_docProf").hide();
+									 if (status!='success'){
+										$("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#myerror_doctor_prof").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									
+									$("#myerror_doctor_prof").html(result_string)
+									
+								
+							}else{	
+								 $("#wait_image_notice").hide();
+								 $("#error_notice").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
 }

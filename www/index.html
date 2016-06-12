@@ -357,7 +357,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
                 <br/>
           
-                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="hidden">
+                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="text">
                 <div id="errorChkVSubmit_1" style="color:#C00"></div>
 				<div id="errorChkVSubmit" style="color:#C00"></div>
 			<img src="" width="128" height="128" alt="" id="myImage" style="display:none">
@@ -898,12 +898,26 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 					</br>
                
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
-					  <tr>
+                <tr>
 						<td>Visited With</td>
+						<td ></td>
+						<td ></td>
+                        <td ></td>
+                         <td ></td>
+                         
+					  </tr>
+					  <tr>
+						
 						<td ><input type="radio" name="v_with" value='Self' id="Self" >  <label for="Self">Self</label>
                          </td>
-						<td > <input type="radio" name="v_with" value='Supervisor' id="Supervisor" >  <label for="Supervisor">Supervisor</label>
+						<td > <input type="radio" name="v_with" value='MSO' id="MSO" >  <label for="MSO">MSO</label>
                         </td>
+                        <td ><input type="radio" name="v_with" value='FM/TL' id="FMTL" >  <label for="FMTL">FM/TL</label>
+                         </td>
+                         <td ><input type="radio" name="v_with" value='RSM' id="RSM" >  <label for="RSM">RSM</label>
+                         </td>
+                         <td ><input type="radio" name="v_with" value='NSM' id="NSM'" >  <label for="NSM'">NSM'</label>
+                         </td>
 					  </tr>
 			  </table>
 
@@ -911,7 +925,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </form>
                 </br></br>
                 
-                <input type="text" name="doc_feedback"  maxlength="50"  id="doc_feedback" placeholder="Feedback/Note"  >
+                <input type="text" name="doc_feedback"  maxlength="50"  id="doc_feedback" placeholder="Feedback/Note/Place of Work"  >
                 
 				
 			            <br/>
@@ -949,14 +963,144 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-        <a onClick="homePage()"  ></a>
+        <a href="#"  onclick="$.afui.drawer.show('#docInfo','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
          </footer>
+         
+         
+         
+         <nav id="docInfo" style="z-index:5; background-color:#FFF">
+            
+                <header>
+                   
+                </header>
+                <br>
+                 
+
+          	 <div onClick="page_doctor_profile()" align="center"> <img style="height:70px; width:70px" src="editProfile.png"></div>
+
+
+           
+        </nav>
 
     </div>  
     
-    
-    
- 
+  <!--  ====================Doc profile Start===============================-->
+ <div class="view" id="page_doctor_profileView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor Profile</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doctor_profile">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			<img id="wait_image_docProf" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctor_prof" style="color:#C00"></div>
+            <input type="hidden" name="doctor_prof"    id="doctor_prof" placeholder="Name"  >
+            
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><input type="text" name="dName"   id="dName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDegree"   id="dDegree" placeholder="Degree"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  ></td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><input type="date" name="dDOB"   id="dDOB" placeholder="DOB"  ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><input type="date" name="dMDay"   id="dMDay" placeholder="Marriage Daye"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><input type="text" name="dMobile"  maxlength="50"  id="dMobile" placeholder="Mobile"  ></td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td>Chamber Address</td>
+                     <td>:</td>
+                    <td><input type="text" name="dCAddress"   id="dCAddress" placeholder="Chamber Address"  ></td>
+                  </tr>
+                </table>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_doc_profile" onClick="docProfileSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		             <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 
+         </td>
+  </tr>
+</table>
+</footer>
+    </div>      
+ <!--==========================Doc profile End===================================-->
 <!-- //========================Campaign Start=====================-->
  
  
