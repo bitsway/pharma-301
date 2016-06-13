@@ -45,9 +45,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 
 
-
-
-
 <body >
     <div id="splashscreen" class='ui-loader heavy'>
                 M-Reporting
@@ -1037,7 +1034,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>Category</td>
                      <td>:</td>
-                    <td><input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  ></td>
+                    <td><!--<input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  >-->
+                     
+                        <select name="dCategory" id="dCategory">
+                          
+                        </select>
+                  </td>
                   </tr>
                   <tr>
                     <td>DOB</td>
@@ -1058,7 +1060,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                <tr>
                     <td>Chamber Address</td>
                      <td>:</td>
-                    <td><input type="text" name="dCAddress"   id="dCAddress" placeholder="Chamber Address"  ></td>
+                    <td><textarea name="dCAddress" id="dCAddress"  rows="3" placeholder="Chamber Address"></textarea>
+                   </td>
                   </tr>
                 </table>
 				<br>
