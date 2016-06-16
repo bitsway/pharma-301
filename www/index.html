@@ -354,7 +354,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
                 <br/>
           
-                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="text">
+                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="hidden">
                 <div id="errorChkVSubmit_1" style="color:#C00"></div>
 				<div id="errorChkVSubmit" style="color:#C00"></div>
 			<img src="" width="128" height="128" alt="" id="myImage" style="display:none">
@@ -930,7 +930,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
 			            <br/>
                          <div id="errorChkVSubmit_doc" style="color:#C00"></div>
-                          <!--<input type="text" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >-->
+                          <input type="hidden" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
                         <div id="checkLocation_doc" style="color:#066"></div>
                     
         				<div id="visit_location_doc">	
@@ -1035,6 +1035,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Category</td>
                      <td>:</td>
                     <td><!--<input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  >-->
+                     
                         <select name="dCategory" id="dCategory">
                           
                         </select>
@@ -1062,6 +1063,19 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td><textarea name="dCAddress" id="dCAddress"  rows="3" placeholder="Chamber Address"></textarea>
                    </td>
                   </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDistrict"  maxlength="50"  id="dDistrict" placeholder="District"  >
+                   </td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><input type="text" name="dThana"  maxlength="50"  id="dThana" placeholder="Thana"  >
+                   </td>
+                  </tr>
+                  
                 </table>
 				<br>
                 <br>

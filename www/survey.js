@@ -1288,7 +1288,7 @@ function check_user() {
 													localStorage.user_type=resultArray[16];
 													
 													localStorage.market_doctor=resultArray[17];
-													
+													//$("#error_logintext").val(localStorage.market_doctor)
 													localStorage.save_visit_limit=resultArray[18];
 													//alert (localStorage.save_visit_limit)
 													localStorage.visit_location_flag=resultArray[19];
@@ -4189,15 +4189,24 @@ function visitSubmit_doc(){
 		campaign_submit='';
 		
 		for ( i=0; i < campaignListLength; i++){		
-		
+			
+			var camp_name=''
+			if (campaignList[i] !=''){
+				 camp_name=$("#doc_camp_name"+campaignList[i]).val();
+			}
 			if (campaign_submit==''){
 				campaign_submit=campaignList[i]
 			}
 			else{
 				campaign_submit=campaign_submit+','+campaignList[i]
 			}
+			if (campaignList[i] !=''){
+				campaign_submit=campaign_submit+'|'+camp_name
+			}
+			
 		}
 	}
+	//alert (campaign_submit)
 	//----------------------- Sample check
 	//$("#errorChkVSubmit").html(sample_doc_Str);
 	//alert (sample_doc_Str.indexOf('undefined'));
@@ -4210,16 +4219,25 @@ function visitSubmit_doc(){
 		for ( i=0; i < sampleListLength; i++){		
 			sample_single=sampleList[i]
 			sample_single_list=sample_single.split('<fd>');
+			var sample_name=''
+			if (sample_single_list[0] !=''){
+				sample_name=$("#sample_name"+sample_single_list[0]).val();
+			}
+			//sample_name=sample_name.replace('undefined','')
 			
 			if (sample_submit==''){
-				sample_submit=sample_single_list[0]+','+sample_single_list[1]
+				sample_submit=sample_single_list[1]+','+sample_single_list[0]
 			}
 			else{
-				sample_submit=sample_submit+'.'+sample_single_list[0]+','+sample_single_list[1]
+				sample_submit=sample_submit+'.'+sample_single_list[1]+','+sample_single_list[0]
 			}
+			if (sample_single_list[0] !=''){
+				sample_submit=sample_submit+'|'+sample_name
+			}
+			
 		}
 	}
-	//alert (sample_doc_Str);
+	
 	//----------------------- Gift check
 	if (gift_doc_Str.indexOf('undefined')!=-1){
 		gift_doc_Str=''
@@ -4230,16 +4248,24 @@ function visitSubmit_doc(){
 		gift_submit='';
 		for ( i=0; i < giftListLength; i++){	
 			gift_single=giftList[i];
-			gift_single_list=gift_single.split('<fd>');	
+			gift_single_list=gift_single.split('<fd>');
+			 
+			var gift_name=''
+			if (gift_single_list[0] !=''){
+				gift_name=$("#doc_gift_name"+sample_single_list[0]).val();
+			}
 			if (gift_submit==''){
-				gift_submit=gift_single_list[0]+','+gift_single_list[1]
+				gift_submit=gift_single_list[1]+','+gift_single_list[0]+'|'+gift_name
 			}
 			else{
-				gift_submit=gift_submit+'.'+gift_single_list[0]+','+gift_single_list[1]
+				gift_submit=gift_submit+'.'+gift_single_list[1]+','+gift_single_list[0]+'|'+gift_name
+			}
+			if (gift_single_list[0] !=''){
+				gift_submit=gift_submit+'|'+gift_name
 			}
 		}
 	}
-	
+	//alert (gift_submit)
 	
 	//----------------------- ppm check
 	if (ppm_doc_Str.indexOf('undefined')!=-1){
@@ -4248,44 +4274,39 @@ function visitSubmit_doc(){
 	}else{
 		var ppmList=ppm_doc_Str.split('<rd>');	
 		var ppmListLength=ppmList.length;	
+		
 		ppm_submit='';
 		for ( i=0; i < ppmListLength; i++){	
 			ppm_single=ppmList[i];
-			ppm_single_list=ppm_single.split('<fd>');	
+			ppm_single_list=ppm_single.split('<fd>');
+			var doc_ppm_name=''
+			if (ppm_single_list[0] !=''){
+				doc_ppm_name=$("#doc_ppm_name"+ppm_single_list[0]).val();
+			}
 			if (ppm_submit==''){
-				ppm_submit=ppm_single_list[0]+','+ppm_single_list[1]
+				ppm_submit=ppm_single_list[1]+','+ppm_single_list[0]//+'|'+doc_ppm_name
+				
 			}
 			else{
-				ppm_submit=ppm_submit+'.'+ppm_single_list[0]+','+ppm_single_list[1]
+				ppm_submit=ppm_submit+'.'+ppm_single_list[1]+','+ppm_single_list[0]//+'|'+doc_ppm_name
+			}
+			if (ppm_single_list[0] != ''){
+					ppm_submit=ppm_submit+'|'+doc_ppm_name
 			}
 		}
 	}
 	//-------------------------------
+	//alert (ppm_submit)
 	
 	
 	
-	
-	
-	//if (campaign_submit.indexOf('undefined')==-1){
-//		campaign_submit='';
-//		
-//	}
-//	if (gift_submit.indexOf('undefined')==-1){
-//		gift_submit='';
-//		
-//	}
-//	if (sample_submit.indexOf('undefined')==-1){
-//		sample_submit='';
-//		
-//	}
-//	if (ppm_submit.indexOf('undefined')==-1){
-//		ppm_submit='';
-//		
-//	}
+
 	//------------------------
 	campaign_submit=campaign_submit.replace('undefined','').replace(',.','');
 	gift_submit=gift_submit.replace('undefined','').replace(',.','');
+	
 	sample_submit=sample_submit.replace('undefined','').replace(',.','');
+	
 	notes=notes.replace('undefined','').replace(',.','');
 	ppm_submit=ppm_submit.replace('undefined','').replace(',.','');
 	
@@ -4375,8 +4396,8 @@ function visitSubmit_doc(){
 												
 												//$("#errorChkVSubmit").html(msg1);
 												
-											// $("#errorChkVSubmit_doc").html(localStorage.base_url+'doctor_visit_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id)
-											 //$("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id)
+											// $("#errorChkVSubmit_doc").html(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id)
+											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id)
 												// ajax-------
 												//alert (localStorage.location_error);
 											if ( localStorage.location_error==2){
@@ -4385,7 +4406,7 @@ function visitSubmit_doc(){
 											else {	
 												$("#visit_submit_doc").hide();
 												$("#wait_image_visit_submit_doc").show();	
-												$.ajax(localStorage.base_url+'doctor_visit_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id,{
+												$.ajax(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id,{
 										// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 										type: 'POST',
 										timeout: 30000,
