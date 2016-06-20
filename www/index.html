@@ -923,12 +923,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 		
                 </form>
-                </br></br>
-                
+                </br>
+                Others:</br>
+                <input type="text" name="doc_others"  maxlength="50"  id="doc_others" placeholder="Others"  >
+                </br>
                 <input type="text" name="doc_feedback"  maxlength="50"  id="doc_feedback" placeholder="Feedback/Note/Place of Work"  >
                 
 				
-			            <br/>
+			            <br/></br>
                          <div id="errorChkVSubmit_doc" style="color:#C00"></div>
                           <input type="hidden" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
                         <div id="checkLocation_doc" style="color:#066"></div>
@@ -1024,7 +1026,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>Specialty</td>
                      <td>:</td>
-                    <td><input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  ></td>
+                    <td><!--<input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  >-->
+                    <select name="dSpaciality" id="dSpaciality">
+                          
+                        </select>
+                    </td>
                   </tr>
                   <tr>
                     <td>Degree</td>
