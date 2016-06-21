@@ -5349,7 +5349,7 @@ function summary_report_doctor() {
 										
 											
 											//-----------------
-											$("#myerror_s_report_doctor").text("");
+											$("#myerror_s_report_doctor").html("");
 											
 											$("#report_header_doc").text("DCR Count");
 											$("#visit_count_doctor").html("<font style='font-size:15px; color:#666'>"+"visit Count:"+visit_count+"</font>");
@@ -5436,6 +5436,7 @@ function detail_report_doctor() {
 								
 								//-----------------
 								$("#err_retailer_date_next").text("");
+								$("#myerror_s_report_doctor").html("");
 								
 								$("#report_header_doc").text("DCR Detail");
 								
@@ -5487,24 +5488,24 @@ function summary_report_prescription() {
 								timeout: 30000,
 								error: function(xhr) {
 								$("#wait_image_prescription").hide();
-								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
+								$("#myerror_s_report_prescription").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									  $("#wait_image_prescription").hide();
 									 if (status!='success'){
-										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');
+										$("#myerror_s_report_prescription").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 								if (resultArray[0]=='FAILED'){
-											$("#myerror_s_report").text(resultArray[0]);	
+											$("#myerror_s_report_prescription").text(resultArray[0]);	
 											
 										}
 								else if (resultArray[0]=='SUCCESS'){	
-	
-														
+			
+								$("#myerror_s_report_prescription").html("");							
 								var result_string=resultArray[1];
 								
 																
@@ -5569,23 +5570,23 @@ function detail_report_prescription() {
 								timeout: 30000,
 								error: function(xhr) {	
 								$("#wait_image_prescription").hide();
-								$("#myerror_s_report").html('Network Timeout. Please check your Internet connection..');
+								$("#myerror_s_report_prescription").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									$("#wait_image_prescription").hide();
 									 if (status!='success'){
-										$("#myerror_s_report").html('Network Timeout. Please check your Internet connection...');
+										$("#myerror_s_report_prescription").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 								if (resultArray[0]=='FAILED'){
-											$("#myerror_s_report").text(resultArray[0]);	
+											$("#myerror_s_report_prescription").text(resultArray[0]);	
 											
 										}
 								else if (resultArray[0]=='SUCCESS'){
-														
+								$("#myerror_s_report_prescription").html('');							
 								var result_string=resultArray[1];
 								
 																
@@ -5726,7 +5727,7 @@ function s_order_summary_report() {
 								var order_value=resultList[2];
 							
 								//-----------------
-								$("#err_retailer_date_next").text("");
+								$("#myerror_s_report").html("");
 								
 								$("#report_header").text("Sales Call and Order Count");
 								$("#sales_call").html("<font style='font-size:15px; color:#666'>"+"Sales Call:"+"</div>"+sales_call);
@@ -5808,7 +5809,7 @@ function s_order_detail_report() {
 									//alert (result_string)
 									
 									//-----------------
-									$("#err_retailer_date_next").text("");
+									$("#myerror_s_report").html("");
 									$("#report_header").text("Sales Call and Order Detail");
 									
 									$("#sales_call").html("<font style='font-size:15px; color:#666'>"+"Sales Call:"+"</font>"+sales_call);
