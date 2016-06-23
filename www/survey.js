@@ -4398,8 +4398,8 @@ function visitSubmit_doc(){
 												
 												//$("#errorChkVSubmit").html(msg1);
 												
-											 $("#errorChkVSubmit_doc_t").html(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
-											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
+											// $("#errorChkVSubmit_doc_t").html(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
+											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
 												// ajax-------
 												//alert (localStorage.location_error);
 											if ( localStorage.location_error==2){
@@ -4408,7 +4408,7 @@ function visitSubmit_doc(){
 											else {	
 												$("#visit_submit_doc").hide();
 												$("#wait_image_visit_submit_doc").show();	
-												$.ajax(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others,{
+												$.ajax(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg=' +encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others,{
 										// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 										type: 'POST',
 										timeout: 30000,
