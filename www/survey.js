@@ -6411,5 +6411,6 @@ function docProfileSubmit() {
 function clearSearchDoctor(){
 	$("#unscheduled_m_client_combo_id").val("")
 	$("#unscheduled_m_client_combo_id").focus()
+	searchClient()
 	
 }
