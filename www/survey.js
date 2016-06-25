@@ -1732,11 +1732,11 @@ function feedback() {
 }
 function reports() {
 	var str_report_rep='<table width="100%" border="0">'+
-					 '<tr><td>Rep: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" readonly="true" placeholder="Rep">'+
+					 '<tr><td>ID: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" readonly="true" placeholder="Rep">'+
 					  '<input id="se_item_doc" name="se_item_doc" type="hidden" placeholder="Item"></td></tr>'+
 					   '<tr><td>Teritory: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market"  ></td></tr></table>'
 	var str_report_sup='<table width="100%" border="0">'+
-					   '<tr><td>Rep: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" placeholder="Rep">'+
+					   '<tr><td>ID: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" placeholder="Rep">'+
 					   '<input id="se_item_doc" name="se_item_doc" type="hidden" placeholder="Item"></td></tr>	'+
 					   '<tr><td>Teritory: </td><td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market/level"  ></td></tr></table>'	
 	
@@ -3007,7 +3007,7 @@ function marketNext_doc() {
 							//alert (mClientID)
 							if(mClientID!=''){
 	
-								unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')">'+mClientName+'|'+mClientID+'</a></li>';
+								unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'|'+mClientID+'</font></a></li>';
 								}								
 						}
 									
@@ -6406,5 +6406,10 @@ function docProfileSubmit() {
 			 });//end ajax
 	
 	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
+}
+function clearSearchDoctor(){
+	$("#unscheduled_m_client_combo_id").val("")
+	$("#unscheduled_m_client_combo_id").focus()
 	
 }
