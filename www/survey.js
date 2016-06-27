@@ -5038,7 +5038,8 @@ function searchProductChar(char) {
 			lis[i].style.display = 'none';
 		//$("#item_combo_id_lv").find(lis[0]).first().focus()
 	}
-	//$("#item_combo_id_lv").focus();
+	$("#item_combo_id").val('');
+	$("#item_combo_id").focus();
 	
 }
 
