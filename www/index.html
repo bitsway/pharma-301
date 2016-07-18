@@ -223,7 +223,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-        <a onClick="homePage()"  ></a>
+        <a id="dPending" name="dPending"  onClick="page_dList()" ><img src="pending.png"  height="50"  >	</a>
+        <a id="dBlank" name="dBlank" onClick="homePage()"></a>
          </footer>
 
     </div>               
@@ -272,8 +273,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </div>
        
         <footer>
+        
 		<a onClick="homePage()" class="icon home" ></a>
-        <a onClick="homePage()"  ></a>
+        <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"   >
+        <img style="height:50px; width:50px" src="doctor_add.png"></a>
+        <a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+       
          </footer>
 
     </div>               
@@ -1126,6 +1131,169 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </footer>
     </div>      
  <!--==========================Doc profile End===================================-->
+ 
+ 
+ <!--==========================Add Doc==================================-->
+   <!--  ====================Doc profile Start===============================-->
+ <div class="view" id="page_doctor_addView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor Add</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doctor_add">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			<img id="wait_image_docAdd" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctor_add" style="color:#C00"></div>
+            <input type="text" name="doctor_add"    id="doctor_add" placeholder="Name"  >
+            
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                                              
+					</li>					
+				</ul>
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><input type="text" name="dNameAdd"   id="dNameAdd" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  >-->
+                    <select name="dSpacialityAdd" id="dSpacialityAdd">
+                          
+                        </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDegreeAdd"   id="dDegreeAdd" placeholder="Degree"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  >-->
+                     
+                        <select name="dCategoryAdd" id="dCategoryAdd">
+                          
+                        </select>
+                  </td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><input type="date" name="dDOBAdd"   id="dDOBAdd" placeholder="DOB"  ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><input type="date" name="dMDayAdd"   id="dMDayAdd" placeholder="Marriage Daye"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><input type="text" name="dMobileAdd"  maxlength="50"  id="dMobileAdd" placeholder="Mobile"  ></td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td>Chamber Address</td>
+                     <td>:</td>
+                    <td><textarea name="dCAddressAdd" id="dCAddressAdd"  rows="3" placeholder="Chamber Address"></textarea>
+                   </td>
+                  </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDistrictAdd"  maxlength="50"  id="dDistrictAdd" placeholder="District"  >
+                   </td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><input type="text" name="dThanaAdd"  maxlength="50"  id="dThanaAdd" placeholder="Thana"  >
+                   </td>
+                  </tr>
+                  
+                </table>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_doc_add" onClick="docAddSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		            
+     <a onClick="page_visit_doc()" class="icon left" ></a>
+     <a onClick="#"  ></a>
+    
+</footer>
+    </div>      
+    
+    
+  <!--//==============================submitted doc List=================-->
+       <div class="view" id="page_dListView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Pending Doctors</h1></header> 
+            <div class="panel" id="page_dList">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_dList" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_dListTxt"  type="hidden" >
+                    <div id="error_dList" style="color:#C00"></div> 				
+                        <div id="dList"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+ <!--==========================Doc  End===================================-->
 <!-- //========================Campaign Start=====================-->
  
  
@@ -1134,7 +1302,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <div class="pages">
          <header> 
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
+                  <tr >
                     <td >
 					
                     <input  type="text" id="campaign_combo_id" name="campaign_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchCampaign()"  />

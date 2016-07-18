@@ -286,7 +286,8 @@ function page_market() {
 	$.afui.loadContent("#page_market",true,true,'right');
 }
 function page_market_ret() {
-	
+	$("#addDocanc").hide();
+	$("#blankAnc").show();
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_visit() {
@@ -294,6 +295,8 @@ function page_visit() {
 	$.afui.loadContent("#page_visit",true,true,'right');
 }
 function page_visit_doc() {
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
 	$("#wait_image_visit_submit_doc").hide();
 	$.afui.loadContent("#page_visit_doc",true,true,'right');
 }
@@ -1038,7 +1041,7 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1679,6 +1682,13 @@ function chemist_visit() {
 	localStorage.save_submit=0;
 	//alert ('sadsafdsff')
 	//bonusCombo();
+	
+	$("#addDocanc").hide();
+	$("#blankAnc").show();
+	
+	$("#dPending").hide();
+	$("#dBlank").show();
+	
 }
 function saved_visit() {
 	
@@ -1710,6 +1720,10 @@ function doctor_visit() {
 	localStorage.saved_data_submit=0;
 	localStorage.visit_page="NO";
 	addMarketList();
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
+	$("#dPending").show();
+	$("#dBlank").hide();
 	
 }
 function doctor_profile() {
@@ -1988,6 +2002,8 @@ function marketNext_sup() {
 									}
 								
 								
+
+
 
 							
 								var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
@@ -6317,6 +6333,8 @@ function page_doctor_profile() {
 									var dMDay=result_string.split('<fdfd>')[5]
 									var dMobile=result_string.split('<fdfd>')[6]
 									var dCAddress=result_string.split('<fdfd>')[7]
+									var dDistrict=result_string.split('<fdfd>')[8]
+									var dThana=result_string.split('<fdfd>')[9]
 									$("#dName").val(dName)
 									$("#dSpaciality").val(dSpaciality)
 									$("#dDegree").val(dDegree)
@@ -6324,19 +6342,25 @@ function page_doctor_profile() {
 									$("#dMDay").val(dMDay)
 									$("#dMobile").val(dMobile)
 									$("#dCAddress").val(dCAddress)
+									$("#dDistrict").val(dDistrict)
+									$("#dThana").val(dThana)
 									//$("#dCategory").val(dCategory)
 									
 									catList=dCategory.split(',')
 									$('#dCategory').empty();
+									
 									for (var j=0; j < catList.length-1; j++){
 										var opt='<option value="'+catList[j]+'">'+catList[j]+'</option>'
 										 $('#dCategory').append(opt);
+										
 									}
 									spacialityList=dSpaciality.split(',')
 									$('#dSpaciality').empty();
+									
 									for (var s=0; s < spacialityList.length-1; s++){
 										var opt='<option value="'+spacialityList[s]+'">'+spacialityList[s]+'</option>'
 										 $('#dSpaciality').append(opt);
+										 
 									}
 									
 									
@@ -6367,11 +6391,13 @@ function docProfileSubmit() {
 	dMDay=$("#dMDay").val()
 	dMobile=$("#dMobile").val()
 	dCAddress=$("#dCAddress").val()
+	dDist=$("#dDistrict").val()
+	dThana=$("#dThana").val()
 	
 	
 	
-	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCaegory='+dCategory)
-		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory,{
+	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
+		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana,{
 
 								type: 'POST',
 								timeout: 30000,
@@ -6399,8 +6425,8 @@ function docProfileSubmit() {
 									
 								
 							}else{	
-								 $("#wait_image_notice").hide();
-								 $("#error_notice").html('Network Timeout. Please check your Internet connection.');
+								 $("#wait_image_docProf").hide();
+								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
 								}
 						}
 					  }
@@ -6413,5 +6439,223 @@ function clearSearchDoctor(){
 	$("#unscheduled_m_client_combo_id").val("")
 	$("#unscheduled_m_client_combo_id").focus()
 	searchClient()
+	
+}
+
+//====================Doctor Add
+function page_addDoc() {
+	 $("#myerror_doctor_add").html('' )
+	  $("#wait_image_docAdd").show();
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	//var visitDocId=localStorage.visit_client.split('|')[1]	
+	$("#doctor_add").val(localStorage.report_url+'doc_catSp?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id)
+		$.ajax(localStorage.report_url+'doc_catSp?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_docAdd").hide();
+								 $("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_docAdd").hide();
+									 if (status!='success'){
+										$("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#myerror_doctor_add").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									var dSpaciality=result_string.split('<fdfd>')[1]
+									var dCategory=result_string.split('<fdfd>')[0]
+									
+									
+									//$("#dCategory").val(dCategory)
+									
+									catList=dCategory.split(',')
+
+									$('#dCategoryAdd').empty();
+									for (var j=0; j < catList.length-1; j++){
+										var opt='<option value="'+catList[j]+'">'+catList[j]+'</option>'
+										
+										 $('#dCategoryAdd').append(opt);
+									}
+									spacialityList=dSpaciality.split(',')
+									
+									$('#dSpacialityAdd').empty();
+									for (var s=0; s < spacialityList.length-1; s++){
+										var opt='<option value="'+spacialityList[s]+'">'+spacialityList[s]+'</option>'
+										 $('#dSpacialityAdd').append(opt);
+										
+									}
+									
+									
+								
+							}else{	
+								 $("#wait_image_notice").hide();
+								 $("#error_notice").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	$.afui.loadContent("#page_doctor_add",true,true,'right');
+	
+}
+
+function docAddSubmit() {
+	$("#myerror_doctor_add").html('' )
+	$("#wait_image_docAdd").show();
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	var market_name=localStorage.visit_market_show.split('|')[0];
+	
+	
+	dName=$("#dNameAdd").val()
+	dSpaciality=$("#dSpacialityAdd").val()
+	dDegree=$("#dDegreeAdd").val()
+	dCategory=$("#dCategoryAdd").val()
+	dDOB=$("#dDOBAdd").val()
+	dMDay=$("#dMDayAdd").val()
+	dMobile=$("#dMobileAdd").val()
+	dCAddress=$("#dCAddressAdd").val()
+	dDist=$("#dDistrictAdd").val()
+	dThana=$("#dThanaAdd").val()
+	
+	//alert (dCategory)
+	
+	$("#doctor_add").val(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
+		$.ajax(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_docAdd").hide();
+								 $("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_docAdd").hide();
+									 if (status!='success'){
+										$("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#myerror_doctor_add").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									
+									$("#myerror_doctor_add").html(result_string)
+									
+								
+							}else{	
+								 $("#wait_image_docAdd").hide();
+								 $("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
+}
+
+function page_dList() {
+	  $("#error_dList").html('' )
+	  $("#wait_image_dList").show();
+	  var market_Id=localStorage.visit_market_show.split('|')[1];
+	//var visitDocId=localStorage.visit_client.split('|')[1]	
+	$("#error_dListTxt").val(localStorage.report_url+'doc_list?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	
+  $.ajax(localStorage.report_url+'doc_list?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_dList").hide();
+								 $("#error_dList").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_dList").hide();
+									 if (status!='success'){
+										$("#error_dList").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#error_dList").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									var dList=resultArray[1];
+									$("#dList").html(dList);	
+
+								
+							}else{	
+								 $("#wait_image_dList").hide();
+								 $("#error_dList").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	$.afui.loadContent("#page_dList",true,true,'right');
+	
+}
+function confirmDoc(docid) {
+	  $("#error_dList").html('' )
+	  $("#wait_image_dList").show();
+	  var market_Id=localStorage.visit_market_show.split('|')[1];
+	//var visitDocId=localStorage.visit_client.split('|')[1]	
+	$("#error_dListTxt").val(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid)
+	
+  $.ajax(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_dList").hide();
+								 $("#error_dList").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_dList").hide();
+									 if (status!='success'){
+										$("#error_dList").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#error_dList").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									var dList=resultArray[1];
+									$("#dList").html(dList);	
+
+								
+							}else{	
+								 $("#wait_image_dList").hide();
+								 $("#error_dList").html('Network Timeout. Please check your Internet connection.');
+								}
+						}
+					  }
+			 });//end ajax
+	
+	
 	
 }
