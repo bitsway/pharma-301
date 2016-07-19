@@ -1044,7 +1044,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -5074,6 +5074,24 @@ function searchCampaignChar(char) {
 	}
 	$("#campaign_combo_id").val('');
 	$("#campaign_combo_id").focus();
+	
+}
+
+function searchSampleChar(char) {
+	var filter  = char;
+	var lis =document.getElementById("sample_combo_id_lv").getElementsByTagName("li");
+	//alert (filter);
+	for (var i = 0; i < lis.length; i++) {
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+		//alert (name)
+		if (name.toUpperCase().indexOf(filter) == 0) 
+			lis[i].style.display = 'list-item';
+		else
+			lis[i].style.display = 'none';
+		//$("#item_combo_id_lv").find(lis[0]).first().focus()
+	}
+	$("#sample_combo_id").val('');
+	$("#sample_combo_id").focus();
 	
 }
 
