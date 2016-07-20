@@ -290,6 +290,12 @@ function page_market_ret() {
 	$("#blankAnc").show();
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
+function page_market_ret_doc() {
+	//alert ('aaa')
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
+	$.afui.loadContent("#page_market_ret",true,true,'right');
+}
 function page_visit() {
 	$("#wait_image_visit_submit").hide();
 	$.afui.loadContent("#page_visit",true,true,'right');
@@ -1044,7 +1050,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	var user_id=$("#user_id").val();
@@ -3005,6 +3011,7 @@ function marketNext_doc() {
 						$("#err_market_next").text("Doctor not available");	
 						$("#wait_image_unschedule_market").hide();		
 						$("#btn_unschedule_market").show();
+						$.afui.loadContent("#page_market_ret",true,true,'right');
 						
 					}
 					else{
@@ -3068,6 +3075,7 @@ function marketRetailerNext_doc() {
 	
 	if(visit_client=='' || visit_client==0){
 			$("#err_m_retailer_next").text("Retailer required");
+			
 	}else{
 		$("#btn_unschedule_market_ret").hide();
 		$("#unscheduled_m_client_combo_id_lv").hide();
