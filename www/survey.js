@@ -3011,7 +3011,12 @@ function marketNext_doc() {
 						$("#err_market_next").text("Doctor not available");	
 						$("#wait_image_unschedule_market").hide();		
 						$("#btn_unschedule_market").show();
+						var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id');
+						var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
+						
+						unscheduled_m_client_combo_ob.empty()
 						$.afui.loadContent("#page_market_ret",true,true,'right');
+						unscheduled_m_client_combo_ob.listview("refresh");
 						
 					}
 					else{
