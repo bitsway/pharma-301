@@ -6536,6 +6536,7 @@ function clearSearchDoctor(){
 function page_addDoc() {
 	 $("#myerror_doctor_add").html('' )
 	 $("#wait_image_docAdd").hide();
+	 $("#btn_submit_doc_add").show();
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	//	===================CtStr, Spciality=========						
 	var dCategory=localStorage.catStr											
@@ -6566,6 +6567,7 @@ function page_addDoc() {
 function docAddSubmit() {
 	$("#myerror_doctor_add").html('' )
 	$("#wait_image_docAdd").show();
+	$("#btn_submit_doc_add").hide();
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	var market_name=localStorage.visit_market_show.split('|')[0];
 	
@@ -6585,6 +6587,7 @@ function docAddSubmit() {
 	if (dName=='' |  dCategory=='' | dMobile=='' | dCAddress==''){
 		$("#myerror_doctor_add").html('Please Complete Mandatory Fields.' )
 		$("#wait_image_docAdd").hide();
+		$("#btn_submit_doc_add").show();
 		//alert ('Mandatory')
 	}
 	else{
@@ -6600,6 +6603,7 @@ function docAddSubmit() {
 													},
 								success:function(data, status,xhr){	
 									 $("#wait_image_docAdd").hide();
+									 $("#btn_submit_doc_add").show();
 									 if (status!='success'){
 										$("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection...');
 										
@@ -6629,7 +6633,8 @@ function docAddSubmit() {
 								
 							}else{	
 								 $("#wait_image_docAdd").hide();
-								 $("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection.');
+								 $("#myerror_doctor_add").html('Network Timeout. Please check your Internet connection.');			
+								 $("#btn_submit_doc_add").show();
 								}
 						}
 					  }
@@ -6686,48 +6691,216 @@ function page_dList() {
 	$.afui.loadContent("#page_dList",true,true,'right');
 	
 }
+
 function confirmDoc(docid) {
-	  $("#error_dList").html('' )
-	  $("#wait_image_dList").show();
+	  $("#myerror_doctorCon_add").html('' )
+	  $("#wait_image_docConAdd").show();
 	  var market_Id=localStorage.visit_market_show.split('|')[1];
 	//var visitDocId=localStorage.visit_client.split('|')[1]	
-	$("#error_dListTxt").val(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid)
-	
-  $.ajax(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid,{
+	//$("#error_doc_confirm").val(localStorage.report_url+'doc_info_confirm?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid)
+	$.afui.loadContent("#page_doc_confirm",true,true,'right');
+  $.ajax(localStorage.report_url+'doc_info_confirm?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docid,{
 
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
-								 $("#wait_image_dList").hide();
-								 $("#error_dList").html('Network Timeout. Please check your Internet connection..');
+								 $("#wait_image_docConAdd").hide();
+								 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
-									 $("#wait_image_dList").hide();
+									 $("#wait_image_docConAdd").hide();
 									 if (status!='success'){
-										$("#error_dList").html('Network Timeout. Please check your Internet connection...');
+										$("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection...');
 										
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 								if (resultArray[0]=='FAILED'){
-											$("#error_dList").text(resultArray[1]);	
+											$("#myerror_doctorCon_add").text(resultArray[1]);	
 											
 										}
 								else if (resultArray[0]=='SUCCESS'){	
+									localStorage.confirmDoc=docid
 									var result_string=resultArray[1];
-									var dList=resultArray[1];
-									$("#dList").html(dList);	
+									var dList=result_string.split('<fdfd>');
+									var dName= dList[0]
+									var dSpaciality= dList[1]
+									var dDegree= dList[2]
+									var dCaegory= dList[3]
+									var dDOB= dList[4]
+									var dMDay= dList[5]
+									var dMobile= dList[6]
+									var dCAddress= dList[7]
+									var dDist= dList[8]
+									var dThana= dList[9]
+									$("#docConName").html(dName);	
+									$("#docConSpeciality").html(dSpaciality);	
+									$("#docConDegree").html(dDegree);	
+									$("#docConDCategory").html(dCaegory);	
+									$("#docConDOB").html(dDOB);	
+									$("#docConMDay").html(dMDay);
+									$("#docConMobNum").html(dMobile);	
+									$("#docConAdd").html(dCAddress);	
+									$("#docConDist").html(dDist);	
+									$("#docConThana").html(dThana);	
+									
+									
 
 								
 							}else{	
-								 $("#wait_image_dList").hide();
-								 $("#error_dList").html('Network Timeout. Please check your Internet connection.');
+								 $("#wait_image_docConAdd").hide();
+								 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection.');
 								}
 						}
 					  }
-			 });//end ajax
+			 });//end ajax*/
 	
 	
+	
+}
+function confirmDocSubmit() {
+	  $("#myerror_doctorCon_add").html('' )
+	  $("#wait_image_docConAdd").show();
+	  $("#btn_submit_docConAdd").hide();
+	  $("#btn_submit_docConCancel").hide();
+	  
+	  
+	 if (localStorage.confirmDoc==''){
+		 $("#wait_image_docConAdd").hide();
+		 $("#btn_submit_docConAdd").show();
+		 $("#btn_submit_docConCancel").show();
+		 $("#myerror_doctorCon_add").html('Please Select First');
+	 }
+	 else{
+		$("#error_doc_confirm").val(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+localStorage.confirmDoc)
+		
+	  $.ajax(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+localStorage.confirmDoc,{
+	
+									type: 'POST',
+									timeout: 30000,
+									error: function(xhr) {
+									 $("#wait_image_docConAdd").hide();
+									 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection..');
+									 $("#btn_submit_docConAdd").show();
+									 $("#btn_submit_docConCancel").show();
+														},
+									success:function(data, status,xhr){	
+										 $("#wait_image_docConAdd").hide();
+										 $("#btn_submit_docConAdd").show();
+										 $("#btn_submit_docConCancel").show();
+										 if (status!='success'){
+											$("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection...');
+											
+										 }
+										 else{	
+											var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+									if (resultArray[0]=='FAILED'){
+												$("#myerror_doctorCon_add").text(resultArray[1]);	
+												
+											}
+									else if (resultArray[0]=='SUCCESS'){	
+										var result_string=resultArray[1];
+										var dList=resultArray[1];
+										localStorage.confirmDoc=''
+										$("#dList").html(dList);	
+										$("#myerror_doctorCon_add").html('Submitted Successfully');
+										$("#docConName").html('');	
+										$("#docConSpeciality").html('');	
+										$("#docConDegree").html('');	
+										$("#docConDCategory").html('');	
+										$("#docConDOB").html('');	
+										$("#docConMDay").html('');
+										$("#docConMobNum").html('');	
+										$("#docConAdd").html('');	
+										$("#docConDist").html('');	
+										$("#docConThana").html('');	
+	
+									
+								}else{	
+									 $("#wait_image_docConAdd").hide();
+									 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection.');
+									 $("#btn_submit_docConAdd").show();
+									 $("#btn_submit_docConCancel").show();
+									}
+							}
+						  }
+				 });//end ajax
+	
+	 }
+	
+}
+function cancelDocSubmit() {
+	  $("#myerror_doctorCon_add").html('' )
+	  $("#wait_image_docConAdd").show();
+	  $("#btn_submit_docConAdd").hide();
+	  $("#btn_submit_docConCancel").hide();
+	  
+	  
+	 if (localStorage.confirmDoc==''){
+		 $("#wait_image_docConAdd").hide();
+		 $("#btn_submit_docConAdd").show();
+		 $("#btn_submit_docConCancel").show();
+		 $("#myerror_doctorCon_add").html('Please Select First');
+	 }
+	 else{
+	
+			$("#error_doc_confirm").val(localStorage.report_url+'cancelDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+localStorage.confirmDoc)
+				
+		  $.ajax(localStorage.report_url+'cancelDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+localStorage.confirmDoc,{
+		
+										type: 'POST',
+										timeout: 30000,
+										error: function(xhr) {
+										 $("#wait_image_docConAdd").hide();
+										 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection..');
+										 $("#btn_submit_docConAdd").show();
+										 $("#btn_submit_docConCancel").show();
+															},
+										success:function(data, status,xhr){	
+											 $("#wait_image_docConAdd").hide();
+											 $("#btn_submit_docConAdd").show();
+											 $("#btn_submit_docConCancel").show();
+											 if (status!='success'){
+												$("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection...');
+												
+											 }
+											 else{	
+												var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+												
+										if (resultArray[0]=='FAILED'){
+													$("#myerror_doctorCon_add").text(resultArray[1]);	
+													
+												}
+										else if (resultArray[0]=='SUCCESS'){	
+											var result_string=resultArray[1];
+											var dList=resultArray[1];
+											localStorage.confirmDoc=''
+											$("#dList").html(dList);	
+											$("#myerror_doctorCon_add").html('Cancelled Successfully');
+											$("#docConName").html('');	
+											$("#docConSpeciality").html('');	
+											$("#docConDegree").html('');	
+											$("#docConDCategory").html('');	
+											$("#docConDOB").html('');	
+											$("#docConMDay").html('');
+											$("#docConMobNum").html('');	
+											$("#docConAdd").html('');	
+											$("#docConDist").html('');	
+											$("#docConThana").html('');	
+		
+										
+									}else{	
+										 $("#wait_image_docConAdd").hide();
+										 $("#myerror_doctorCon_add").html('Network Timeout. Please check your Internet connection.');
+										 $("#btn_submit_docConAdd").show();
+										 $("#btn_submit_docConCancel").show();
+										}
+								}
+							  }
+					 });//end ajax
+	
+	 }
 	
 }

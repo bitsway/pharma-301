@@ -1152,8 +1152,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                      
-			<img id="wait_image_docAdd" style="width:50px" src="loading.gif" alt="">	
-			<div id="myerror_doctor_add" style="color:#C00"></div>
+			
             <input type="hidden" name="doctor_add"    id="doctor_add" placeholder="Name"  >
             
 				<ul data-inset="true"  data-role="listview">
@@ -1242,6 +1241,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   </tr>
                   
                 </table>
+                <img id="wait_image_docAdd" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctor_add" style="color:#C00"></div>
 				<br>
                 <br>
 				 <input type="submit" id="btn_submit_doc_add" onClick="docAddSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
@@ -2636,6 +2637,137 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  
  
 
+
+
+<!--===============Doc Sup===========-->
+
+ <div class="view" id="page_doc_confirmView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Add Doctor</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doc_confirm">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			
+            <input type="hidden" name="error_doc_confirm"    id="error_doc_confirm" placeholder="Name"  >
+
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><div id="docConName" ></div></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><div id="docConSpeciality" ></div>
+                    </td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><div id="docConDegree" ></div></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><div id="docConDCategory" ></div></td>
+                  <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><div id="docConDOB" ></div></td>
+                     <td ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><div id="docConMDay" ></div></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><div id="docConMobNum" ></div></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td width="100px">Chamber Address</td>
+                     <td>:</td>
+                    <td><div id="docConAdd" ></div> </td>
+                   <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><div id="docConDist" ></div></td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><div id="docConThana" ></div></td>
+                    <td ></td>
+                  </tr>
+                  
+                </table>
+                <img id="wait_image_docConAdd" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctorCon_add" style="color:#C00"></div>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_docConAdd" onClick="confirmDocSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                 
+                 <input type="submit" id="btn_submit_docConCancel" onClick="cancelDocSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Cancel      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		            
+     <a onClick="page_dList()" class="icon left" ></a>
+     <a onClick="#"  ></a>
+    
+</footer>
+    </div>     
     
     
     
