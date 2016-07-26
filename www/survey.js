@@ -2433,7 +2433,7 @@ function cart_data() {
 				//alert (promo_str_cart.length)
 				
 				
-				if (promo_str_cart.length < 5){
+				if (promo_str_cart.length == 0){
 					total_without_promo=total_without_promo+total
 					prom_flag=0
 				}
