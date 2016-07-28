@@ -2433,7 +2433,7 @@ function cart_data() {
 				//alert (promo_str_cart.length)
 				
 				
-				if (promo_str_cart.length == 0){
+				if (promo_str_cart.length < 5){
 					total_without_promo=total_without_promo+total
 					prom_flag=0
 				}
@@ -5390,19 +5390,19 @@ function set_report_parameter_doctor() {
 	
 	
 	$("#report_market_doctor").html("Teritory :"+localStorage.se_market_report_doc);
-	$("#report_mpo_doctor").html("MPO :"+localStorage.rep_id_report_doc);
+	$("#report_mpo_doctor").html("ID :"+localStorage.rep_id_report_doc);
 	$("#date_f_doctor").html("DateFrom :"+date_from_show_doc);
 	$("#date_t_doctor").html("DateTo :"+date_to_show_doc);
 	
 	$("#report_market_prescription").html("Teritory :"+localStorage.se_market_report_doc);
-	$("#report_mpo_prescription").html("MPO :"+localStorage.rep_id_report_doc);
+	$("#report_mpo_prescription").html("ID :"+localStorage.rep_id_report_doc);
 	$("#date_f_prescription").html("DateFrom :"+date_from_show_doc);
 	$("#date_t_prescription").html("DateTo :"+date_to_show_doc);
 	
 	
 	
 	$("#report_market").html("Teritory :"+localStorage.se_market_report_doc);
-	$("#report_mpo").html("MPO :"+localStorage.rep_id_report_doc);
+	$("#report_mpo").html("ID :"+localStorage.rep_id_report_doc);
 	$("#date_f").html("DateFrom :"+date_from_show_doc);
 	$("#date_t").html("DateTo :"+date_to_show_doc);
 	
@@ -5780,7 +5780,7 @@ function set_report_parameter() {
 	
 	$("#report_market").html("Teritory :"+localStorage.se_market_report);
 	$("#report_item").html("Item :"+localStorage.se_item_report);
-	$("#report_mpo").html("MPO :"+localStorage.rep_id_report);
+	$("#report_mpo").html("ID :"+localStorage.rep_id_report);
 	$("#date_f").html("DateFrom :"+date_from_show);
 	$("#date_t").html("DateTo :"+date_to_show);
 	
