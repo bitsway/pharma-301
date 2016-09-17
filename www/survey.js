@@ -3062,7 +3062,7 @@ function marketNext_doc() {
 	
 	market_name=$("#unschedule_market_combo_id").val();
 	localStorage.visit_market_show=market_name
-	//alert (localStorage.visit_market_show)
+	alert (localStorage.visit_market_show)
 	if(market_name=='' || market_name==0){
 			$("#err_market_next").text("Market required");
 		}else{
