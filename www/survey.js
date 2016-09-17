@@ -283,24 +283,32 @@ function homePage() {
 }
 function page_market() {
 	
-	$.afui.loadContent("#page_market",true,true,'right');
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
+	//$.afui.loadContent("#page_market",true,true,'right');
 }
 function page_market_ret() {
+	
+	if (localStorage.doctor_flag==1) {addMarketListCteam();}else{addMarketList();}
+	
 	$("#addDocanc").hide();
 	$("#blankAnc").show();
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_market_ret_doc() {
-	//alert ('aaa')
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
 	$("#addDocanc").show();
 	$("#blankAnc").hide();
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_visit() {
+	addMarketList();
 	$("#wait_image_visit_submit").hide();
 	$.afui.loadContent("#page_visit",true,true,'right');
 }
 function page_visit_doc() {
+	
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
+	
 	$("#addDocanc").show();
 	$("#blankAnc").hide();
 	$("#wait_image_visit_submit_doc").hide();
@@ -308,7 +316,7 @@ function page_visit_doc() {
 }
 function page_reports_dcr() {
 	//$("#order_load").hide();
-	$.afui.loadContent("#page_reports_dcr",true,true,'right');
+	$.afui.loadContent("# page_reports_dcr",true,true,'right');
 }
 
 function page_login() {
@@ -977,6 +985,8 @@ function clear_autho(){
 		localStorage.marchandizingInfoStr=''
 		
 		localStorage.visit_plan_marketlist_combo=''
+		localStorage.visit_plan_marketlist_comboCteam=''
+		localStorage.cTeam=0
 		localStorage.visit_plan_client_cmb_list=''
 		localStorage.delivery_distributor_cmb_list=''
 		localStorage.delivery_retailer_cmb_list=''
@@ -1047,7 +1057,7 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1104,6 +1114,8 @@ function check_user() {
 		localStorage.marchandizingInfoStr=''
 		
 		localStorage.visit_plan_marketlist_combo=''
+		localStorage.visit_plan_marketlist_comboCteam=''
+		localStorage.cTeam=0
 		localStorage.visit_plan_client_cmb_list=''
 		localStorage.delivery_distributor_cmb_list=''
 		localStorage.delivery_retailer_cmb_list=''
@@ -1316,8 +1328,10 @@ function check_user() {
 													
 													localStorage.catStr=resultArray[27];
 													localStorage.spcStr=resultArray[28];
+													localStorage.marketListStrCteam=resultArray[29];
+													localStorage.cTeam=resultArray[30]
 													
-													
+												//	alert (localStorage.marketStrCteam)
 													
 													//localStorage.client_depot_name=resultArray[27];
 													
@@ -1445,6 +1459,7 @@ function check_user() {
 
 															}
 													}
+													
 																				
 													localStorage.visit_plan_marketlist_combo=visitPlanMarketComb;								
 													localStorage.unschedule_market_cmb_id=unscheduleMarketComb;
@@ -1454,10 +1469,33 @@ function check_user() {
 													$('#market_combo_id_lv').empty();
 													$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 													
+												
+										//===================		
+
+									var planMarketListCteam = localStorage.marketListStrCteam.split('<rd>');
+									var planMarketListShowLengthCteam=planMarketListCteam.length	
+									var visitPlanMarketCombCteam=''	
+									
+									for (var c=0; c < planMarketListShowLengthCteam; c++){
+											var planMarketValueArrayCteam = planMarketListCteam[c].split('<fd>');
+											planMarketIDCteam=planMarketValueArrayCteam[0];
+											planMarketNameCteam=planMarketValueArrayCteam[1];
+											
+											marketIDCteam=planMarketIDCteam
+											marketNameCteam=planMarketNameCteam
+											var marketNameIDCteam=planMarketNameCteam+'|'+planMarketIDCteam;
+											
+											if(planMarketIDCteam!=''){
+												visitPlanMarketCombCteam+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameIDCteam+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameIDCteam+'</a></font></li>';
+
+														}
+													}	
+													
+													localStorage.visit_plan_marketlist_comboCteam=visitPlanMarketCombCteam;
 													
 												//==================================	
 													
-													<!--
+												
 													var productList=localStorage.productListStr.split('<rd>');
 													var productLength=productList.length;
 													//alert (localStorage.productListStr)
@@ -1747,6 +1785,7 @@ function chemist_profile() {
 	
 }
 function doctor_visit() {
+	
 	$("#ret_cat").hide();
 	$("#d_visit").html("Doctors");
 	//$("#doc_start").html('Visit > Market > Doctor');
@@ -1754,7 +1793,8 @@ function doctor_visit() {
 	
 	localStorage.saved_data_submit=0;
 	localStorage.visit_page="NO";
-	addMarketList();
+	//addMarketList();
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
 	$("#addDocanc").show();
 	$("#blankAnc").hide();
 	$("#dPending").show();
@@ -1762,6 +1802,7 @@ function doctor_visit() {
 	
 }
 function doctor_profile() {
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
 	$("#ret_cat").hide();
 	$("#d_visit").html("Doctors");
 	//$("#v_path").html('<font style="font-weight:bold; font-size:13px; color:#666">Visit > Market > Doctor</font>');
@@ -1811,15 +1852,26 @@ function reports() {
 //==================Menu function end=================
 function addMarketList() {
 	//alert (localStorage.unschedule_market_cmb_id);
-	$("#unschedule_market_combo_id").val('');
+	$("#market_combo_id_lv").val('');
 	var unschedule_market_combo_list=localStorage.visit_plan_marketlist_combo;
 
-	$('#unschedule_market_combo_id_lv').empty();
-	$('#unschedule_market_combo_id_lv').append(unschedule_market_combo_list);
+	$('#market_combo_id_lv').empty();
+	$('#market_combo_id_lv').append(unschedule_market_combo_list);
+	//alert (unschedule_market_combo_list)
+	$.afui.loadContent("#page_market",true,true,'right');
+
+}
+function addMarketListCteam() {
+	$("#market_combo_id_lv").val('');
+	var unschedule_market_combo_listCteam=localStorage.visit_plan_marketlist_comboCteam;
+	$('#market_combo_id_lv').empty();
+	//alert (unschedule_market_combo_listCteam)
+	$('#market_combo_id_lv').append(unschedule_market_combo_listCteam);
 	
 	$.afui.loadContent("#page_market",true,true,'right');
 
 }
+
 function marketNextLV(lvalue) {
 	$("#unschedule_market_combo_id").val(lvalue);
 	
