@@ -3056,7 +3056,7 @@ function lscVisitSubmit(){
 //============================Doct Start===========================
 
 function marketNext_doc() {
-	
+	alert ('111')
 	localStorage.location_detail=''
 	$("#unscheduled_m_client_combo_id").val('');
 	
