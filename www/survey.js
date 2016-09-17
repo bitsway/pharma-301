@@ -1057,7 +1057,7 @@ function check_user() {
 	//Main
 
 	
-//	var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1310,6 +1310,7 @@ function check_user() {
 													localStorage.user_type=resultArray[16];
 													
 													localStorage.market_doctor=resultArray[17];
+													//alert (localStorage.market_doctor)
 													//$("#error_logintext").val(localStorage.market_doctor)
 													localStorage.save_visit_limit=resultArray[18];
 													//alert (localStorage.save_visit_limit)
@@ -1331,7 +1332,8 @@ function check_user() {
 													localStorage.marketListStrCteam=resultArray[29];
 													localStorage.cTeam=resultArray[30]
 													
-												//	alert (localStorage.marketStrCteam)
+													//alert (localStorage.marketStrCteam)
+													//alert (localStorage.cTeam)
 													
 													//localStorage.client_depot_name=resultArray[27];
 													
@@ -1485,7 +1487,7 @@ function check_user() {
 											marketNameCteam=planMarketNameCteam
 											var marketNameIDCteam=planMarketNameCteam+'|'+planMarketIDCteam;
 											
-											if(planMarketIDCteam!=''){
+											if(planMarketIDCteam!='' && localStorage.cTeam==1){
 												visitPlanMarketCombCteam+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameIDCteam+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameIDCteam+'</a></font></li>';
 
 														}
@@ -3054,11 +3056,13 @@ function lscVisitSubmit(){
 //============================Doct Start===========================
 
 function marketNext_doc() {
+	
 	localStorage.location_detail=''
 	$("#unscheduled_m_client_combo_id").val('');
 	
 	market_name=$("#unschedule_market_combo_id").val();
 	localStorage.visit_market_show=market_name
+	//alert (localStorage.visit_market_show)
 	if(market_name=='' || market_name==0){
 			$("#err_market_next").text("Market required");
 		}else{
