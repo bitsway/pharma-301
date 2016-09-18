@@ -283,7 +283,11 @@ function homePage() {
 }
 function page_market() {
 	
-	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {
+		addMarketListCteam();}
+	else{
+		
+		addMarketList();}
 	//$.afui.loadContent("#page_market",true,true,'right');
 }
 function page_market_ret() {
@@ -1058,6 +1062,7 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://a002.businesssolutionapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1855,10 +1860,13 @@ function reports() {
 function addMarketList() {
 	//alert (localStorage.unschedule_market_cmb_id);
 	$("#market_combo_id_lv").val('');
-	var unschedule_market_combo_list=localStorage.visit_plan_marketlist_combo;
-
+	var unschedule_market_combo_list=localStorage.unschedule_market_cmb_id;
+	//alert (unschedule_market_combo_list)
 	$('#market_combo_id_lv').empty();
 	$('#market_combo_id_lv').append(unschedule_market_combo_list);
+	
+	//$('#market_combo_id_lv').empty();
+//	$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 	//alert (unschedule_market_combo_list)
 	$.afui.loadContent("#page_market",true,true,'right');
 
@@ -3056,13 +3064,13 @@ function lscVisitSubmit(){
 //============================Doct Start===========================
 
 function marketNext_doc() {
-	alert ('111')
+	
 	localStorage.location_detail=''
 	$("#unscheduled_m_client_combo_id").val('');
 	
 	market_name=$("#unschedule_market_combo_id").val();
 	localStorage.visit_market_show=market_name
-	alert (localStorage.visit_market_show)
+	//alert (localStorage.visit_market_show)
 	if(market_name=='' || market_name==0){
 			$("#err_market_next").text("Market required");
 		}else{
