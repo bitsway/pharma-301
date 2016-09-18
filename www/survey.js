@@ -320,7 +320,7 @@ function page_visit_doc() {
 }
 function page_reports_dcr() {
 	//$("#order_load").hide();
-	$.afui.loadContent("# page_reports_dcr",true,true,'right');
+	$.afui.loadContent("#page_reports_dcr",true,true,'right');
 }
 
 function page_login() {
