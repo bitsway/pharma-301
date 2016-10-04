@@ -2818,6 +2818,10 @@ function lscVisitSubmit(){
 
 	//localStorage.payment_mode=$("#payment_mode").val();
 	
+	var payment_mode=($("input:radio[name='payment_mode']:checked").val())
+	localStorage.payment_mode=payment_mode
+	
+	
 	if (lat=='' || lat==0 || longitude=='' || longitude==0 ){
 		lat=localStorage.latitude
 		longitude=localStorage.latitude
