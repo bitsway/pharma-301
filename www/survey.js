@@ -3101,6 +3101,8 @@ function marketNext_doc() {
 				$("#err_market_next").text("Sorry Network not available");	
 				$("#wait_image_unschedule_market").hide();		
 				$("#btn_unschedule_market").show();
+				$.afui.loadContent("#page_market_ret",true,true,'right');
+				unscheduled_m_client_combo_ob.listview("refresh");
 			}else{					
 
 				//-----------------------------------
