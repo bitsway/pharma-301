@@ -1255,7 +1255,7 @@ function check_user() {
 							localStorage.cid=cid;
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
-							localStorage.synced='NO'
+							
 							
 							
 							
@@ -1293,7 +1293,7 @@ function check_user() {
 										}
 										else if (resultArray[0]=='SUCCESS'){
 													afterSync();
-													
+													localStorage.synced='NO'
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
 													//alert (resultArray[2]);
