@@ -238,12 +238,12 @@ $.afui.useOSThemes=false;
 			$("#cid").val(localStorage.cid);
 			$("#user_id").val(localStorage.user_id);
 			$("#user_pass").val(localStorage.user_pass);
-			//$.afui.loadContent("#pageHome",true,true,'right');
+			$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
-		if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
-			$.afui.loadContent("#pageHome",true,true,'right');
-		}
+		//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+//			$.afui.loadContent("#pageHome",true,true,'right');
+//		}
 		
 		
     });
@@ -274,8 +274,8 @@ function homePage() {
 	var year = currentDate.getFullYear()
 	var today=  year + "-" + month + "-" + day
 							
-
-	if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+	//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+	if (localStorage.synced=='YES') {
 		$.afui.loadContent("#pageHome",true,true,'right');
 	}
 	//$("#error_login").html('');
@@ -1051,6 +1051,123 @@ function get_login() {
 	$.afui.loadContent("#login",true,true,'right');
 
 	}
+function afterSync(){
+	localStorage.marketListStr='';
+	localStorage.productListStr='';
+	localStorage.product_tbl_cart='';
+	localStorage.marchandizingItem='';
+	localStorage.distributorListStr='';	
+
+	
+	localStorage.client_string=''	
+	localStorage.visit_client=''
+	
+	localStorage.visit_type=''
+	localStorage.scheduled_date=''
+	localStorage.visitMarketStr=''
+	localStorage.visit_distributor_nameid=''
+	localStorage.marchandizingStr=''
+	localStorage.clientProfileStr=''
+	
+		
+	localStorage.product_tbl_str=''
+	
+	localStorage.product_tbl_del_str=''
+	
+	localStorage.distributor_name=''
+	localStorage.delivery_date=''
+	localStorage.dis_client_string=''
+	
+	localStorage.plan_market=''
+	localStorage.plan_date=''
+	
+	localStorage.m_plan_client_string=''
+	localStorage.plan_ret_name=''
+	
+	localStorage.marketInfoStr=''
+	localStorage.marketInfoSubmitStr=''
+	localStorage.productOrderStr=''
+	localStorage.marchandizingInfoStr=''
+	
+	localStorage.visit_plan_marketlist_combo=''
+	localStorage.visit_plan_marketlist_comboCteam=''
+	localStorage.cTeam=0
+	localStorage.visit_plan_client_cmb_list=''
+	localStorage.delivery_distributor_cmb_list=''
+	localStorage.delivery_retailer_cmb_list=''
+	localStorage.market_cmb_list_cp=''
+	localStorage.unschedule_market_cmb_id=''
+	
+	localStorage.profile_m_client_org_id=''
+	
+	//----------
+	localStorage.campaign_string=''	
+	localStorage.visit_camp_list_str=''
+	localStorage.visit_camp_submit_str=''
+	//------
+	localStorage.brand_list_string=''
+	localStorage.visit_page=""
+	localStorage.region_string=""
+	localStorage.payment_mode=""
+	
+	localStorage.productGiftStr='';
+	localStorage.campaign_doc_str=''
+	localStorage.productSampleStr=''
+	localStorage.productppmtStr='';
+	
+	
+	localStorage.market_client=''
+	
+	
+	localStorage.menu='';
+												
+	localStorage.ppm_string='';
+	
+	localStorage.user_type='';
+	localStorage.market_doctor='';
+	localStorage.report_button='';
+	localStorage.doctorreport_button='';
+	
+	
+	localStorage.campaign_show_1='';
+	localStorage.gift_show_1='';
+	localStorage.sample_show_1='';
+	localStorage.ppm_show_1='';
+	
+	
+	
+	
+	localStorage.visit_save=''; //Saved visit data
+	localStorage.save_visit_limit=0;
+	localStorage.saved_data_submit = 0;
+	
+	
+	localStorage.delivery_date='';
+	localStorage.payment_date='';
+	localStorage.payment_mode='';
+	
+	localStorage.payment_mode_get='';
+	
+	localStorage.visit_location_flag='';
+												
+	localStorage.delivery_date_flag='';
+	localStorage.payment_date_flag='';
+	localStorage.payment_mode_flag='';
+	localStorage.collection_date_flag='';
+	
+	localStorage.doctor_report_button='';
+	localStorage.prescription_report_button='';
+	localStorage.location_detail=''
+	
+	
+	localStorage.stock_str='';
+	localStorage.result_itemStock=''
+	localStorage.stockDate=''
+	
+	localStorage.promo_str=''
+	localStorage.promo_str_report=''
+	localStorage.promoDate=''
+}
 
 function check_user() {
 	
@@ -1075,129 +1192,10 @@ function check_user() {
 	
 	user_id=$.trim(user_id);
 	
-	var base_url='';
-	var photo_url='';
+	//var base_url='';
+//	var photo_url='';
 	
-		localStorage.base_url='';
-		localStorage.photo_url='';
-		localStorage.photo_submit_url='';
 		
-
-		localStorage.marketListStr='';
-		localStorage.productListStr='';
-		localStorage.product_tbl_cart='';
-		localStorage.marchandizingItem='';
-		localStorage.distributorListStr='';	
-
-		
-		localStorage.client_string=''	
-		localStorage.visit_client=''
-		
-		localStorage.visit_type=''
-		localStorage.scheduled_date=''
-		localStorage.visitMarketStr=''
-		localStorage.visit_distributor_nameid=''
-		localStorage.marchandizingStr=''
-		localStorage.clientProfileStr=''
-		
-			
-		localStorage.product_tbl_str=''
-		
-		localStorage.product_tbl_del_str=''
-		
-		localStorage.distributor_name=''
-		localStorage.delivery_date=''
-		localStorage.dis_client_string=''
-		
-		localStorage.plan_market=''
-		localStorage.plan_date=''
-		
-		localStorage.m_plan_client_string=''
-		localStorage.plan_ret_name=''
-		
-		localStorage.marketInfoStr=''
-		localStorage.marketInfoSubmitStr=''
-		localStorage.productOrderStr=''
-		localStorage.marchandizingInfoStr=''
-		
-		localStorage.visit_plan_marketlist_combo=''
-		localStorage.visit_plan_marketlist_comboCteam=''
-		localStorage.cTeam=0
-		localStorage.visit_plan_client_cmb_list=''
-		localStorage.delivery_distributor_cmb_list=''
-		localStorage.delivery_retailer_cmb_list=''
-		localStorage.market_cmb_list_cp=''
-		localStorage.unschedule_market_cmb_id=''
-		
-		localStorage.profile_m_client_org_id=''
-		
-		//----------
-		localStorage.campaign_string=''	
-		localStorage.visit_camp_list_str=''
-		localStorage.visit_camp_submit_str=''
-		//------
-		localStorage.brand_list_string=''
-		localStorage.visit_page=""
-		localStorage.region_string=""
-		localStorage.payment_mode=""
-		
-		localStorage.productGiftStr='';
-		localStorage.campaign_doc_str=''
-		localStorage.productSampleStr=''
-		localStorage.productppmtStr='';
-		
-		
-		localStorage.market_client=''
-		
-		
-		localStorage.menu='';
-													
-		localStorage.ppm_string='';
-		
-		localStorage.user_type='';
-		localStorage.market_doctor='';
-		localStorage.report_button='';
-		localStorage.doctorreport_button='';
-		
-		
-		localStorage.campaign_show_1='';
-		localStorage.gift_show_1='';
-		localStorage.sample_show_1='';
-		localStorage.ppm_show_1='';
-		
-		
-		
-		
-		localStorage.visit_save=''; //Saved visit data
-		localStorage.save_visit_limit=0;
-		localStorage.saved_data_submit = 0;
-		
-		
-		localStorage.delivery_date='';
-		localStorage.payment_date='';
-		localStorage.payment_mode='';
-		
-		localStorage.payment_mode_get='';
-		
-		localStorage.visit_location_flag='';
-													
-		localStorage.delivery_date_flag='';
-		localStorage.payment_date_flag='';
-		localStorage.payment_mode_flag='';
-		localStorage.collection_date_flag='';
-		
-		localStorage.doctor_report_button='';
-		localStorage.prescription_report_button='';
-		localStorage.location_detail=''
-		
-		
-		localStorage.stock_str='';
-		localStorage.result_itemStock=''
-		localStorage.stockDate=''
-		
-		localStorage.promo_str=''
-		localStorage.promo_str_report=''
-		localStorage.promoDate=''
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1206,9 +1204,7 @@ function check_user() {
 		$("#error_login").html("Required User ID and Password");	
 	}else{
 		//-----------------
-		localStorage.base_url='';
-		localStorage.photo_url='';
-		localStorage.photo_submit_url='';
+		
 		
 		//alert(apipath_base_photo_dm);
 		$("#loginButton").hide();
@@ -1246,6 +1242,9 @@ function check_user() {
 						}
 						else{
 //							--------------------------
+							localStorage.base_url='';
+							localStorage.photo_url='';
+							localStorage.photo_submit_url='';
 							
 							localStorage.base_url=base_url;
 							localStorage.photo_url=photo_url;
@@ -1293,6 +1292,8 @@ function check_user() {
 											$("#error_login").html(resultArray[1]);
 										}
 										else if (resultArray[0]=='SUCCESS'){
+													afterSync();
+													
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
 													//alert (resultArray[2]);
