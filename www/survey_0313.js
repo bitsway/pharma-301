@@ -296,14 +296,12 @@ function page_market_ret() {
 	
 	$("#addDocanc").hide();
 	$("#blankAnc").show();
-	$("#err_m_retailer_next").html('');
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_market_ret_doc() {
 	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
 	$("#addDocanc").show();
 	$("#blankAnc").hide();
-	$("#err_m_retailer_next").html('');
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_visit() {
@@ -1179,7 +1177,7 @@ function check_user() {
 	
 	//Main
 
-
+	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 //	var  apipath_base_photo_dm='http://a002.businesssolutionapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1273,7 +1271,7 @@ function check_user() {
 							//alert (localStorage.sync_date)
 							
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
@@ -3236,9 +3234,6 @@ function marketRetailerNext_doc() {
 		$("#errorChkVSubmit_doc").html('');
 		
 		$("#wait_image_visit_submit_doc").hide();
-		var docId=visit_client.split('|')[1]
-		if ($.isNumeric(docId)==true ){$("#docdelete").show();}else{$("#docdelete").hide();}
-		
 		$.afui.loadContent("#page_visit_doc",true,true,'right');
 		//location.reload();
 							
@@ -6980,62 +6975,5 @@ function cancelDocSubmit() {
 					 });//end ajax
 	
 	 }
-	
-}
-
-
-
-//====================Doctor delete====================
-function doctor_delete() {
-	var  visit_client = localStorage.visit_client
-	var docId=visit_client.split('|')[1]
-	var DDoc=docId + '<fd>' + visit_client.split('|')[0]
-	//alert (DDoc)
-	//alert (localStorage.market_doctor)
-	// ajax-------
-	//alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId);
-	// ajax-------
-			
-			$.ajax(localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId,{
-
-								type: 'POST',
-								timeout: 30000,
-								error: function(xhr) {
-								$("#err_m_retailer_next").html('Network Timeout. Please check your Internet connection..');
-								$.afui.loadContent("#page_market_ret",true,true,'right');
-													},
-								success:function(data, status,xhr){	
-									 if (status!='success'){
-										$("#err_m_retailer_next").html('Network Timeout. Please check your Internet connection...');
-										$.afui.loadContent("#page_market_ret",true,true,'right');
-									 }
-									 else{	
-									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-								if (resultArray[0]=='FAILED'){
-											$("#err_m_retailer_next").text(resultArray[1]);	
-											$.afui.loadContent("#page_market_ret",true,true,'right');
-											
-										}
-								else if (resultArray[0]=='SUCCESS'){
-											$("#err_m_retailer_next").text(resultArray[1]);	
-											var market_doctor=localStorage.market_doctor
-											var newmarket_doctor=market_doctor.replace(DDoc,'')
-											localStorage.market_doctor=newmarket_doctor
-											marketNext_doc();
-					
-								
-							}else{				
-								$("#err_m_retailer_next").html('Network Timeout. Please check your Internet connection.');
-								$.afui.loadContent("#page_market_ret",true,true,'right');
-								}
-						}
-					  }
-			 });//end ajax
-	
-	
-	
-	
-	
 	
 }
