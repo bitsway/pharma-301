@@ -6691,6 +6691,7 @@ function docAddSubmit() {
 										
 									 }
 									 else{	
+									 
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 								if (resultArray[0]=='FAILED'){
