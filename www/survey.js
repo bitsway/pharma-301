@@ -1602,6 +1602,9 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 												
 										$('#item_combo_id_lv').empty()
 										$('#item_combo_id_lv').append(localStorage.product_tbl_str);
+										
+										
+										
 										$("#item_combo_id").val('A')
 										searchProduct()
 										
