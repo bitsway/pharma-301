@@ -7132,6 +7132,7 @@ function tr_itemsReport(pid) {
 								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
+									alert (data)
 									$("#wait_image_sReport").hide();
 									 if (status!='success'){
 										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection...');
@@ -7139,27 +7140,18 @@ function tr_itemsReport(pid) {
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-								if (resultArray[0]=='FAILED'){
-											$("#myerror_s_report_sReport").text(resultArray[0]);	
-											
+												
+										if (resultArray[0]=='FAILED'){
+													$("#myerror_s_report_sReport").text(resultArray[0]);	
+													
+												}
+										else if (resultArray[0]=='SUCCESS'){	
+											var result_string=resultArray[1];
+										}else{	
+										$("#wait_image_sReport").hide();					
+										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection.');
 										}
-								else if (resultArray[0]=='SUCCESS'){	
-			
-			
-			
-														
-								var result_string=resultArray[1];
-								
-								
-								
-								
-								
-							}else{	
-								$("#wait_image_sReport").hide();					
-								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection.');
 								}
-						}
 					  }
 			 });//end ajax
 	
