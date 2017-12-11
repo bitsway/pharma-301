@@ -82,9 +82,6 @@ $.afui.useOSThemes=false;
 		$("#wait_image_stock").hide();
 		$("#wait_image_outstanding").show();
 		
-		$('#item_combo_id_lvsReport').empty();
-		$('#item_combo_id_lvsReport').append(localStorage.product_tbl_ordersReport);
-		
 		
 		getLocationInfo_ready();
 		
@@ -1564,8 +1561,6 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 //													
 //													
 													var product_tbl_order=''
-													
-													var product_tbl_ordersReport=''
 													//alert (productLength)
 													for (j=0; j < productLength; j++){
 														var productArray2 = productList[j].split('<fd>');
@@ -1579,7 +1574,6 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														var product_qty='';																		
 														
 														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_vat'+product_id2+'" value="'+vat+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
-														
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....');
 														
@@ -1591,7 +1585,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 														
 														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+product_id2+'\')" type="number" id="sample_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="sample_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="sample_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">&nbsp;&nbsp;<font  class="name" >'+product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 
-													  product_tbl_ordersReport=product_tbl_ordersReport+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_itemsReport(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_itemsReport(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';	
+														
 														
 													
 													}
@@ -1604,8 +1598,6 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 
 													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
 													localStorage.product_tbl_str_doc_sample=product_tbl_doc_sample;
-													
-													localStorage.product_tbl_ordersReport=product_tbl_ordersReport
 													
 												
 										$('#item_combo_id_lv').empty()
@@ -1623,11 +1615,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 										$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
 										$('#sample_combo_id_lv').empty();
 										$('#sample_combo_id_lv').append(localStorage.product_tbl_str_doc_sample);
-										
-										$('#item_combo_id_lvsReport').empty();
-										$('#item_combo_id_lvsReport').append(localStorage.product_tbl_ordersReport);
-										$("#item_combo_idsReport").val('A')
-										searchProductsReport()
+
 													
 													
 
@@ -5187,26 +5175,6 @@ function searchProduct() {
 	
 	$("#item_codeSearch").val('');
 }
-function searchProductsReport() {
-	var filter  = $("#item_combo_idsReport").val().toUpperCase();
-	//alert (filter);
-	 var lis =document.getElementById("item_combo_id_lvsReport").getElementsByTagName("li");
-	
-	for (var i = 0; i < lis.length; i++) {
-		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-		//alert (name)
-		if (name.toUpperCase().indexOf(filter) == 0)
-			lis[i].style.display = 'list-item';
-		
-		else
-			lis[i].style.display = 'none';
-		
-		//$("#item_combo_id_lv").find(lis[0]).first().focus()
-	}
-	
-	//$("#item_codeSearch").val('');
-}
-
 
 function searchProductChar(char) {
 	var filter  = char;
@@ -5224,24 +5192,6 @@ function searchProductChar(char) {
 	}
 	$("#item_combo_id").val('');
 	$("#item_combo_id").focus();
-	
-}
-function searchProductCharsReport(char) {
-	var filter  = char;
-	
-	var lis =document.getElementById("item_combo_id_lvsReport").getElementsByTagName("li");
-	//alert (filter);
-	for (var i = 0; i < lis.length; i++) {
-		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-		//alert (name)
-		if (name.toUpperCase().indexOf(filter) == 0) 
-			lis[i].style.display = 'list-item';
-		else
-			lis[i].style.display = 'none';
-		//$("#item_combo_id_lv").find(lis[0]).first().focus()
-	}
-	$("#item_combo_idsReport").val('');
-	$("#item_combo_idsReport").focus();
 	
 }
 function searchCampaignChar(char) {
@@ -7097,72 +7047,5 @@ function doctor_delete() {
 	
 	
 	
-	
-}
-
-
-//======Sales Report
-//========================Detail Report============
-function Sales_Report() {	
-	
-	var date_from_doc=$("#date_from_doc").val();
-	var date_to_doc=$("#date_to_doc").val();
-	
-	localStorage.date_to_doc=date_from_doc
-	localStorage.date_to_doc=date_to_doc
-	
-	$('#item_combo_id_lvsReport').empty();
-	$('#item_combo_id_lvsReport').append(localStorage.product_tbl_ordersReport);
-		
-	$.afui.loadContent("#page_sReport",true,true,'right');
- 
-}
-function tr_itemsReport(pid) {	
-	
-	$("#wait_image_sReport").show();
-	//report_detail_doctor
-	//alert (localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type)
-	
-	$.ajax(localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type,{
-
-								type: 'POST',
-								timeout: 30000,
-								error: function(xhr) {	
-								$("#wait_image_sReport").hide();
-								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection..');
-													},
-								success:function(data, status,xhr){	
-									$("#wait_image_sReport").hide();
-									 if (status!='success'){
-										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection...');
-										
-									 }
-									 else{	
-									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-								if (resultArray[0]=='FAILED'){
-											$("#myerror_s_report_sReport").text(resultArray[0]);	
-											
-										}
-								else if (resultArray[0]=='SUCCESS'){	
-			
-			
-			
-														
-								var result_string=resultArray[1];
-								
-								
-								
-								
-								
-							}else{	
-								$("#wait_image_sReport").hide();					
-								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection.');
-								}
-						}
-					  }
-			 });//end ajax
-	
-	$.afui.loadContent("#page_report_sReport",true,true,'right');
 	
 }
