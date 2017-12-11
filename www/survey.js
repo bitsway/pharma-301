@@ -7120,10 +7120,59 @@ function Sales_Report() {
 function tr_itemsReport(pid) {	
 	$("#myerror_s_report_sReport").html('');
 	$("#wait_image_sReport").show();
-	alert (pid)
-	if (pid=='x'){pid=''}
+	//alert (pid)
+	//if (pid=='x'){pid=''}
 	//report_detail_doctor
-	alert (localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type)
+	//alert (localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type)
+	
+	$.ajax(localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {	
+								$("#wait_image_sReport").hide();
+								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									//alert (data)
+									$("#wait_image_sReport").hide();
+									 if (status!='success'){
+										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_sReport").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+												
+										if (resultArray[0]=='FAILED'){
+													$("#myerror_s_report_sReport").text(resultArray[0]);	
+													$("#wait_image_sReport").hide();
+												}
+										else if (resultArray[0]=='SUCCESS'){	
+											var result_string=resultArray[1];
+											$("#div_sReport").html(result_string);
+											$("#wait_image_sReport").hide();					
+											$("#myerror_s_report_sReport").html('');
+											
+											
+										}else{	
+										$("#wait_image_sReport").hide();					
+										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection.');
+										}
+								}
+					  }
+			 });//end ajax
+	
+	$.afui.loadContent("#page_report_sReport",true,true,'right');
+	
+}
+function tr_itemsReportAll() {	
+	$("#myerror_s_report_sReport").html('');
+	$("#wait_image_sReport").show();
+	var se_market_report=''
+	//alert (pid)
+	//if (pid=='x'){pid=''}
+	//report_detail_doctor
+	//alert (localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type)
 	
 	$.ajax(localStorage.report_url+'report_sReport?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type,{
 
