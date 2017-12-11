@@ -7118,7 +7118,7 @@ function Sales_Report() {
  
 }
 function tr_itemsReport(pid) {	
-	
+	$("#myerror_s_report_sReport").html('');
 	$("#wait_image_sReport").show();
 	if (pid=='x'){pid=''}
 	//report_detail_doctor
@@ -7133,21 +7133,26 @@ function tr_itemsReport(pid) {
 								$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
-									alert (data)
+									//alert (data)
 									$("#wait_image_sReport").hide();
 									 if (status!='success'){
 										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection...');
-										
+										$("#wait_image_sReport").hide();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 												
 										if (resultArray[0]=='FAILED'){
 													$("#myerror_s_report_sReport").text(resultArray[0]);	
-													
+													$("#wait_image_sReport").hide();
 												}
 										else if (resultArray[0]=='SUCCESS'){	
 											var result_string=resultArray[1];
+											$("#div_sReport").html(result_string);
+											$("#wait_image_sReport").hide();					
+											$("#myerror_s_report_sReport").html('');
+											
+											
 										}else{	
 										$("#wait_image_sReport").hide();					
 										$("#myerror_s_report_sReport").html('Network Timeout. Please check your Internet connection.');
