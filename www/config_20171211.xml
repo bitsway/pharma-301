@@ -3,8 +3,8 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.yeapps.pharma-3011"
-        version   = "4.0.20">
+        id        = "com.businesssolutionapps.pharma-3011"
+        version   = "3.0.10">
 
     <name>Pharma-3011</name>
 
@@ -13,7 +13,7 @@
     </description>
 
     <author href="businesssolutionapps.com" email="info@im-gp.com">
-        Businesss Solution Apps Team
+         Businesss Solution Apps Team
     </author>
 
     <!--
