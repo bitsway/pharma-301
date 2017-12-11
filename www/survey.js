@@ -7168,7 +7168,7 @@ function tr_itemsReport(pid) {
 function tr_itemsReportAll() {	
 	$("#myerror_s_report_sReport").html('');
 	$("#wait_image_sReport").show();
-	var se_market_report=''
+	var pid=''
 	//alert (pid)
 	//if (pid=='x'){pid=''}
 	//report_detail_doctor
