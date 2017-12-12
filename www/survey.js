@@ -7221,8 +7221,9 @@ function tr_itemsReportAll() {
 
 //======================
 function tr_itemsReportFM(fm) {	
-	$("#myerror_s_report_sReport").html('');
-	$("#wait_image_sReport").show();
+	$("#myerror_s_report_sReportFM").html('');
+	$("#wait_image_sReportFM").show();
+	alert ('AAAAAA')
 	//alert (pid)
 	//if (pid=='x'){pid=''}
 	//report_detail_doctor
