@@ -7223,14 +7223,14 @@ function tr_itemsReportAll() {
 function tr_itemsReportFM(i) {	
 	$("#myerror_s_report_sReportFM").html('');
 	$("#wait_image_sReportFM").show();
-	alert (i)
+	//alert (i)
 	var fmName=i+'_name'
 	var fmNameValue=$("#"+fmName).val();
 	
-	alert (fmNameValue)
+	//alert (fmNameValue)
 	//if (pid=='x'){pid=''}
 	//report_detail_doctor
-	alert (localStorage.report_url+'report_sReportFM?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+localStorage.pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type+'&fm='+fmNameValue)
+	//alert (localStorage.report_url+'report_sReportFM?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+localStorage.pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type+'&fm='+fmNameValue)
 	
 	$.ajax(localStorage.report_url+'report_sReportFM?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_report='+localStorage.rep_id_report_doc+'&se_item_report='+localStorage.pid+'&se_market_report='+localStorage.se_market_report_doc+'&date_from='+localStorage.date_from_doc+'&date_to='+localStorage.date_to_doc+'&user_type='+localStorage.user_type+'&fm='+fmNameValue,{
 
