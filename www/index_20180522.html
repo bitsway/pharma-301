@@ -868,18 +868,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
 			
             	
-			<!--	<table style="width:100%">
-                <tr>
-                <td>-->
-			
-				<div id="myerror" style="color:#C00">   </div>
-                
-                 <!--Nazma start-->
-               <table style="width:100%">
+				<table style="width:100%">
                 <tr>
                 <td>
-                
-                
+			
+				<div id="myerror" style="color:#C00">   </div>
 				<ul data-inset="true"  data-role="listview">
 					<li >
 						<div><b></b><span class="market" style="font-size:16px; color:#009191" ></span></div>
@@ -897,15 +890,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
                 </tr>
                 </table>
-    
-    
-                     <div id="errorChkV_Br_doc" style="color:#C00"></div>
-                </br></br>
-                	<div style="height:2px"></div>
-                	<div id="doc_br_data"></div>
-
-				 <!--Nazma end-->
-
                 
 					<input type="hidden" id="btn_visit_submit_doc" onClick="getCampaign();"  style="width:100%; height:50px;  background-color:#E9F0FE; color:#009191; font-size:20px" value="     Product      "   />
                     
@@ -1018,12 +1002,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
           	 <div onClick="page_doctor_profile()" align="center"> <img style="height:70px; width:70px" src="editProfile.png"></div>
               <br> <br>
 			<div style="background-color:#F00; color:#FFF; font-size:16px" id="docdelete" onClick="doctor_delete()" align="center"><br> Delete <br><br> </div>
-
-		<!--Nazma Start-->
- 
- 			<br> <br>
-			<div style="background-color:#09C; color:#FFF; font-size:16px" id="getBrand" onClick="getDoctorBrandQty();doc_cat_brand();" align="center"><br> Brand <br><br> </div>
-			<!--Nazma end-->
 
            
         </nav>
@@ -1839,90 +1817,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </footer>
     </div>  
     
-    			<!--Nazma Start-->
-    
-        <!--==================================Brand Start================================-->
-    
-   
-       <div class="view" id="brand_doctor_qtyView">
-        <div class="pages">
-         <header> 
-			<h3 align="center">Brand Add</h3>
-</header> 
-            <div class="panel" id="brand_doctor_qty">
-            </br></br></br></br>
-                <!--<div class="card">-->
-                    <!--<h1>Sync</h1>-->
-                     <table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">
-                     <tr style="border-bottom:1px solid #D2EEE9;">
-                     <td height="40px" width="45%"> <div id="doctor_brand_combo_div">  </div></td>
-                     <td width="1%"></td>
-                     <td height="40px"width="33%"><input  type="number" name="br_qty_id" id="br_qty_id" placeholder="Quantity"></td>
-                     <td width="1%"></td>
-                     <td height="40px" width="15%"><input type="submit" style="height:40px;background-color:#FFF;background:#06C ;color:#FFF ; border-radius:5px;width:115px; font-size:16px;" name="br_qty_show_btn" id="br_qty_show_btn" onClick="show_tbl_br()" value="Add"></td>
-                    <!--  <img id="wait_image_tbl_docBrAdd" style="width:50px" src="loading.gif" alt="">-->
-                     
-                     </tr>
-                     
-                     </table>
-			<div id="tbl_dcr_br_qty_show"></div>	
-            <table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">
-            <tr style="border-bottom:1px solid #D2EEE9;height:20px;width:100%">
-            <td style="height:20px;width:100%"></td>
-            </tr>
-            <tr style="border-bottom:1px solid #D2EEE9;height:20px;width:100%">
-            <td style="height:20px;width:100%">
-            <input type="submit" id="btn_br_qty_doc_add" onClick="docBrSubmit()"  style="width:100%; height:100px; background-color:#09C; color:#FFF; font-size:20px" value="    Submit     "   />
-            <!-- <input type="submit" id="btn_br_qty_show" name="btn_br_qty_show" onClick="visitSubmit();">-->
-            </td>
-            </tr>
-
-            </table>
-<!--            <div id="btn_br_qty_show_div">
-           
-            </div>-->
-            <img id="wait_image_docBrAdd" style="width:50px" src="loading.gif" alt="">
-			<div id="error_brand_doc" style="color:#C00"></div>
-				
-                
-                
-               
-                <br>
-                <br>
-			  
-			
-            <br>                        
-            <br>
-            <br>            
-			<br>
-            <br>                        
-            <br>
-            <br>            
-			<br>
-            <br>                        
-            <br>
-            <br>            
-			<br>
-            <br>                        
-            <br>
-            <br>            
-			<br>
-            
-                   
-             
-               </div>
-            </div>
-       
-        <footer>
-		<a onClick="homePage()" class="icon home" >Home</a>
-        <a href="#page_visit_doc"  onclick="$.afui.drawer.show('#page_visit_doc','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
-
-</footer>
-		
-    </div>     
-    
-    
-				<!--Nazma end-->
     
     <!--  //=================Gift Start==================-->
       
