@@ -7572,7 +7572,7 @@ function show_tbl_br(){
 	var docBrandListSingleRow = localStorage.docBrandList.split('<rdrd>') ;
 	
 	
-	var showBr = '<table width="100%" border="1" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="50px" style="text-align:center; padding-left:5px;">Brand</td><td width="30px" style="text-align:center; padding-left:5px;">Quantity</td><td width="20px" style="text-align:center; padding-left:5px;">Delete</td></tr>' ;
+	var showBr = '<table width="100%" border="1" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="50%" style="text-align:center; padding-left:5px;">Brand</td><td width="20%" style="text-align:center; padding-left:5px;">Quantity</td><td  style="text-align:center; padding-left:5px;">Delete</td></tr>' ;
 	for (var i=0; i < docBrandListSingleRow.length-1; i++){	
 	//alert(docBrandListSingleRow)
 		var i_text=i.toString();
@@ -7586,7 +7586,7 @@ function show_tbl_br(){
 
 
 	//	alert(bDocValueArray);
-		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td width="50px" style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td width="30px" style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td width="20px" style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; width:20px" name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="X"></td></tr>'
+		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td  style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td  style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; width:20px" name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="  X  "></td></tr>'
 		
 		
 		
