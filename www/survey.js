@@ -3247,6 +3247,7 @@ function marketRetailerNext_doc() {
 	var doc_Id=localStorage.visit_client_show.split('|')[1];
 	var doc_name=localStorage.visit_client_show.split('|')[0];
 
+	$("#errorChkV_Br_doc").html('');
 
 //	var market_Id=localStorage.visit_market_show.split('|')[1];
 //	var market_name=localStorage.visit_market_show.split('|')[0];
@@ -7459,7 +7460,7 @@ function doc_cat_brand() {
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 										if (resultArray[0]=='FAILED'){
-											$("#error_brand_doc").text("Brand not available");	
+											$("#error_brand_doc").html(resultArray[1]);	
 											$("#wait_image_brand_submit_doc").hide();		
 										}
 										
@@ -7585,7 +7586,7 @@ function show_tbl_br(){
 
 
 	//	alert(bDocValueArray);
-		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td width="50px" style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td width="30px" style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td width="20px" style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px" name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="X"></td></tr>'
+		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td width="50px" style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td width="30px" style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td width="20px" style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; width:20px" name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="X"></td></tr>'
 		
 		
 		
