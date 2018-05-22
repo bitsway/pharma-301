@@ -7586,7 +7586,7 @@ function show_tbl_br(){
 
 
 	//	alert(bDocValueArray);
-		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td  style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td  style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; width:20px" name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="  X  "></td></tr>'
+		showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  style="text-align:center; padding-left:5px;">'+docBrandName+'</td><input type = "hidden" id = "'+i_brId+'" name =  "'+i_brId+'" value =  "'+docBrandId+'"></td><td  style="text-align:center; padding-left:5px;">'+docBrandListSingleRow[i].split('<fdfd>')[1]+'</td><td  style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; " name="br_qty_del_btn" id="br_qty_del_btn" onClick="br_delete('+i+')" value="  X  "></td></tr>'
 		
 		
 		
