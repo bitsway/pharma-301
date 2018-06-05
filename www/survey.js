@@ -7666,8 +7666,8 @@ function docBrSubmit() {
 	
 	if (doc_Id=='' |  doc_name=='' | market_Id=='' | market_name=='' | localStorage.docBrandList == ''){
 	$("#error_brand_doc").html('Please Select Fields.' )
-	$("#wait_image_docBrAdd").show();
-	$("#btn_br_qty_doc_add").hide();
+	$("#wait_image_docBrAdd").hide();
+	$("#btn_br_qty_doc_add").show();
 	//alert ('Mandatory')
 }
 	
@@ -7675,7 +7675,8 @@ function docBrSubmit() {
 	else{
 	
 	//alert(localStorage.base_url+'syncBrSubmitData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docBrandList='+localStorage.docBrandList+'&doc_Id='+doc_Id+'&doc_name='+doc_name+'&market_Id='+market_Id+'&market_name='+market_name)
-	
+	$("#wait_image_docBrAdd").show();
+	$("#btn_br_qty_doc_add").hide()
 	
 	
 	$.ajax(localStorage.base_url+'syncBrSubmitData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docBrandList='+localStorage.docBrandList+'&doc_Id='+doc_Id+'&doc_name='+doc_name+'&market_Id='+market_Id+'&market_name='+market_name,{
