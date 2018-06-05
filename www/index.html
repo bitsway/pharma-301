@@ -1017,7 +1017,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
           	 <div onClick="page_doctor_profile()" align="center"> <img style="height:70px; width:70px" src="editProfile.png"></div>
               <br> <br>
-			<div style="background-color:#F00; color:#FFF; font-size:16px" id="docdelete" onClick="doctor_delete()" align="center"><br> Delete <br><br> </div>
+			<!--<div style="background-color:#F00; color:#FFF; font-size:16px" id="docdelete" onClick="doctor_delete()" align="center"><br> Delete <br><br> </div>-->
 
 		<!--Nazma Start-->
  
@@ -1095,6 +1095,43 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                      <td>:</td>
                     <td><input type="date" name="dDOB"   id="dDOB" placeholder="DOB"  ></td>
                   </tr>
+                  
+                 <!-- ==================================-->
+                  <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><input type="date" name="dMarDay"   id="dMarDay" placeholder="Marriage Daye"  ></td>
+                  </tr>
+                  
+                <!--  Nazma 2018-06-04 start-->
+                  <tr>
+                    <td>Collar Size</td>
+                     <td>:</td>
+                    <td>
+                    <select id="collar_size_combo" data-native-menu="false" onChange="comboSearch()" style="width:80%">
+                            <option value="" ></option>		
+                            <option value="15" >15</option>
+                            <option value="15.5" >15.5</option>
+                            <option value="16" >16</option>
+                            <option value="16.5" >16.5</option>
+                            <option value="17" >17</option>
+                            <option value="15" >17.5</option>
+                    </select>
+    
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>DOB of Child 1</td>
+                         <td>:</td>
+                        <td><input type="datetime" name="dc1Day"   id="dc1Day" placeholder="DOB of Child 1"  ></td>
+                      </tr>
+                      <tr>
+                        <td>DOB of Child 2</td>
+                         <td>:</td>
+                        <td><input type="datetime" name="dc2Day"   id="dc2Day" placeholder="DOB of Child 2"  ></td>
+                      </tr>
+                  
+                  <!--====================================-->
                   
                   <tr>
                     <td>Mobile</td>

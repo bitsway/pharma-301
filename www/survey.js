@@ -6761,11 +6761,21 @@ function docProfileSubmit() {
 	dCAddress=$("#dCAddress").val()
 	dDist=$("#dDistrict").val()
 	dThana=$("#dThana").val()
+	//================================
+	dMarDay=$("#dMarDay").val()
+	collar_size_combo=$("#collar_size_combo").val()
+	dc1Day=$("#dc1Day").val()
+	dc2Day=$("#dc2Day").val()
+	//==========================
+	dTidP=$("#dTidP").val()
+	dInhouseP=$("#dInhouseP").val()
 	
 	
 	
-	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
-		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana,{
+	
+	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana  +'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP)
+	
+		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP,{
 
 								type: 'POST',
 								timeout: 30000,
