@@ -6725,11 +6725,11 @@ function page_doctor_profile() {
 									$("#dInhouseP").val(dInhouseP)
 									//$("#dCategory").val(dCategory)
 									
-									if (collar_size_combo!=''){
+									if (collar_size!=''){
 										$('#collar_size_combo').empty();
-										alert (collar_size_combo)
+										//alert (collar_size_combo)
 										//var opt='<option value="'+collar_size_combo+'" >'+collar_size_combo+'</option>'		
-								$('#collar_size_combo').append('<option value="'+collar_size_combo+'" >'+collar_size_combo+'</option>');
+								$('#collar_size_combo').append('<option value="'+collar_size+'" >'+collar_size_combo+'</option>');
 										$('#collar_size_combo').append('<option value="15" >15</option>')
 										$('#collar_size_combo').append('<option value="15.5" >15.5</option>')
 										$('#collar_size_combo').append('<option value="16" >16</option>')
