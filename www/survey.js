@@ -6718,16 +6718,27 @@ function page_doctor_profile() {
 									$("#dThana").val(dThana)
 									
 									$("#dMarDay").val(dMarDay)
-									$("#collar_size_combo").val(collar_size_combo)
+									//$("#collar_size_combo").val(collar_size_combo)
 									$("#dc1Day").val(dob_child1)
 									$("#dc2Day").val(dob_child2)
 									$("#dTidP").val(dTidP)
 									$("#dInhouseP").val(dInhouseP)
 									//$("#dCategory").val(dCategory)
 									
-									catList=dCategory.split(',')
-									$('#dCategory').empty();
+									if (collar_size_combo!=''){
+										$('#collar_size_combo').empty();
+										var opt='<option value="'+collar_size_combo+'" >'+collar_size_combo+'</option>'		
+										$('#collar_size_combo').append(opt);
+										$('#collar_size_combo').append('<option value="15" >15</option>')
+										$('#collar_size_combo').append('<option value="15.5" >15.5</option>')
+										$('#collar_size_combo').append('<option value="16" >16</option>')
+										$('#collar_size_combo').append('<option value="16.5" >16.5</option>')
+										$('#collar_size_combo').append('<option value="17" >17</option>')
+										$('#collar_size_combo').append('<option value="17.5" >17.5</option>')
+									}
 									
+									catList=dCategory.split(',')
+									$('#dCategory').empty();									
 									for (var j=0; j < catList.length-1; j++){
 										var opt='<option value="'+catList[j]+'">'+catList[j]+'</option>'
 										 $('#dCategory').append(opt);

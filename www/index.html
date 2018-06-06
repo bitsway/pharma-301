@@ -1108,14 +1108,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Collar Size</td>
                      <td>:</td>
                     <td>
-                    <select id="collar_size_combo" data-native-menu="false" onChange="comboSearch()" style="width:80%">
+                    <select id="collar_size_combo" data-native-menu="false"  style="width:80%">
                             <option value="" ></option>		
                             <option value="15" >15</option>
                             <option value="15.5" >15.5</option>
                             <option value="16" >16</option>
                             <option value="16.5" >16.5</option>
                             <option value="17" >17</option>
-                            <option value="15" >17.5</option>
+                            <option value="17.5" >17.5</option>
                     </select>
     
                         </td>
@@ -1148,7 +1148,34 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                  <tr>
                     <td>Target</td>
                      <td>:</td>
-                    <td><input type="text" name="dMDay"   id="dMDay" placeholder="Target"  ></td>
+                    <td>
+                    <select id="dMDay" data-native-menu="false"  style="width:80%">
+                            <option value="" ></option>		
+                            <option value="Losectil Only" >Losectil Only</option>
+                            <option value="Esoral Only" >Esoral Only</option>
+                            <option value="Rabifast Only" >Rabifast Only</option>
+                            <option value="Ostocal G Only" >Ostocal G Only</option>
+                            <option value="Ostocal D Only" >Ostocal D Only</option>
+                            <option value="Kefuclav Only" >Kefuclav Only</option>
+                            
+                            <option value="Roxim Only" >Roxim Only</option>
+                            <option value="Zithrox Only" >Zithrox Only</option>
+                            <option value="Cloron Only" >Cloron Only</option>
+                            <option value="Losectil Mixed" >Losectil Mixed</option>
+                            <option value="Esoral Mixed" >Esoral Mixed</option>
+                            <option value="Rabifast Mixed" >Rabifast Mixed</option>
+                            
+                            <option value="Ostocal G Mixed" >Ostocal G Mixed</option>
+                            <option value="Ostocal D Mixed" >Ostocal D Mixed</option>
+                            <option value="Kefuclav Mixed" >Kefuclav Mixed</option>
+                            <option value="Roxim Mixed" >Roxim Mixed</option>
+                            <option value="Zithrox Mixed" >Zithrox Mixed</option>
+                            
+                    </select>
+                    
+
+
+                    <!--<input type="text" name="dMDay"   id="dMDay" placeholder="Target"  >--></td>
                   </tr>
                 
                   <tr>
