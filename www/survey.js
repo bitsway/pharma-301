@@ -6701,8 +6701,12 @@ function page_doctor_profile() {
 									var dCAddress=result_string.split('<fdfd>')[7]
 									var dDistrict=result_string.split('<fdfd>')[8]
 									var dThana=result_string.split('<fdfd>')[9]
-									var dTidP=result_string.split('<fdfd>')[10]
-									var dInhouseP=result_string.split('<fdfd>')[11]
+									var mar_day=result_string.split('<fdfd>')[10]
+									var collar_size=result_string.split('<fdfd>')[11]
+									var dob_child1=result_string.split('<fdfd>')[12]
+									var dob_child2=result_string.split('<fdfd>')[13]
+									var dTidP=result_string.split('<fdfd>')[14]
+									var dInhouseP=result_string.split('<fdfd>')[15]
 									$("#dName").val(dName)
 									$("#dSpaciality").val(dSpaciality)
 									$("#dDegree").val(dDegree)
@@ -6712,6 +6716,13 @@ function page_doctor_profile() {
 									$("#dCAddress").val(dCAddress)
 									$("#dDistrict").val(dDistrict)
 									$("#dThana").val(dThana)
+									
+									$("#dMarDay").val(dMarDay)
+									$("#collar_size_combo").val(collar_size_combo)
+									$("#dc1Day").val(dob_child1)
+									$("#dc2Day").val(dob_child2)
+									$("#dTidP").val(dTidP)
+									$("#dInhouseP").val(dInhouseP)
 									//$("#dCategory").val(dCategory)
 									
 									catList=dCategory.split(',')
