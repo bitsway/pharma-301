@@ -6793,48 +6793,48 @@ function docProfileSubmit() {
 	dTidP=$("#dTidP").val()
 	dInhouseP=$("#dInhouseP").val()
 	
+	if ((dTidP=='') || (dInhouseP=='')){$("#myerror_doctor_prof").html('Please enter required field');}
+	else{
 	
+		$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana  +'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP)
+		
+			$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP,{
 	
-	
-	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana  +'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP)
-	
-		$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP,{
-
-								type: 'POST',
-								timeout: 30000,
-								error: function(xhr) {
-								 $("#wait_image_docProf").hide();
-								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
-													},
-								success:function(data, status,xhr){	
+									type: 'POST',
+									timeout: 30000,
+									error: function(xhr) {
 									 $("#wait_image_docProf").hide();
-									 if (status!='success'){
-										$("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection...');
-										
-									 }
-									 else{	
-									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-								if (resultArray[0]=='FAILED'){
-											$("#myerror_doctor_prof").text(resultArray[1]);	
+									 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
+														},
+									success:function(data, status,xhr){	
+										 $("#wait_image_docProf").hide();
+										 if (status!='success'){
+											$("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection...');
 											
-										}
-								else if (resultArray[0]=='SUCCESS'){	
-									var result_string=resultArray[1];
+										 }
+										 else{	
+											var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+									if (resultArray[0]=='FAILED'){
+												$("#myerror_doctor_prof").text(resultArray[1]);	
+												
+											}
+									else if (resultArray[0]=='SUCCESS'){	
+										var result_string=resultArray[1];
+										
+										$("#myerror_doctor_prof").html(result_string)
+										
 									
-									$("#myerror_doctor_prof").html(result_string)
-									
-								
-							}else{	
-								 $("#wait_image_docProf").hide();
-								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
-								}
-						}
-					  }
-			 });//end ajax
-	
-	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
-	
+								}else{	
+									 $("#wait_image_docProf").hide();
+									 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
+									}
+							}
+						  }
+				 });//end ajax
+		
+		//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	}
 }
 function clearSearchDoctor(){
 	$("#unscheduled_m_client_combo_id").val("")
