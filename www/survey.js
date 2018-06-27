@@ -1206,7 +1206,7 @@ function check_user() {
 
 
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://w04.yeapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://w04.yeapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1298,7 +1298,7 @@ function check_user() {
 							//alert (localStorage.sync_date)
 							
 							
-							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
@@ -3333,6 +3333,8 @@ function marketRetailerNext_doc() {
 //		nazma azam 2018/04/30
 
 		$('#doc_br_data').append(localStorage.show_br_dcr_str);
+		
+		
 		
 		} //else if
 		
@@ -7861,6 +7863,11 @@ function br_new_delete(j){
 function readyBrand(){
 	var doc_Id=localStorage.visit_client_show.split('|')[1];
 	var doc_name=localStorage.visit_client_show.split('|')[0];
+	$('#doc_br_data_tbl').empty();
+	
+	
+	$('#doc_br_data').empty();
+
 	//alert (localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&doc_name='+doc_name)
 	$("#dataShow").val(localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&doc_name='+doc_name);	
 	
@@ -7886,6 +7893,8 @@ $.ajax(localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+
 				
 				if (resultArray[0]=='FAILED'){
 					$("#errorChkV_Br_doc").text("Brand not available");	
+					$("#doc_br_data").text("Brand not available");	
+					
 					$("#wait_image_visit_submit_doc").hide();		
 				
 
