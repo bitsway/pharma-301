@@ -1206,7 +1206,7 @@ function check_user() {
 
 
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-//	var  apipath_base_photo_dm='http://a002.businesssolutionapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://w04.yeapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1298,7 +1298,7 @@ function check_user() {
 							//alert (localStorage.sync_date)
 							
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
@@ -7473,7 +7473,38 @@ function tr_itemsReportFM(i) {
 //
 
 function doc_cat_brand() {
+		//		nazma azam 2018-06-26 start
+	//	alert(localStorage.br_doc_dataList)
+		br_doc_dataList_tbl = localStorage.br_doc_dataList 
+		var brandDocList_new = br_doc_dataList_tbl.split('<rd>');
+		//alert(brandDocList_new)
+		var brandDocListShowLength_new=brandDocList_new.length
+		var showBr = '<table width="100%" border="1" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="50%" style="text-align:center; padding-left:5px;">Brand</td><td width="20%" style="text-align:center; padding-left:5px;">Quantity</td><td  style="text-align:center; padding-left:5px;">Delete</td></tr>' ;
 
+		//alert(brandDocListShowLength_new)
+		for (var j=0; j < brandDocListShowLength_new; j++){	
+		
+			var j_text=j.toString();
+			var bDocValueArray_new = brandDocList_new[j].split('<fd>');
+			var brand_name_new=bDocValueArray_new[0];
+			var brand_qty_new=bDocValueArray_new[1];
+			var brand_id_new=bDocValueArray_new[2];
+			//alert(brand_id_new)
+			var single_doc_br_val = brand_name_new+'|'+brand_qty_new+'|'+brand_id_new
+			var dc_b_id = 'dc_b_id_'+j_text;	
+						
+				showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  style="text-align:center; padding-left:5px;">'+brand_name_new+'</td><input type = "hidden" id = "'+dc_b_id+'" name =  "'+dc_b_id+'" value =  "'+single_doc_br_val+'"></td><td  style="text-align:center; padding-left:5px;">'+brand_qty_new+'</td><td  style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; " name="br_qty_del_new_btn" id="br_qty_del_new_btn" onClick="br_new_delete('+j+')" value="  X  "></td></tr>'			  	
+				//alert(showBr)
+
+		}  //for
+		showBr=showBr+'</table>'
+		
+	//	$("#doc_br_data_tbl").html(showBr);
+
+
+		$('#doc_br_data_tbl').empty();
+		$('#doc_br_data_tbl').append(showBr);
+		//		nazma azam 2018-06-26 end
 				
 	//			//// ajax-------
 	
@@ -7701,6 +7732,7 @@ function docBrSubmit() {
 	else{
 	
 	//alert(localStorage.base_url+'syncBrSubmitData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docBrandList='+localStorage.docBrandList+'&doc_Id='+doc_Id+'&doc_name='+doc_name+'&market_Id='+market_Id+'&market_name='+market_name)
+	
 	$("#wait_image_docBrAdd").show();
 	$("#btn_br_qty_doc_add").hide()
 	
@@ -7737,6 +7769,7 @@ function docBrSubmit() {
 									$("#tbl_dcr_br_qty_show").html('');
 									$("#br_qty_id").val('');
 									$("#brand_dcr_com").val('');
+									readyBrand()
 								
 							}else{	
 								 $("#wait_image_docBrAdd").hide();
@@ -7768,3 +7801,154 @@ function show_tbl_br_doc(){
 
 
 	//	Nazma Azam End
+//	Nazma Azam 2018-06-26 start
+
+function br_new_delete(j){
+	
+	
+	
+			var j_new_text=j.toString();
+			var dc_b_new_id = 'dc_b_id_'+j_new_text;
+			var dcBrValue=$("#"+dc_b_new_id).val();	
+			
+			var doc_Id=localStorage.visit_client_show.split('|')[1];
+		//	alert(dcBrValue)			
+	//$("#dataShow").val(localStorage.base_url+'deleteDocItemBrandList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&dcBrValue='+dcBrValue);	
+	
+	//alert(localStorage.base_url+'deleteDocItemBrandList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&dcBrValue='+dcBrValue)
+	$.ajax(localStorage.base_url+'deleteDocItemBrandList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&dcBrValue='+dcBrValue,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {	
+								$("#wait_image_docBrAdd").hide();
+								$("#error_brand_doc").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									$("#wait_image_docBrAdd").hide();
+									 if (status!='success'){
+										$("#error_brand_doc").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_docBrAdd").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+													$("#error_brand_doc").text(resultArray[0]);	
+													$("#wait_image_docBrAdd").hide();
+												}
+										else if (resultArray[0]=='SUCCESS'){	
+											readyBrand();	
+											var result_string=resultArray[1];
+											$("#error_brand_doc").html(result_string);
+											$("#wait_image_docBrAdd").hide();					
+											//$("#error_brand_doc").html('');
+											
+											
+										}else{	
+										$("#wait_image_docBrAdd").hide();					
+										$("#error_brand_doc").html('Network Timeout. Please check your Internet connection.');
+										}
+								}
+					  }
+			 });//end ajax
+			
+			
+}
+
+//-------------------------
+function readyBrand(){
+	var doc_Id=localStorage.visit_client_show.split('|')[1];
+	var doc_name=localStorage.visit_client_show.split('|')[0];
+	//alert (localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&doc_name='+doc_name)
+	$("#dataShow").val(localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&doc_name='+doc_name);	
+	
+$.ajax(localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&doc_Id='+doc_Id+'&doc_name='+doc_name,{
+		type: 'POST',
+		timeout: 30000,
+		error: function(xhr) {
+		
+
+
+		$("#errorChkV_Br_doc").html('Network Timeout. Please check your Internet connection..');
+							},
+		success:function(data, status,xhr){	
+				
+			 if (status!='success'){
+				$("#errorChkV_Br_doc").html('Network Timeout. Please check your Internet connection...');
+				$("#wait_image_visit_submit_doc").hide();
+			
+
+			 }
+			 else{	
+				var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+				
+				if (resultArray[0]=='FAILED'){
+					$("#errorChkV_Br_doc").text("Brand not available");	
+					$("#wait_image_visit_submit_doc").hide();		
+				
+
+				}
+				
+				
+
+		else if (resultArray[0]=='SUCCESS'){
+			
+			var br_doc_list = resultArray[1];
+		
+			localStorage.br_doc_dataList=br_doc_list;
+			$("#wait_image_visit_submit_doc").hide();		
+							
+		var brandDocList = br_doc_list.split('<rd>');
+		
+		var brandDocListShowLength=brandDocList.length	
+		var show_br_dcr_str='<table width="100%" border="1" id="tbl_brand_show" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;">Brand</td><td  width="60px" style="text-align:center; padding-left:5px;">Quantity</td></tr>'
+		var showBr = '<table width="100%" border="1" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="50%" style="text-align:center; padding-left:5px;">Brand</td><td width="20%" style="text-align:center; padding-left:5px;">Quantity</td><td  style="text-align:center; padding-left:5px;">Delete</td></tr>' ;
+
+
+		var brand_bDoc_list=''
+		 var br_qty	= ''
+		for (var i=0; i < brandDocListShowLength; i++){	
+		
+		var i_text=i.toString();
+		var bDocValueArray = brandDocList[i].split('<fd>');
+		var BrandName=bDocValueArray[0];
+		
+		var BrandQty=bDocValueArray[1];
+		var brand_id_new=bDocValueArray[2];
+		var single_doc_br_val = BrandName+'|'+BrandQty+'|'+brand_id_new
+		var dc_b_id = 'dc_b_id_'+i_text;	
+					
+			show_br_dcr_str=show_br_dcr_str +'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  width="60px" style="text-align:center; padding-left:5px;">'+BrandName+'</td><td  width="60px" style="text-align:center; padding-left:5px;">'+BrandQty+'</td></tr>'			  	
+			showBr = showBr+'<tr style="border-bottom:1px solid #D2EEE9;">'+'<td  style="text-align:center; padding-left:5px;">'+BrandName+'</td><input type = "hidden" id = "'+dc_b_id+'" name =  "'+dc_b_id+'" value =  "'+single_doc_br_val+'"></td><td  style="text-align:center; padding-left:5px;">'+BrandQty+'</td><td  style="text-align:center; padding-left:5px;"><input type="submit" style="height:30px; " name="br_qty_del_new_btn" id="br_qty_del_new_btn" onClick="br_new_delete('+i+')" value="  X  "></td></tr>'			  		
+
+		}
+		show_br_dcr_str=show_br_dcr_str+'</table>'
+		showBr=showBr+'</table>'
+		
+		localStorage.show_br_dcr_str=show_br_dcr_str
+		localStorage.showBr=showBr
+		
+		$('#doc_br_data_tbl').empty();
+		$('#doc_br_data_tbl').append(showBr);
+		
+		$('#doc_br_data').empty();
+
+
+
+//		nazma azam 2018/04/30
+
+		$('#doc_br_data').append(localStorage.show_br_dcr_str);
+		
+		} //else if
+		
+		
+	} //else
+	
+}
+});//end ajax
+}
+
+//--------------
+//	Nazma Azam 2018-06-26 end
