@@ -1206,11 +1206,10 @@ function check_user() {
 
 
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
 	//var  apipath_base_photo_dm='http://w04.yeapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-  // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
-   
+	
+
    var apipath_base_photo_dm ='http://e.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
@@ -6709,6 +6708,7 @@ function page_doctor_profile() {
 									var dob_child2=result_string.split('<fdfd>')[13]
 									var dTidP=result_string.split('<fdfd>')[14]
 									var dInhouseP=result_string.split('<fdfd>')[15]
+									var nop=result_string.split('<fdfd>')[16]
 									$("#dName").val(dName)
 									$("#dSpaciality").val(dSpaciality)
 									$("#dDegree").val(dDegree)
@@ -6725,6 +6725,7 @@ function page_doctor_profile() {
 									$("#dc2Day").val(dob_child2)
 									$("#dTidP").val(dTidP)
 									$("#dInhouseP").val(dInhouseP)
+									$("#dnop").val(nop)
 									//$("#dCategory").val(dCategory)
 									
 									if (collar_size!=''){
@@ -6796,6 +6797,8 @@ function docProfileSubmit() {
 	dTidP=$("#dTidP").val()
 	dInhouseP=$("#dInhouseP").val()
 	
+	dnop=$("#dnop").val()
+	
 	if ((dTidP=='') || (dInhouseP=='')){
 		$("#myerror_doctor_prof").html('Please enter required fields');
 		$("#wait_image_docProf").hide();
@@ -6804,7 +6807,7 @@ function docProfileSubmit() {
 	
 		$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana  +'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP)
 		
-			$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP,{
+			$.ajax(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMarDay='+dMarDay+'&collar_size_combo='+collar_size_combo+'&dc1Day='+dc1Day+'&dc2Day='+dc2Day+'&dTidP='+dTidP+'&dInhouseP='+dInhouseP+'&dnop='+dnop,{
 	
 									type: 'POST',
 									timeout: 30000,
@@ -6901,8 +6904,8 @@ function docAddSubmit() {
 	dThana=$("#dThanaAdd").val()
 	dTparty=$("#dTparty").val()
 	dinhouse=$("#dinhouse").val()
-	
-	//alert (dCategory)
+	numberOfPatient=$("#numberOfPatient").val()
+	//alert (numberOfPatient)
 	if (dName=='' |  dCategory=='' | dMobile=='' | dCAddress==''){
 		$("#myerror_doctor_add").html('Please Complete Mandatory Fields.' )
 		$("#wait_image_docAdd").hide();
@@ -6911,8 +6914,8 @@ function docAddSubmit() {
 	}
 	else{
 		//alert ('ASAD')
-	//alert (localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dTparty='+dTparty+'&dinhouse='+dinhouse)
-		$.ajax(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dTparty='+dTparty+'&dinhouse='+dinhouse,{
+	    //alert (localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dTparty='+dTparty+'&dinhouse='+dinhouse+'&numberOfPatient='+numberOfPatient)
+		$.ajax(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dTparty='+dTparty+'&dinhouse='+dinhouse+'&numberOfPatient='+numberOfPatient,{
 
 								type: 'POST',
 								timeout: 30000,
