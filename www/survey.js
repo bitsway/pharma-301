@@ -1366,6 +1366,56 @@ function check_user() {
 													localStorage.marketListStrCteam=resultArray[29];
 													localStorage.cTeam=resultArray[30]
 													
+													
+													
+													//Nazma Azam 2018-08-05 start
+													
+													localStorage.linkStr=resultArray[31]
+												//	alert(localStorage.linkStr)
+													
+													
+													//===============================================
+													var linkStrList = localStorage.linkStr.split('<rd>');							
+													var linkStr_combo=''
+													
+													for (var l=0; l < linkStrList.length; l++){
+														linkStrListArray = linkStrList[l].split('<fd>');
+														var pathName=linkStrListArray[0];
+														var path_value=linkStrListArray[1];
+														var check=linkStrListArray[2];
+														
+														if (check=='Check'){
+															//alert ('1')
+														 var linkPath="window.open('"+path_value+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+														}
+														else{
+															//alert ('2')
+															 var linkPath="window.open('"+path_value+"', '_system');"
+														}
+														
+														//alert (linkPath);
+														if(path_value!=''){
+															linkStr_combo+='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td><a href="#" onclick="'+linkPath+'">'+pathName+'</a></td></tr></table></li>';
+															
+															
+															}
+													}
+													
+																		
+													localStorage.linkStr_combo=linkStr_combo;	
+												//	alert (localStorage.linkStr_combo)								
+													$('#page_link_lv').empty();
+													$('#page_link_lv').append(localStorage.linkStr_combo);									
+
+													
+													
+													
+													//================================================
+									//Nazma Azam 2018-08-05 end
+													
+													
+													
+													
 													//alert (localStorage.marketStrCteam)
 													//alert (localStorage.cTeam)
 													
@@ -1420,7 +1470,7 @@ function check_user() {
 //															 //alert (s_key);	
 															 menu_str=menu_str+'<li  align="center" onClick="'+s_key+'()"  style="width:100%; background-color:#09C; " ><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="'+s_key+'.png"></li>'
 															menu_str=menu_str+'<div style="height:2px"></div>'							
-
+								
 														if (s_key=="chemist_visit"){
 															 order_report="Yes"
 															
@@ -1435,11 +1485,25 @@ function check_user() {
 														}
 //														
 //														
+														//Nazma Azam 2018-08-05 start
+											
+														if (s_key=="others_image"){
+															 others_report="Yes"
+															
+														}
+
+												//Nazma Azam 2018-08-05 end
+
+
+
+
+
+
 													} //end yes
 												} //end for
 												menu_str=menu_str;
 												localStorage.menu_list=menu_str;
-												//alert (localStorage.menu_list)
+												
 												$('#menu_lv').empty()
 												$('#menu_lv').append(localStorage.menu_list);
 
@@ -7237,13 +7301,15 @@ function doctor_delete() {
 	var  visit_client = localStorage.visit_client
 	var docId=visit_client.split('|')[1]
 	var DDoc=docId + '<fd>' + visit_client.split('|')[0]
-	//alert (DDoc)
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	var market_name=localStorage.visit_market_show.split('|')[0];
+	alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId+'&route='+market_Id)
 	//alert (localStorage.market_doctor)
 	// ajax-------
 	//alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId);
 	// ajax-------
 			
-			$.ajax(localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId,{
+			$.ajax(localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId+'&route='+market_Id,{
 
 								type: 'POST',
 								timeout: 30000,
@@ -7965,3 +8031,26 @@ $.ajax(localStorage.base_url+'get_doc_br_data?cid='+localStorage.cid+'&rep_id='+
 
 //--------------
 //	Nazma Azam 2018-06-26 end
+
+
+//	Nazma Azam 2018-08-05 start
+
+function others_image() {	
+	
+	
+						
+	//localStorage.linkStr_combo=linkStr_combo;	
+	//alert (localStorage.linkStr_combo)								
+	$('#page_link_lv').empty();
+	$('#page_link_lv').append(localStorage.linkStr_combo);	
+	//alert(localStorage.linkStr_combo)
+	
+	$.afui.loadContent("#page_link",true,true,'right');
+}
+
+
+
+
+
+//	Nazma Azam 2018-08-05 end
+
