@@ -3462,7 +3462,7 @@ function marketRetailerNext_doc() {
 		
 		$("#wait_image_visit_submit_doc").hide();
 		var docId=visit_client.split('|')[1]
-		if ($.isNumeric(docId)==true ){$("#docdelete").show();}else{$("#docdelete").hide();}
+		//if ($.isNumeric(docId)==true ){$("#docdelete").show();}else{$("#docdelete").hide();}
 		
 		$.afui.loadContent("#page_visit_doc",true,true,'right');
 		//location.reload();
