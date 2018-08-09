@@ -7303,7 +7303,7 @@ function doctor_delete() {
 	var DDoc=docId + '<fd>' + visit_client.split('|')[0]
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	var market_name=localStorage.visit_market_show.split('|')[0];
-	alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId+'&route='+market_Id)
+	//alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId+'&route='+market_Id)
 	//alert (localStorage.market_doctor)
 	// ajax-------
 	//alert (localStorage.base_url+'doctor_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+docId);
